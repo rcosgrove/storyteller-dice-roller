@@ -6,6 +6,7 @@
 /* background  */
 body {
     max-width: 100%;
+	background-color: black;
 }
 
 .wrapper {
@@ -16,7 +17,7 @@ body {
 }
 
 .backdrop {
-    background-image: url('assets/test-background.jpg');
+    background-image: url('assets/AWoD_P gina_154_Imagen_0001.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     /*  background-size: cover;*/
