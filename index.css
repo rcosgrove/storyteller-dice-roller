@@ -84,6 +84,7 @@ body {
     z-index: 20;
     position: sticky;
     top: 0;
+	width: 100%;
 
 }
 
@@ -111,14 +112,14 @@ body {
     display: inline-block;
     float: right;
     font-family: "trade-gothic-next", sans-serif;
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-style: normal;
     font-weight: 400;
-    padding: 5px;
+    padding: 10px;
     text-align: center;
-    transform: translate(-20%, 15%);
-    margin-left: 5px;
-    margin-right: 5px;
+/*    transform: translate(-20%, 15%);*/
+    margin-left: 2px;
+    margin-right: 10px;
     border-radius: 2em;
 
 }
@@ -144,12 +145,11 @@ body {
 /*style the footer*/
 .footer {
     margin-top: 15px;
-    overflow: hidden;
     background-color: #000000;
     max-height: 3em;
     z-index: 15;
     position: sticky;
-    width: 99%;
+    width: 100%;
 
 }
 
@@ -169,23 +169,25 @@ body {
     color: white;
 }
 
-
+.footer img {
+	padding: 5px;
+}
 
 /* basic text elements */
 
 /* body text */
-p {
+p,a,li {
     color: black;
-    font-family: "open-sans", sans-serif;
+    font-family: "open sans", sans-serif;
     font-weight: 400;
     font-style: normal;
+	font-size: 1em;
+
 }
 
 a {
-    color: black;
-    font-family: "open-sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    text-decoration: none;
+	
 }
 
 p.bold {
@@ -207,7 +209,6 @@ p.right {
     width: 100%;
     z-index: 10;
     top: 0;
-
 
 }
 
@@ -244,7 +245,7 @@ p.right {
     margin: 10px;
     padding: 10px;
     background-color: rgba(50, 50, 50, 0.75);
-    z-index: 10;
+/*    z-index: 10;*/
     border-radius: 1em;
 
 }
@@ -264,7 +265,7 @@ p.right {
 .link p {
     position: inline-block;
     flex-direction: column;
-    font-family: "open sans-serif;", sans-serif;
+    font-family: "open sans", sans-serif;
     font-size: 1em;
     font-style: normal;
     font-weight: 400;
@@ -345,32 +346,32 @@ button:hover {
     font-weight: 700;
 }
 
-
-h3 {
-    font-family: "open sans-serif;", sans-serif;
-    font-size: 1em;
+h2, h3, h4 {
+    font-family: "open sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     margin-bottom: 0;
+	
+}
+
+h4 {
+	font-size: 1em;
+}
+
+h3 {
+    font-size: 1.1em;
+
 }
 
 h2 {
-    font-family: "open sans-serif;", sans-serif;
-    font-size: 1.1em;
-    font-style: normal;
-    font-weight: 700;
-        margin-bottom: 0;
+    font-size: 1.2em;
+	
 }
 
 li {
-    font-family: "open-sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 /*    list-style-type: none;*/
-margin-top:0;
+	
 }
-
-
 
 
 .centre-stack {
@@ -515,65 +516,89 @@ a.linksbutton:active {
 
 /* >>>> MEDIA QUERIES <<<< */
 
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
-    body {
-        background-color: lightgrey;
-    }
+@media (max-width: 375px){
 
-    .topnav a {
-        float: none;
-        width: 100%;
-    }
 
-    #maintitle {
-        display: none;
-    }
+/* background  */
+body {
+    max-width: 360px;
+}
 
-    .topnav {
-        position: sticky;
-    }
+.wrapper {
+    /*    background-color: lightgrey;*/
+    min-width: 50%;
+    max-width: 350px;
+    height: 667px;
+}
+
+.backdrop {
+    background-image: url("assets/WoDC_P_gina_048_Imagen_0003.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+/*    max-width: inherit;*/
+/*    height: 100%;*/
+    z-index: -10;
 
 }
 
+	.topnav {
+    overflow: hidden;
+    background-color: #000000;
+    max-height: 3em;
+    z-index: 20;
+    position: sticky;
+    top: 0;
+	width: 350px;
 
-/* >>>> iPhone 6, 6S, 7 and 8 <<<< */
+}
+	#links-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 5;
+    min-height: 100%;
+    width: 100%;
 
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+}
+.link {
+    position: block;
+	max-width: 60%;
+    margin: 5px;
+    padding: 10px;
 
-    #maintitle {
-        display: none;
-    }
-
-    .topnav {
-        position: sticky;
-    }
+}
+	
+	.link a {
+    font-size: 1.2em;
 
 }
 
-/* Portrait */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	h2 {
+		font-size: 1.1em;
+	}
+	
 
-    #maintitle {
-        display: none;
-    }
+	h3 {
+		font-size: 1em;
+	}
+	
+	h4 {
+		font-size: 0.9em;
+	}
+	
 
-    .topnav {
-        position: sticky;
-    }
-
+	p, a, li {
+	font-family: "open-sans", sans-serif;
+	font-size: 0.8em;
+	
 }
 
-/* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+	a {
+/*		text-decoration: none;*/
+		font-size: 0.95em;
+	}
 
-    #maintitle {
-        display: none;
-    }
-
-    .topnav {
-        position: sticky;
-    }
-
+	
+	
 }

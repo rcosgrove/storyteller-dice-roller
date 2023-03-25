@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Storyteller dice roller v0.0.9</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<title>Storyteller dice roller - WtA20</title>
+	
     <!-- external javascript for the roller -->
     <script src="WtA20-roller.js" defer></script>
 
@@ -20,12 +21,13 @@
 
         <div class="topnav">
             <div style="float:left;">
-                <h4>Dice Roller WtA 20th Ed</h4>
+                <h4>Storyteller Dice Roller</h4>
             </div>
 
-            <div style="float:right;">
+            <div>
                 <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='help.html';">Help</button>
-                <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>
+                <button class="topbutton" name="" value="" id="AboutButton" title="About" onclick="window.location.href='about.html';">About</button>
+				<button class="topbutton" title="Go back" onclick="history.back()">Back</button>
                 <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>
             </div>
         </div>
@@ -34,9 +36,8 @@
 
         <div class="row flex header" id="maintitle">
             <div class="column centre">
-                <h1 id="title">Storyteller Dice Roller</h1>
-                <h3 id="subtitle">Werewolf the Apocalypse<br>
-                    20th Anniversary Edition</h3>
+                <h1 id="subtitle">Werewolf the Apocalypse<br>
+                    20th Anniversary Edition</h1>
             </div>
         </div>
 
@@ -63,10 +64,10 @@
 
         <!-- row 2 -->
         <!-- DATA ENTRY -->
-        <div class="row flex">
+        <div id="row2" class="row flex">
 
             <!-- column 1 -->
-            <div class="column flex" style="min-width: 150px;justify-content: space-between;">
+            <div class="flex column-left">
                 <form id="RollSettings">
                     <div class="column float-left" id="user-input-menu">
                         <div class="side-menu-item">
@@ -77,10 +78,10 @@
                             <p class="bold right">Difficulty</p>
                             <input class="number-entry required" id="UserDiff" type="number" maxlength="3" min="2" max="10" value="6" placeholder="6" required>
                         </div>
-                        <div class="side-menu-item" id="SpecialisedSwitchBox">
+                        <div class="side-menu-item align-centre" id="SpecialisedSwitchBox">
                             <input type="checkbox" class="switch" id="SpecialisedSwitch" title="Specialised skill" name="Specialised" value="SpecialisedSwitch" onclick="setSpecialisedSwitch()"><label for="SpecialisedSwitch">Specialised</label>
                         </div>
-                        <div class="side-menu-item">
+                        <div class="side-menu-item align-centre">
                             <select id="HealthLevelMenu" onclick="SetHealthPenalty()" class="menu">
                                 <option selected="selected" value="0">Health level</option>
                                 <!-- Uninjured: no effect-->
@@ -129,7 +130,7 @@
             <!-- column 2 -->
             <!-- RIGHTHAND COLUMN -->
 
-            <div class="flex column" style="min-width: 250px;">
+            <div class="flex column-right">
                 <!-- column contents -->
 
                 <!-- Roll results -->
@@ -207,7 +208,7 @@
                     </div>
                 </div>
 
-                <div class="flex column top-position">
+                <div class="flex column">
                     <!-- Stepping sideways -->
                     <div class="remove" id="stepsideways">
                         <div class="centre-stack">
@@ -232,17 +233,17 @@
         <!-- end row 1 -->
 
 
-        <div class="flex footer" style="justify-content:space-between;">
-            <div style="margin-left:5px;margin-top:5px;">
+        <div class="flex footer">
+            <div>
                 <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
             </div>
 
-            <div style="text-align: center;">
-                <p><span style="font-size: 50%">Werewolf the Apocalypse 20th Anniversary<br>Edition roller v0.0.9</span></p>
+            <div style="text-align:center;" id="FooterRollerName">
+                <p><span style="font-size: 75%">Werewolf the Apocalypse 20th Anniversary<br>Edition roller v0.0.9</span></p>
             </div>
 
             <div>
-                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img class="insert-pic" src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
+                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
             </div>
 
         </div>

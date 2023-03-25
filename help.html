@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Help - Storyteller Dice Roller</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Help - Storyteller Dice Roller</title>
 
     <!-- external css for the roller -->
     <link rel="stylesheet" href="index.css">
@@ -16,25 +16,23 @@
 
 <body>
     <div class="wrapper">
-
         <section class="flex" id="topbars">
 
             <div class="flex row column">
 
                 <div class="topnav">
                     <div style="float:left;">
-                        <h4>Dice Roller WtA 20th Ed</h4>
+                        <h4>Storyteller Dice Roller</h4>
                     </div>
 
-                    <div style="float:right;">
-                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='help.html';">Help</button>
+                    <div>
                         <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>
-                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>
+						<button class="topbutton" title="Go back" onclick="history.back()">Back</button>
+<!--                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>-->
                     </div>
                 </div>
-
                 <div class="row header" id="maintitle">
-                    <h1 id="title">Storyteller Dice Roller</h1>
+                    <h1 id="title">Instructions</h1>
                 </div>
             </div>
         </section>
@@ -52,8 +50,8 @@
 
                 <p>Clicking on the buttons at the top of the roller to change between roll types. The UI will offer options specific to that roll.</p>
 
-                <h2>Common controls</h2>
-                <h3>Roll options</h3>
+                <h3>Common controls</h3>
+                <h4>Roll options</h4>
                 <ul>
                     <li><strong>Dice:</strong> enter the total number of dice to be rolled here. (Maximum: 30)</li>
                     <li><strong>Difficulty:</strong> enter the roll’s difficulty. (Range: 2 to 10)</li>
