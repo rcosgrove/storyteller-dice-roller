@@ -1,4 +1,4 @@
-// STORYTELLER DICE ROLLER v0.0.8
+// STORYTELLER DICE ROLLER v0.0.9
 
 //  ----GLOBAL VARIABLES---- 
 //  
@@ -99,7 +99,6 @@ function SetHealthPenalty() {
     let HealthPenaltySelected = document.getElementById("HealthLevelMenu");
     HealthPenaltySelected.addEventListener("change", function handleChange(event) {
         HealthPenalty = Number(event.target.value);
-        console.log("Selected HealthPenalty var is: " + HealthPenalty);
     })
 
 
@@ -153,9 +152,6 @@ function setSpecialisedSwitch() {
 
 function DicePoolHealthPenalty() {
     // apply dice penalty taken from wound menu
-
-    // console.log("Running DicePoolHealthPenalty func");
-    // console.log("HealthPenalty var is: " + HealthPenalty);
 
     if (HealthPenalty => Number(1)) {
         // return minimum dice pool of 1
@@ -260,9 +256,6 @@ function RollRepeatAdjusted() {
 }
 
 function CountRollResults() {
-    console.log("Running CountRollResults");
-
-
 
     // Calculate success, failure or botch
     // Validate bonus success and extra botch user entry fields
@@ -292,11 +285,6 @@ function CountRollResults() {
     } else if (vCalc <= Number(0)) {
         vFinal = "FAILED";
     }
-
-console.log("vBotchesExtra var is: " + vBotchesExtra);
-console.log("vWinsExtra var is: " + vWinsExtra);
-console.log("vPool var is: " + vPool);
-console.log("vCalc var is: " + vCalc);
 
 } // end of CountResults function
 
@@ -562,8 +550,6 @@ function RollRage() {
 
     // CHECK AUSPICE AND MOON PHASE SELECTED, STOP IF NOT
 
-    console.log("Running RollRage func");
-
     let MessageResults = document.getElementById("Results");
     MessageResults.innerHTML = "";
     let MessageBottom = document.getElementById("Rolls");
@@ -600,15 +586,11 @@ function RollRage() {
 
     vPool = Number(document.getElementById("UserDice").value);
 
-    console.log("vPool var is: " + vPool);
-
     // Apply health level penalty to number of dice in pool
     DicePoolHealthPenalty();
 
     vWinsExtra = Number(document.getElementById("UserWinsExtra").value);
     vBotchesExtra = Number(document.getElementById("UserBotchesExtra").value);
-
-    console.log("vPool var adjusted for health is: " + vPool);
 
     // Use when "RageDice" input is active for testing
     // RageDicePool = document.getElementById("RageDice").value;
@@ -621,9 +603,6 @@ function RollRage() {
 
 function SetRageDiff() {
     // Calculate difficulty for rage roll, based on auspice and moon menu selections
-
-    console.log("Running SetRageDiff func");
-
 
     // Set rage roll difficulty to moon value plus 3
     RageDiffBase = Number(MoonSetting) + 3;
@@ -664,8 +643,6 @@ function SetRageDiff() {
 function CheckRageRoll() {
     // Make rage roll
 
-    console.log("Running CheckRageRoll func");
-
     // Repeat DiceRoll function, until counter equals vPool
 
     // set counter to start value of 1
@@ -705,8 +682,6 @@ function CheckRageRoll() {
 
 function ShowResultsRage() {
     // Calculate and display result of Rage roll
-
-    console.log("Running ShowResultsRage func");
 
     // CALCULATE AND DISPLAY SUCCESS OR FAILURE
     // Display rage roll results in body's Results field
@@ -827,8 +802,6 @@ function RollStepSideways() {
 function CheckStepSidewaysRoll() {
     // Calculate Step Sideways roll Result
 
-console.log("Running CheckStepSidewaysRoll");
-
     // Get difficulty modifier value
     let DiffMod = document.getElementById("UserDiffMod").value;
     DiffMod = Number(DiffMod);
@@ -882,12 +855,6 @@ function ShowResultsStepSideways() {
 
     // Display results of slip sideways roll
      
-    console.log("Running ShowResultsStepSideways"); 
-    console.log("vBotchesExtra var is: " + vBotchesExtra);
-console.log("vWinsExtra var is: " + vWinsExtra);
-console.log("vPool var is: " + vPool);
-console.log("vCalc var is: " + vCalc);
-
     // Rolls variable set to null
 
     if (vBotchesExtra == 0 && vWinsExtra == 0) {
