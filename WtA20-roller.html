@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Storyteller dice roller v0.0.9</title>
+
+    <!-- external javascript for the roller -->
+    <script src="WtA20-roller.js" defer></script>
+
+    <!-- external css for the roller -->
+    <link rel="stylesheet" href="WtA20-roller.css">
+
+    <!-- Adobe fonts link -->
+    <link rel="stylesheet" href="https://use.typekit.net/lyk8wbp.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="topnav">
+            <div style="float:left;">
+                <h4>Dice Roller WtA 20th Ed</h4>
+            </div>
+
+            <div style="float:right;">
+                <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='help.html';">Help</button>
+                <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>
+                <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>
+            </div>
+        </div>
+
+
+
+        <div class="row flex header" id="maintitle">
+            <div class="column centre">
+                <h1 id="title">Storyteller Dice Roller</h1>
+                <h3 id="subtitle">Werewolf the Apocalypse<br>
+                    20th Anniversary Edition</h3>
+            </div>
+        </div>
+
+
+        <!-- RESULTS DISPLAY -->
+        <!-- row 1 -->
+        <div class="row flex" style="margin-top:10px;margin-bottom:10px;justify-content: space-evenly;">
+            <form class="flex row skillbuttons centre" id="SkillButtons" style="justify-content: space-evenly;">
+                <div style="display:inline-flex">
+                    <input type="radio" class="RadioEntry clickHandler" id="typeskill" name="RollType" value="skill" checked="true" onclick="RollTypeSkill(); uiStandard();">
+                    <label for="typeskill">Standard</label>
+                    <input type="radio" class="RadioEntry clickHandler" id="typedamage" name="RollType" value="damage" onclick="RollTypeDamage(); uiDamage();">
+                    <label for="typedamage">Damage</label>
+                </div>
+                <div style="display:inline-flex">
+                    <input type="radio" class="RadioEntry clickHandler" id="typerage" name="RollType" value="rage" onclick="RollTypeRage(); uiRage();">
+                    <label for="typerage">Rage</label>
+                    <input type="radio" class="RadioEntry clickHandler" id="typeslip" name="RollType" value="slip" onclick="RollTypeSlip(); uiStepSideways();">
+                    <label for="typeslip">Step sideways</label>
+                </div>
+            </form>
+        </div>
+        <!-- end row 1 -->
+
+        <!-- row 2 -->
+        <!-- DATA ENTRY -->
+        <div class="row flex">
+
+            <!-- column 1 -->
+            <div class="column flex" style="min-width: 150px;justify-content: space-between;">
+                <form id="RollSettings">
+                    <div class="column float-left" id="user-input-menu">
+                        <div class="side-menu-item">
+                            <p class="bold right">Dice</p>
+                            <input class="number-entry required" id="UserDice" type="number" maxlength="3" min="1" max="30" value="4" placeholder="4" required autofocus>
+                        </div>
+                        <div class="side-menu-item" id="difftitle">
+                            <p class="bold right">Difficulty</p>
+                            <input class="number-entry required" id="UserDiff" type="number" maxlength="3" min="2" max="10" value="6" placeholder="6" required>
+                        </div>
+                        <div class="side-menu-item" id="SpecialisedSwitchBox">
+                            <input type="checkbox" class="switch" id="SpecialisedSwitch" title="Specialised skill" name="Specialised" value="SpecialisedSwitch" onclick="setSpecialisedSwitch()"><label for="SpecialisedSwitch">Specialised</label>
+                        </div>
+                        <div class="side-menu-item">
+                            <select id="HealthLevelMenu" onclick="SetHealthPenalty()" class="menu">
+                                <option selected="selected" value="0">Health level</option>
+                                <!-- Uninjured: no effect-->
+                                <option value="0">Uninjured</option>
+                                <!-- Bruised: no effect-->
+                                <option value="0">Bruised</option>
+                                <!-- Hurt: DicePool -1 -->
+                                <option value="1">Hurt</option>
+                                <!-- Wounded: DicePool -1 -->
+                                <option value="1">Wounded</option>
+                                <!-- Mauled: DicePool -2 -->
+                                <option value="2">Mauled</option>
+                                <!-- Crippled: DicePool -2 -->
+                                <option value="2">Crippled</option>
+                                <!-- Mauled: DicePool -5 -->
+                                <option value="5">Incapacitated</option>
+                            </select>
+                        </div>
+                        <div class="side-menu-item">
+                            <p class="bold right">Difficulty<br>modifier</p>
+                            <input class="number-entry" id="UserDiffMod" type="number" maxlength="3" min="-8" max="8" value="0" placeholder="0">
+                        </div>
+                        <div class="side-menu-item">
+                            <p class="bold right">Bonus<br>successes</p>
+                            <input class="number-entry" id="UserWinsExtra" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0">
+                        </div>
+                        <div class="side-menu-item">
+                            <p class="bold right">Penalty<br>botches</p>
+                            <input class="number-entry" id="UserBotchesExtra" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0">
+                        </div>
+                        <div class="side-menu-item">
+                            <!-- Roll button -->
+                            <button class="roll clickHandler shadow" name="roll" value="" id="roll" title="Roll the dice" onclick="Roll()"><label class="roll" for="roll">Roll</label></button>
+                        </div>
+                        <div class="side-menu-item">
+                            <button class="reroll clickHandler shadow" name="reroller" value="" id="reroll" title="Reroll using same diff and dice pool" onclick="RollRepeat()"><label for="reroll" style="font-size:0.8em;">Re-roll</label></button>
+                            <button class="clickHandler shadow" id="reroller2" name="reroll2" onclick="RollRepeatAdjusted()" title="Re-roll with bonus and penalty successes applied" type="button" value=""><label for="reroller2" style="">Re-roll (adj)</label></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- end column 1 -->
+
+            <!-- column 2 -->
+            <!-- RIGHTHAND COLUMN -->
+
+            <div class="flex column" style="min-width: 250px;">
+                <!-- column contents -->
+
+                <!-- Roll results -->
+                <div class="column centre" style="justify-content: space-evenly;">
+                    <div class="ResultDisplay">
+                        <p class="Results"><span id="Results"></span></p>
+                        <p class="Rolls"><span id="Rolls"></span></p>
+                        <p class="Rolls2"><span id="Rolls2"></span></p>
+                        <p class="Rolls2"><span id="Rolls3"></span></p>
+                        <p class="Rolls2"><span id="Rolls4"></span></p>
+                    </div>
+                </div>
+
+                <!-- Rage rolls -->
+                <div class="flex column remove" id="rageroll">
+                    <div class="centre-stack">
+                        <form id="RageRolls">
+                            <div>
+                                <input type="checkbox" class="switch shadow" id="CrinosSwitch" name="CrinosForm" value="CrinosSwitch" onclick="setCrinosSwitch()"><label for="CrinosSwitch">Crinos</label>
+                            </div>
+                            <div>
+                                <select id="MoonPhaseMenu" onclick="SetMoonPhase()" class="menu shadow">
+                                    <option selected="selected" value="9999">Moon phase</option>
+                                    <option value="1">Full</option>
+                                    <option value="2">Crescent</option>
+                                    <option value="3">Half</option>
+                                    <option value="4">Gibbous</option>
+                                    <option value="5">New</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select id="AuspiceMenu" onclick="SetAuspice()" class="menu shadow">
+                                    <option selected="selected" value="9999">Auspice</option>
+                                    <option value="1">Ahroun</option>
+                                    <option value="2">Theurge</option>
+                                    <option value="3">Philodox</option>
+                                    <option value="4">Galliard</option>
+                                    <option value="5">Ragabash</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select id="GarouRankMenu" onclick="SetGarouRank()" class="menu shadow">
+                                    <option value="9999" selected="selected">Garou rank</option>
+                                    <option value="0">Cub (0)</option>
+                                    <option value="1">Cliath (1)</option>
+                                    <option value="2">Fostern (2)</option>
+                                    <!--Rank 3: RageDiff + 1 -->
+                                    <option value="3">Adren (3)</option>
+                                    <!--Rank 4: RageDiff +2 -->
+                                    <option value="4">Athro (4)</option>
+                                    <!--Rank 5 - RageDiff +2, Frenzy 5+ successes -->
+                                    <option value="5">Elder (5)</option>
+                                    <!--Rank 6 - RageDiff +2, Frenzy 6+ successes -->
+                                    <option value="6">Legend (6)</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="flex column">
+                    <!-- Damage type -->
+                    <div class="remove" id="damagetypeselect">
+                        <div class="centre-stack">
+                            <form id="damageselect">
+                                <select id="DamageTypeMenu" onclick="SetDamageType()" class="menu shadow" title="Select damage type (default: bashing)">
+                                    <option value="bashing" selected="selected">Damage type</option>
+                                    <option value="bashing">Bashing</option>
+                                    <option value="lethal">Lethal</option>
+                                    <option value="aggravated">Aggravated</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex column top-position">
+                    <!-- Stepping sideways -->
+                    <div class="remove" id="stepsideways">
+                        <div class="centre-stack">
+                            <form id="gnosis">
+                                <select id="GauntletMenu" onclick="SetGauntlet()" class="menu shadow">
+                                    <option value="9999" selected="selected">Gauntlet</option>
+                                    <option value="9">Science lab (9)</option>
+                                    <option value="8">Inner city (8)</option>
+                                    <option value="7">City street (7)</option>
+                                    <option value="6">Rural countryside (6)</option>
+                                    <option value="5">Urban caerns (5)</option>
+                                    <option value="4">Active caerns (4)</option>
+                                    <option value="3">Powerful caerns</option>
+                                    <option value="2">Greatest caerns (2)</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end column 2 -->
+        </div>
+        <!-- end row 1 -->
+
+
+        <div class="flex footer" style="justify-content:space-between;">
+            <div style="margin-left:5px;margin-top:5px;">
+                <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
+            </div>
+
+            <div style="text-align: center;">
+                <p><span style="font-size: 50%">Werewolf the Apocalypse 20th Anniversary<br>Edition roller v0.0.9</span></p>
+            </div>
+
+            <div>
+                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img class="insert-pic" src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- wrapper -->
+</body>
+
+</html>

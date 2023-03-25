@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Storyteller dice roller</title>
+
+    <!-- external javascript for the roller -->
+    <script src="storyteller-dice-roller-v7.js" defer></script>
+
+    <!-- external css for the roller -->
+    <link rel="stylesheet" href="storyteller-dice-roller-css-v1.css">
+
+    <!-- Adobe fonts link -->
+    <link rel="stylesheet" href="https://use.typekit.net/lyk8wbp.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="topnav">
+            <div style="float:left;">
+                <h4>Dice Roller WtA 20th Ed</h4>
+            </div>
+
+            <div style="float:right;">
+                <button class="topbutton" name="" value="" id="" title="Reset the firms" onclick="">LINK</button>
+                <button class="topbutton" name="" value="" id="sections" title="Reset sections" onclick="ShowAllSections()">Sections on</button>
+                <button class="topbutton" name="" value="" id="resetall" title="Reset the firms" onclick="ResetForms()">RESET</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="maintitle">
+        <div class="row header">
+            <h1 id="title">Storyteller Dice Roller <span style="font-size: 50%">v0.0.7</span></h1>
+        </div>
+        <div class="row header">
+            <h3 id="subtitle">Werewolf the Apocalypse<br>
+                20th Anniversary Edition</h3>
+        </div>
+    </div>
+
+    <!-- RESULTS DISPLAY -->
+
+    <div class="row flex-container">
+        <form class="skillbuttons" id="SkillButtons">
+            <div style="display:inline-flex">
+                <input type="radio" class="RadioEntry" id="typeskill" name="RollType" value="skill" checked="true" onclick="RollTypeSelect();">
+                <label for="typeskill">Standard</label>
+                <input type="radio" class="RadioEntry" id="typedamage" name="RollType" value="damage" onclick="RollTypeSelect();">
+                <label for="typedamage">Damage</label>
+            </div>
+            <div style="display:inline-flex">
+                <input type="radio" class="RadioEntry" id="typerage" name="RollType" value="rage" onclick="RollTypeSelect();">
+                <label for="typerage">Rage</label>
+                <input type="radio" class="RadioEntry" id="typeslip" name="RollType" value="slip" onclick="RollTypeSelect();">
+                <label for="typeslip">Step sideways</label>
+            </div>
+    </div>
+    </form>
+    </div>
+
+    <!-- DATA ENTRY -->
+    <div class="row">
+        <div class="column">
+            <div class="column">
+                <form id="RollSettings">
+                    <table style="margin-top:10px;margin-bottom:10px;">
+                        <tr>
+                            <td class="td bold">Dice</td>
+                            <td><input class="number-entry" id="UserDice" type="number" maxlength="3" min="1" max="30" value="4" placeholder="4" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td class="td bold">Difficulty</td>
+                            <td><input class="number-entry invisible" id="UserDiff" type="number" maxlength="3" min="3" max="10" value="6" placeholder="6" style="visibility:visible;" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="checkbox" class="switch" id="SpecialisedSwitch" title="Specialised skill" name="Specialised" value="SpecialisedSwitch" onclick="setSpecialisedSwitch()"><label for="SpecialisedSwitch">Specialised</label></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp</td>
+                        </tr>
+                        <tr>
+                            <td class="td smaller">Difficulty<br>modifier</td>
+                            <td><input class="number-entry" id="UserDiffMod" type="number" maxlength="3" min="-8" max="8" value="0" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td class="td smaller">Bonus<br>successes</td>
+                            <td><input class="number-entry" id="UserWinsExtra" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td class="td smaller">Penalty<br>botches</td>
+                            <td><input class="number-entry" id="UserBotchesExtra" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0"></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp</td>
+                        </tr>
+                        <tr>
+                            <!-- Roll (adjusted) button -->
+                            <td colspan="2"><button class="roll" name="roll" value="" id="roll" title="Roll the dice" onclick="Roll()"><label for="roll">Roll</label></button></td>
+                        </tr>
+                        <tr>
+                            <!-- Re-roll button -->
+                            <td colspan="1"><button class="roll reroll" name="reroller" value="" id="reroll" title="Reroll using same diff and dice pool" onclick="RollRepeat()"><label for="reroll" style="font-size:0.8em;">Re-roll</label></button></td>
+                            <!-- </tr> -->
+                            <!-- <tr>  -->
+                            <!-- Re-roll (adjusted) button -->
+                            <td colspan="1"><button class="roll reroll" id="reroller2" name="reroll2" onclick="RollRepeatAdjusted()" title="Re-roll with bonus and penalty successes applied" type="button" value=""><label for="reroller2" style="font-size:0.8em;">Re-roll (adj)</label></button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIGHTHAND COLUMN -->
+
+        <div class="column">
+
+            <!-- Roll results -->
+            <div class="ResultDisplay">
+                <p><span id="Results"></span><br><span id="Rolls"></span></p>
+            </div>
+
+            <!-- Rage rolls -->
+
+            <div class="column centre hide" id="rageroll" style="display:none;">
+                <form id="RageRolls">
+                    <table>
+                        <tr>
+                            <td colspan="2" style="align-items:center;"><input type="checkbox" class="switch" id="CrinosSwitch" name="CrinosForm" value="CrinosSwitch" onclick="setCrinosSwitch()"><label for="CrinosSwitch">Crinos</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="MoonPhaseMenu" onclick="SetMoonPhase()" class="menu">
+                                    <option selected="selected" value="9999">Moon phase</option>
+                                    <option value="1">Full</option>
+                                    <option value="2">Crescent</option>
+                                    <option value="3">Half</option>
+                                    <option value="4">Gibbous</option>
+                                    <option value="5">New</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select id="AuspiceMenu" onclick="SetAuspice()" class="menu">
+                                    <option selected="selected" value="9999">Auspice</option>
+                                    <option value="1">Ahroun</option>
+                                    <option value="2">Theurge</option>
+                                    <option value="3">Philodox</option>
+                                    <option value="4">Galliard</option>
+                                    <option value="5">Ragabash</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="align-items:center;">
+                                <select id="GarouRankMenu" onclick="SetGarouRank()" class="menu">
+                                    <option value="9999" selected="selected">Garou rank</option>
+                                    <option value="0">Cub (0)</option>
+                                    <option value="1">Cliath (1)</option>
+                                    <option value="2">Fostern (2)</option>
+                                    <!--Rank 3: RageDiff + 1 -->
+                                    <option value="3">Adren (3)</option>
+                                    <!--Rank 4: RageDiff +2 -->
+                                    <option value="4">Athro (4)</option>
+                                    <!--Rank 5 - RageDiff +2, Frenzy 5+ successes -->
+                                    <option value="5">Elder (5)</option>
+                                    <!--Rank 6 - RageDiff +2, Frenzy 6+ successes -->
+                                    <option value="6">Legend (6)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+            <!-- Stepping sideways -->
+            <div class="column centre hide" id="stepsideways" style="display:none;">
+                <form id="gnosis">
+                    <table  style="align-items:center;">
+                        <tr>
+                            <td colspan="2">
+                                <select id="GauntletMenu" onclick="SetGauntlet()" class="menu">
+                                    <option value="9999" selected="selected">Gauntlet</option>
+                                    <option value="9">Science lab (9)</option>
+                                    <option value="8">Inner city (8)</option>
+                                    <option value="7">City street (7)</option>
+                                    <option value="6">Rural countryside (6)</option>
+                                    <option value="5">Urban caerns (5)</option>
+                                    <option value="4">Active caerns (4)</option>
+                                    <option value="3">Powerful caerns</option>
+                                    <option value="2">Greatest caerns (2)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- wrapper -->
+</body>
+
+</html>

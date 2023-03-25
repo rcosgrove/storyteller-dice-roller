@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Help - Storyteller Dice Roller</title>
+
+    <!-- external css for the roller -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Adobe fonts link -->
+    <link rel="stylesheet" href="https://use.typekit.net/lyk8wbp.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <section class="flex" id="topbars">
+
+            <div class="flex row column">
+
+                <div class="topnav">
+                    <div style="float:left;">
+                        <h4>Dice Roller WtA 20th Ed</h4>
+                    </div>
+
+                    <div style="float:right;">
+                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='help.html';">Help</button>
+                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>
+                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>
+                    </div>
+                </div>
+
+                <div class="row header" id="maintitle">
+                    <h1 id="title">Storyteller Dice Roller</h1>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="flex">
+            <div class="column textcolumn">
+                <p>This roller provides options for four of the most commonly used rolls in Werewolf the Apocalypse games.</p>
+                <p>The rolls follow the WtA 20th Anniversary Edition rules:</p>
+                <ul>
+                    <li>A roll of 10 gives 2 successes;</li>
+                    <li>A roll of 1 cancels one success; and</li>
+                    <li>A roll of 1 and no successes results in a botched roll (a critical failure).</li>
+                </ul>
+
+                <p>Clicking on the buttons at the top of the roller to change between roll types. The UI will offer options specific to that roll.</p>
+
+                <h2>Common controls</h2>
+                <h3>Roll options</h3>
+                <ul>
+                    <li><strong>Dice:</strong> enter the total number of dice to be rolled here. (Maximum: 30)</li>
+                    <li><strong>Difficulty:</strong> enter the roll’s difficulty. (Range: 2 to 10)</li>
+                    <li><strong>Difficulty modifier:</strong> you can enter the sum of any difficulty modifiers here. (Range: -8 to +8)</li>
+                    <li><strong>Bonus successes:</strong> enter the total number of automatic successes here (eg, bonus success from spending a Willpower point or bonus successes added to damage rolls from attack rolls).</li>
+                    <li><strong>Penalty botches:</strong> enter any success penalties here (eg, opponent’s successes when making an opposed roll).</li>
+                </ul>
+
+                <h3>Roll buttons</h3>
+                <ul>
+                    <li><Strong>Roll</Strong>: click to make the roll.</li>
+                    <li><strong>Re-roll</strong>: repeat the last-used roll, but without any automatic successes and botches.</li>
+                    <li><strong>Re-roll (adj)</strong>: repeat the last-used roll, including automatic successes and botches.</li>
+                </ul>
+
+                <h2>Types of rolls</h2>
+                <h3>Standard</h3>
+                <ul>
+                    <li>Use this for the standard ‘attribute plus ability’ and attack rolls, as well as willpower and gnosis checks.</li>
+                    <li>If an ability’s specialisation applies to the roll, click the “Specialised” button. When this button is on, each 9 and 10 rolled will give two successes.</li>
+                    <li>There are no other special options.</li>
+                    <li><strong>Results</strong>: Number of successes.</li>
+                </ul>
+
+                <h3>Damage</h3>
+                <ul>
+                    <li>Unlike a standard roll, a damage roll cannot result in a botch, as 1s do not cancel successes. But 10s do not give two successes.</li>
+                    <li>The Specialised button is removed, as ability specialisations don’t apply to damage rolls.</li>
+                    <li>You can select to inflict bashing, lethal and aggravated damage using the drop-down menu. The damage type will be displayed in the roll’s result, but it doesn't make any difference to a roll.</li>
+                    <li>Enter the number of bonus successes gained from the attack roll in the “Bonus successes” field, and the result of your opponent's soak roll in "penalty botches".</li>
+                    <li><Strong>Results</Strong>: Number of successes and damage type.</li>
+                </ul>
+
+                <h3>Rage</h3>
+                <ul>
+                    <li>Use this when making rage rolls and frenzy checks.</li>
+                    <li>The roll's difficulty is set automatically: click “crinos” if the garou is in crinos form, and then select the current moon phase, and the garou's auspice and rank from the drop-down menus.</li>
+                    <li>Difficulty modifiers can still be applied.</li>
+                    <li><strong>Results</strong>: “calm”, “frenzy” or “In thrall of the Wyrm”.</li>
+                </ul>
+
+                <h3>Step sideways</h3>
+                <ul>
+                    <li>The difficulty is based on the gauntlet level selected from the drop-down menu.</li>
+                    <li>Difficulty modifiers can still be applied.</li>
+                    <li><Strong>Results</Strong>: “Success” and the time taken to enter the umbra; “fail”, or “botch”.</li>
+                </ul>
+
+            </div>
+        </section>
+
+        <div class="flex footer" style="justify-content: space-between;">
+            <div style="margin-left:5px;margin-top:5px;">
+                <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
+            </div>
+
+            <div>
+                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img class="insert-pic" src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
