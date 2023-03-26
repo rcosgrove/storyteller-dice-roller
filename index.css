@@ -20,7 +20,7 @@ body {
     background-image: url('assets/AWoD_P gina_154_Imagen_0001.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /*  background-size: cover;*/
+      background-size: cover;
     max-width: inherit;
     height: 100%;
     z-index: -10;
