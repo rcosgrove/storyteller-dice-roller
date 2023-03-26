@@ -51,6 +51,7 @@ window.onload = function() {
     document.getElementById("rageroll").style.display = "none";
     document.getElementById("stepsideways").style.display = "none";
     document.getElementById("damagetypeselect").style.display = "none";
+    document.getElementById("ResultsWindow").style.visibility = "hidden";    
 }
 
 
@@ -65,21 +66,25 @@ function handleSelect(elm) {
 
 function RollTypeSkill() {
     RollType = "typeskill";
+    document.getElementById("ResultsWindow").style.visibility = "hidden";    
 
 }
 
 function RollTypeRage() {
     RollType = "typerage";
+    document.getElementById("ResultsWindow").style.visibility = "hidden";    
 
 }
 
 function RollTypeDamage() {
     RollType = "typedamage";
+    document.getElementById("ResultsWindow").style.visibility = "hidden";    
 
 }
 
 function RollTypeSlip() {
     RollType = "typeslip";
+    document.getElementById("ResultsWindow").style.visibility = "hidden";    
 
 }
 
@@ -178,6 +183,10 @@ function Roll() {
 
     // Call function to define RollType variable
     // RollTypeSelect();
+
+    // Show Results window
+    document.getElementById("ResultsWindow").style.visibility = "visible";    
+
 
     // Reset ResultsDisplay field
     ResetResultsDisplay();
