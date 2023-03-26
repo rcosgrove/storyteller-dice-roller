@@ -1,0 +1,1148 @@
+ /* Storyteller dice roller v0.0.9 */
+ /* dice roller CSS */
+
+
+/* >>>> MAIN BODY STYLES <<<< */
+
+/* background  */
+.wrapper {
+    background-color: white;
+    min-width: 300px;
+    max-width: 100%;
+
+}
+/* >>>> column layout <<<< */
+.flex {
+    display: flex;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+/*    flex: 40%;*/
+}
+
+.column-right {
+    display: flex;
+    flex-direction: column;
+	flex-grow: 1;
+	background-image: url('assets/WoDC_P gina_085_Imagen_0003.png');
+	padding: 10px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    max-width: inherit;	
+
+}
+
+
+.column-left {
+    display: flex;
+    max-width: 200px;
+	justify-content: space-between;
+	margin-right: 20px;
+
+}
+
+#row2 {
+	display: flex;
+	flex-direction: row;
+}
+
+.float-right {
+    float: right;
+ 
+}
+
+.column .fullwidth {
+    display: flex;
+    flex-direction: column;
+    flex: 600px;
+	justify-content: space-between;
+}
+
+.centre {
+    display: flex;
+/*    justify-content: center;*/
+    align-items: center;
+/*    margin: auto 0;*/
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #000000;
+    max-height: 3em;
+}
+
+/* topnav links */
+.topnav a {
+    float: right;
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+}
+
+/* Change color of links on hover */
+
+.topnav a:hover {
+    background-color: lightgrey;
+    color: black;
+}
+
+.topnav button {
+    display: inline-block;
+    float: right;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px;
+    text-align: center;
+    transform: translate(-20%, 15%);
+      margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2em;
+
+}
+
+.topnav button:hover {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    border: solid 1px #999;
+}
+
+.topnav h4 {
+    color: white;
+    font-family: "orpheus-pro-condensed", sans-serif;
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: 700;
+    padding-left: 0.75em;
+    transform: translate(0%, -50%);
+}
+
+
+/*style the footer*/
+.footer {
+    margin-top: 15px;
+    overflow: hidden;
+    background-color: #000000;
+    max-height: 3em;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+
+}
+.footer p, .footer a {
+    font-family: "trade-gothic-next", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8em;
+    color: white;
+}
+
+.footer img {
+	padding: 5px;
+
+}	
+
+
+/* basic text elements */
+
+/* body text */
+p, a {
+    color: black;
+    font-family: "open-sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p.bold {
+    font-family: "open-sans", sans-serif;
+    font-weight: 700;
+}
+
+p.right {
+    font-family: "open-sans", sans-serif;
+    text-align: right;
+}
+
+/* table  */
+td {
+    margin: 1px;
+    text-align: center;
+    font-family: "open-sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.td.smaller {
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.td.bold {
+    font-size: 1.1em;
+    font-weight: 700;
+    text-align: right;
+
+}
+
+
+/* main title */
+.header {
+    display: flex;
+    background-color: #ddd;
+    text-align: center;
+    padding: 1px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header h1, .header h3 {
+    font-family: "orpheus-pro-condensed", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+	
+}
+
+.header h1 {
+    font-size: 2em;
+    line-height: 1.2;
+}
+
+
+.header h3 {
+    font-size: 1.5em;
+   line-height: 1.2;
+	
+}
+
+h2, h3 {
+    font-family: "open sans-serif;", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+        margin-bottom: 0;
+}
+
+h3 {
+    font-size: 1em;
+	
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+li {
+    font-family: "open-sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+/*    list-style-type: none;*/
+	margin-top: 0;
+}
+
+
+
+/* >>>> RADIO BUTTONS <<<< */
+.skillbuttons label {
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.9em;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    text-align: center;
+    transition: all 0.3s;
+    width: 107px;
+    margin: 3px;
+    background-color: white;
+    box-shadow: 5px 5px 10px #BBB;
+}
+
+.skillbuttons input[type="radio"] {
+    display: none;
+}
+
+.skillbuttons input[type="radio"]:checked+label {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+}
+
+.skillbuttons input[type="radio"]:hover+label {
+    background-color: black;
+    color: white;
+    border: solid 2px #999;
+}
+
+/* >>>> REGULAR BUTTONS <<<< */
+
+button {
+    background-color: white;
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px;
+    position: static;
+    text-align: center;
+    transition: all 0.3s;
+    /*  max-width: 110px;*/
+    margin: 3px;
+}
+
+button:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.topnav.topbutton {
+    background-color: orangered;
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px;
+    position: static;
+    text-align: center;
+    transition: all 0.3s;
+    /*  max-width: 110px;*/
+    margin: 3px;
+}
+
+.topnav.topbutton:hover {
+    background-color: mediumvioletred;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+
+
+
+/* >>>> TEXT-ONLY CHECKBOX <<<< */
+.switch {
+    position: relative;
+    visibility: hidden;
+    opacity: 0;
+/*    margin: 3px;*/
+}
+
+input[type=checkbox]+label {
+    /*    border-radius: 2em;*/
+    border: solid 2px #000;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 700;
+    padding: 5px;
+    text-align: center;
+    transform: translate(-18px, 0);
+    transition: all 0.3s;
+    width: 110px;
+    height: 1.1em;
+    background-color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    box-shadow: 5px 5px 10px #BBB;
+}
+
+input[type=checkbox]:checked+label {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    border: solid 2px black;
+}
+
+input[type=checkbox]:hover+label {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    border: solid 2px #999;
+}
+
+.centre-stack {
+align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+#SkillButtonsContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* >>>> SPECIFIC CONTROLS <<<< */
+
+.align-centre {
+	align-self: center;
+	
+}
+
+#stepsideways {
+    display: inline-block;
+/*    transform: translateY(-120px);*/
+}
+
+#RageRolls {
+    display: inline-block;
+}
+
+#damageselect {
+    display: inline-block;
+   
+}
+
+.top-position {
+ vertical-align: top;
+}
+
+#CrinosSwitch {
+/*    margin: 0 0;*/
+/*    width: 120px;*/
+}
+
+#GauntletMenu {
+    width: 180px;
+}
+
+#DamageTypeMenu {
+    width:150px;
+}
+
+.red {
+    background-color: orangered;
+}
+
+.green {
+    background-color: lightgreen;
+}
+
+.blue {
+    background-color: lightskyblue;
+}
+
+.cyan {
+    background-color: lightcyan;
+}
+
+.Results {
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2em;
+    text-align: center;
+}
+
+.Rolls {
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    text-align: center;
+
+}
+
+.Rolls2 {
+    font-family: "trade-gothic-next", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.25em;
+    text-align: center;
+}
+
+/* >>>> menus <<<< */
+.menu {
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 700;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    text-align: center;
+    transition: all 0.3s;
+    width: 120px;
+    margin: 3px;
+}
+
+.menu option {
+	text-align: center;
+}
+
+.menu:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#SpecialisedSwitchBox {
+	transform: translateX(8px);
+}
+
+#LinkMenu {
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: 400;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    text-align: center;
+    transition: all 0.3s;
+    width: 110px;
+    margin: 3px;
+    transform: translateY(3px);
+}
+
+#LinkMenu:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#HelpButton {
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: 400;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    text-align: center;
+    transition: all 0.3s;
+    width: 90px;
+    margin: 3px;
+    transform: translateY(4px);
+}
+
+#HelpButton label {
+    padding-left: 40%;
+    padding-right: 40%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#HelpButton:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#HealthLevelMenu {
+    width: 150px;
+    margin-top: 10px;
+}
+
+
+.side-menu-item {
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+	justify-content: flex-end;
+
+}
+
+
+/* roll button */
+#roll {
+    font-weight: 700;
+    font-style: normal;
+    width: 180px;
+    margin: 2px;
+    font-size: 1.5em;
+    vertical-align: middle;
+    height: 2em;
+
+}
+
+#roll label {
+    padding-left: 40%;
+    padding-right: 40%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+/* re-roll buttons */
+.reroll {
+    background-color: white;
+    font-weight: 700;
+    font-style: normal;
+    width: 90px;
+    height: 2.5em;
+    line-height: 70%;
+    vertical-align: middle;
+    font-size: 1em;
+}
+
+.reroll label {
+    padding-left: 19%;
+    padding-right: 23%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#reroller2 {
+    background-color: white;
+    font-weight: 700;
+    font-style: normal;
+    width: 90px;
+    height: 3em;
+    line-height: 70%;
+    vertical-align: middle;
+    font-size: 0.8em;
+}
+
+.reroller2 label {
+    padding-left: 19%;
+    padding-right: 23%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+/* number entry field */
+.number-entry {
+    font-family: "open-sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.15em;
+    text-align: center;
+    border-radius: 2em;
+/*    margin: 3px;*/
+    margin-left: 10px;
+    max-height: 1.5em;
+}
+
+/* Results display div area */
+.ResultDisplay {
+    text-align: center;
+    border: solid 1px #DDD;
+    padding-bottom: 20px;
+    box-shadow: 10px 10px 25px #BBB;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    min-width: 200px;
+    max-width: 250px;
+    background-color: white;
+
+}
+
+.shadow {
+    box-shadow: 5px 5px 10px #BBB;
+}
+
+
+.shadow2 {
+    box-shadow: 15px 15px 15px #BBB;
+}
+
+
+/*>>>> UI CONFIGURATION <<<<*/
+
+
+/* remove elements - causes reflow */
+.remove {
+    display: none;
+}
+
+/* make element invisible */
+.visible {
+    visibility: hidden;
+}
+
+/* highlight required field skill */
+.required {
+    background-color: rgba(22, 78, 79, 0.12);
+    font-weight: 700;
+}
+
+
+/* Follow me for more pens like this! */
+
+/* >>>> DROP DOWN MENUS */
+:root {
+  --button-background: white;
+  --button-color: black;
+  
+  --dropdown-highlight: #999;
+  --dropdown-width: 160px;
+  --dropdown-background: white;
+  --dropdown-color: black;
+}
+
+/* Boring button styles */
+a.button {
+  /* Frame */
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 2em;
+  box-sizing: border-box;
+  
+  /* Style */
+  background: var(--button-background);
+  color: var(--button-color);
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #000;
+
+}
+
+a.button:active {
+/*   filter: brightness(75%); */
+}
+
+a.button:hover {
+  background-color: black;
+  color: white;
+}
+
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  padding: 0;
+  
+  border: none;
+}
+
+.dropdown summary {
+  list-style: none;
+  list-style-type: none;
+}
+
+.dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.dropdown summary:focus {
+  outline: none;
+}
+
+.dropdown summary:focus a.button {
+  border: 2px solid black;
+  background-color: black;
+  color: white;
+}
+
+.dropdown summary:focus {
+  outline: none;
+}
+
+.dropdown ul {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  width: var(--dropdown-width);
+  left: 50%;
+  margin-left: calc((var(--dropdown-width) / 2)  * -1);
+  box-sizing: border-box;
+  z-index: 2;
+
+  background: var(--dropdown-background);
+  border-radius: 0;
+  list-style: none;
+}
+
+.dropdown ul li {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown ul li a:link, .dropdown ul li a:visited {
+  display: inline-block;
+  padding: 5px 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  
+  color: var(--dropdown-color);
+  text-decoration: none;
+}
+
+.dropdown ul li a:hover {
+  background-color: var(--dropdown-highlight);
+  color: var(--dropdown-background);
+}
+
+/* Close the dropdown with outside clicks */
+.dropdown > summary::before {
+  display: none;
+}
+
+.dropdown[open] > summary::before {
+    content: ' ';
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* >>>> END DROP DOWN MENUS */
+
+/* >>>> MENU BUTTON <<<< */
+/* Menu button based on code provided by Garet McKinley */
+/* https://codepen.io/garetmckinley */
+
+/* appearance variables */
+:root {
+  --linksbutton-background: white;
+  --linksbutton-color: black;
+
+  --linksdropdown-highlight: #DDD;
+  --linksdropdown-width: 110px;
+  --linksdropdown-background: white;
+  --linksdropdown-color: black;
+}
+
+/* Button styles */
+a.linksbutton {
+  /* Frame */
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 2em;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px #999;
+  font-family: "trade-gothic-next", sans-serif;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 400;
+
+  /* Style */
+  border: 1px solid #ddd;
+  background: var(--linksbutton-background);
+  color: var(--linksbutton-color);
+  cursor: pointer;
+}
+
+a.linksbutton:hover {
+  background-color: #000;
+  color: #EEE
+}
+
+a.linksbutton:active {
+  filter: brightness(75%);
+}
+
+/* Dropdown styles */
+.linksdropdown {
+  position: relative;
+  padding: 0;
+  margin-right: 1em;
+
+  border: none;
+}
+
+.linksdropdown summary {
+  list-style: none;
+  list-style-type: none;
+}
+
+.linksdropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.linksdropdown summary:focus {
+  outline: none;
+}
+
+.linksdropdown summary:focus a.linksbutton {
+  border: 1px solid white;
+}
+
+.linksdropdown summary:focus {
+  outline: none;
+}
+
+.linksdropdown ul {
+  position: absolute;
+  margin: 20px 0 0 0;
+  padding: 20px 0;
+  width: 200px;
+/*   left: 50%; */
+  margin-left: calc((var(--linksdropdown-width) / 2) * -1);
+  box-sizing: border-box;
+  z-index: 12;
+
+  background: var(--linksdropdown-background);
+  border-radius: 0px;
+  list-style: none;
+}
+
+.linksdropdown ul li {
+  padding: 0;
+  margin: 0;
+}
+
+.linksdropdown ul li a:link,
+.linksdropdown ul li a:visited {
+  display: inline-block;
+  padding: 10px 1rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  color: var(--linksdropdown-color);
+  text-decoration: none;
+}
+
+.linksdropdown ul li a:hover {
+  background-color: var(--linksdropdown-highlight);
+  color: #000;
+}
+
+/* Close the dropdown with outside clicks */
+.linksdropdown > summary::before {
+  display: none;
+}
+
+.linksdropdown[open] > summary::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 11;
+}
+
+/* >>>> END MENU BUTTON <<<< */
+
+
+
+/* >>>> MEDIA QUERIES <<<< */
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    body {
+        background-color: lightgrey;
+    }
+
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+
+    #maintitle {
+        display: none;
+    }
+
+    .topnav {
+        position: sticky;
+    }
+
+}
+
+
+/* >>>> iPhone 6, 6S, 7 and 8 <<<< */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    #maintitle {
+        display: none;
+    }
+
+    .topnav {
+        position: sticky;
+    }
+
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+
+    #maintitle {
+        display: none;
+    }
+
+    .topnav {
+        position: sticky;
+    }
+
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+
+    #maintitle {
+        display: none;
+    }
+
+    .topnav {
+        position: sticky;
+    }
+
+}
+@media (max-width: 510px){
+	
+	
+#row2 {
+	display: flex;
+	flex-direction: column;
+}
+
+	.column-left {
+/*    display: flex;*/
+		flex-direction: column;
+    max-width: 100%;
+	justify-content: space-between;
+	flex-grow: 2;
+/*		align-content: center;*/
+
+}
+
+	.side-menu-item {
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+	justify-content: center;
+
+}
+	
+	#AboutButton, #FooterRollerName, #BackButton {
+		display: none;
+	}
+
+	
+/* background  */
+body {
+    max-width: 510px;
+}
+
+.wrapper {
+    /*    background-color: lightgrey;*/
+    min-width: 50%;
+    max-width: 100%;
+/*    height: 667px;*/
+}
+
+	
+	.topnav {
+    overflow: hidden;
+    background-color: #000000;
+    max-height: 3em;
+    z-index: 20;
+    position: sticky;
+    top: 0;
+	width: 100%;
+
+}
+	#links-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 5;
+    min-height: 100%;
+    width: 100%;
+
+}
+.link {
+    position: block;
+	max-width: 60%;
+    margin: 5px;
+    padding: 10px;
+
+}
+	
+	.link a {
+    font-size: 1.2em;
+
+}
+
+	h2 {
+		font-size: 1.1em;
+	}
+	
+
+	h3 {
+		font-size: 1em;
+	}
+	
+	h4 {
+		font-size: 0.9em;
+	}
+	
+
+	p, a, li {
+	font-family: "open-sans", sans-serif;
+	font-size: 0.8em;
+	
+}
+
+	a {
+/*		text-decoration: none;*/
+		font-size: 0.95em;
+	}
+	
+		
+.column-right {
+    display: flex;
+    flex-direction: column;
+	flex-grow: 1;
+	background-image: url('');
+
+}
+
+}

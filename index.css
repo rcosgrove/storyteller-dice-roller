@@ -1,0 +1,605 @@
+/* >>>> MAIN BODY STYLES <<<< */
+
+ /* Storyteller dice roller v0.0.9 */
+ /* non-roller pages CSS */
+
+/* background  */
+body {
+    max-width: 100%;
+	background-color: black;
+}
+
+.wrapper {
+    /*    background-color: lightgrey;*/
+    min-width: 50%;
+    max-width: 100%;
+    height: 800px;
+}
+
+.backdrop {
+    background-image: url('assets/AWoD_P gina_154_Imagen_0001.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+      background-size: cover;
+    max-width: inherit;
+    height: 100%;
+    z-index: -10;
+
+}
+
+
+/* >>>> column layout <<<< */
+.flex {
+    display: flex;
+
+}
+
+.row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 40%;
+}
+
+.column .float-left {
+    float: left;
+    max-width: 300px;
+}
+
+.column .float-right {
+    float: right;
+    max-width: 300px;
+    background-color: lightgrey;
+
+}
+
+.float-right {
+    float: right;
+
+}
+
+.column .fullwidth {
+    display: flex;
+    flex-direction: column;
+    flex: 100%;
+}
+
+.centre {
+    display: flex;
+    /*    justify-content: center;*/
+    align-items: center;
+    /*    margin: auto 0;*/
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #000000;
+    max-height: 3em;
+    z-index: 20;
+    position: sticky;
+    top: 0;
+	width: 100%;
+
+}
+
+/* topnav links */
+.topnav a {
+    float: right;
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0px;
+}
+
+/* Change color of links on hover */
+
+.topnav a:hover {
+    background-color: lightgrey;
+    color: black;
+}
+
+.topnav button {
+    display: inline-block;
+    float: right;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: 400;
+    padding: 10px;
+    text-align: center;
+/*    transform: translate(-20%, 15%);*/
+    margin-left: 2px;
+    margin-right: 10px;
+    border-radius: 2em;
+
+}
+
+.topnav button:hover {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    border: solid 1px #999;
+}
+
+.topnav h4 {
+    color: white;
+    font-family: "orpheus-pro-condensed", sans-serif;
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: 700;
+    padding-left: 0.75em;
+    transform: translate(0%, -50%);
+}
+
+
+/*style the footer*/
+.footer {
+    margin-top: 15px;
+    background-color: #000000;
+    max-height: 3em;
+    z-index: 15;
+    position: sticky;
+    width: 100%;
+
+}
+
+.footer p {
+    font-family: "trade-gothic-next", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7em;
+    color: white;
+}
+
+.footer a {
+    font-family: "trade-gothic-next", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7em;
+    color: white;
+}
+
+.footer img {
+	padding: 5px;
+}
+
+/* basic text elements */
+
+/* body text */
+p,a,li {
+    color: black;
+    font-family: "open sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+	font-size: 1em;
+
+}
+
+a {
+    text-decoration: none;
+	
+}
+
+p.bold {
+    font-weight: 700;
+}
+
+p.right {
+    text-align: right;
+}
+
+
+/* main title */
+.header {
+    background-color: #ddd;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+
+}
+
+.insert-pic {
+    margin: 0 auto;
+}
+
+.textcolumn {
+    padding: 15px;
+
+}
+
+#links-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 5;
+    min-height: 100%;
+    width: 100%;
+
+}
+
+
+.links-row {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: space-evenly;
+
+}
+
+.link {
+    position: block;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, 0.75);
+/*    z-index: 10;*/
+    border-radius: 1em;
+
+}
+
+
+.link a {
+    font-family: "orpheus-pro-condensed", sans-serif;
+    font-size: 1.75em;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.link p {
+    position: inline-block;
+    flex-direction: column;
+    font-family: "open sans", sans-serif;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.header h1 {
+    font-family: "orpheus-pro-condensed", sans-serif;
+    font-size: 2.25em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0.5;
+}
+
+
+.header h3 {
+    font-family: "orpheus-pro-condensed", sans-serif;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: -1%;
+}
+
+/* >>>> REGULAR BUTTONS <<<< */
+
+button {
+    background-color: white;
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px;
+    position: static;
+    text-align: center;
+    transition: all 0.3s;
+    /*  max-width: 110px;*/
+    margin: 3px;
+}
+
+button:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.topnav.topbutton {
+    background-color: orangered;
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
+    padding: 5px;
+    position: static;
+    text-align: center;
+    transition: all 0.3s;
+    /*  max-width: 110px;*/
+    margin: 3px;
+}
+
+.topnav.topbutton:hover {
+    background-color: mediumvioletred;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+h2, h3, h4 {
+    font-family: "open sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 0;
+	
+}
+
+h4 {
+	font-size: 1em;
+}
+
+h3 {
+    font-size: 1.1em;
+
+}
+
+h2 {
+    font-size: 1.2em;
+	
+}
+
+li {
+/*    list-style-type: none;*/
+	
+}
+
+
+.centre-stack {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.red {
+    background-color: orangered;
+}
+
+.green {
+    background-color: lightgreen;
+}
+
+.blue {
+    background-color: lightskyblue;
+}
+
+.cyan {
+    background-color: lightcyan;
+}
+
+#LinkMenu {
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: 400;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    text-align: center;
+    transition: all 0.3s;
+    width: 110px;
+    margin: 3px;
+    transform: translateY(3px);
+}
+
+#LinkMenu:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+#HelpButton {
+    border-radius: 2em;
+    border: solid 2px black;
+    color: black;
+    display: inline-block;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 0.8em;
+    font-style: normal;
+    font-weight: 400;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    text-align: center;
+    transition: all 0.3s;
+    width: 90px;
+    margin: 3px;
+    transform: translateY(4px);
+}
+
+#HelpButton label {
+    padding-left: 40%;
+    padding-right: 40%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#HelpButton:hover {
+    background-color: black;
+    border: solid 2px #999;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+}
+
+
+
+
+/* >>>> MENU BUTTON <<<< */
+/* Menu button based on code provided by Garet McKinley */
+/* https://codepen.io/garetmckinley */
+
+/* appearance variables */
+:root {
+    --linksbutton-background: white;
+    --linksbutton-color: black;
+
+    --linksdropdown-highlight: #DDD;
+    --linksdropdown-width: 110px;
+    --linksdropdown-background: white;
+    --linksdropdown-color: black;
+}
+
+/* Button styles */
+a.linksbutton {
+    /* Frame */
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 2em;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 5px #999;
+    font-family: "trade-gothic-next", sans-serif;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+
+    /* Style */
+    border: 1px solid #ddd;
+    background: var(--linksbutton-background);
+    color: var(--linksbutton-color);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+a.linksbutton:hover {
+    background-color: #000;
+    color: #EEE
+}
+
+a.linksbutton:active {
+    filter: brightness(75%);
+}
+
+
+
+/* >>>> END MENU BUTTON <<<< */
+
+
+
+/* >>>> MEDIA QUERIES <<<< */
+
+@media (max-width: 375px){
+
+
+/* background  */
+body {
+    max-width: 360px;
+}
+
+.wrapper {
+    /*    background-color: lightgrey;*/
+    min-width: 50%;
+    max-width: 350px;
+    height: 667px;
+}
+
+.backdrop {
+    background-image: url("assets/WoDC_P_gina_048_Imagen_0003.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+/*    max-width: inherit;*/
+/*    height: 100%;*/
+    z-index: -10;
+
+}
+
+	.topnav {
+    overflow: hidden;
+    background-color: #000000;
+    max-height: 3em;
+    z-index: 20;
+    position: sticky;
+    top: 0;
+	width: 350px;
+
+}
+	#links-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 5;
+    min-height: 100%;
+    width: 100%;
+
+}
+.link {
+    position: block;
+	max-width: 60%;
+    margin: 5px;
+    padding: 10px;
+
+}
+	
+	.link a {
+    font-size: 1.2em;
+
+}
+
+	h2 {
+		font-size: 1.1em;
+	}
+	
+
+	h3 {
+		font-size: 1em;
+	}
+	
+	h4 {
+		font-size: 0.9em;
+	}
+	
+
+	p, a, li {
+	font-family: "open-sans", sans-serif;
+	font-size: 0.8em;
+	
+}
+
+	a {
+/*		text-decoration: none;*/
+		font-size: 0.95em;
+	}
+
+	
+	
+}
