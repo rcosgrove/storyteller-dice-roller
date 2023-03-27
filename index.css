@@ -1,16 +1,16 @@
 /* >>>> MAIN BODY STYLES <<<< */
 
- /* Storyteller dice roller v0.0.9 */
- /* non-roller pages CSS */
+/* Storyteller dice roller v0.0.9 */
+/* non-roller pages CSS */
 
 /* background  */
 body {
     max-width: 100%;
-	background-color: black;
+    background-color: black;
 }
 
 .wrapper {
-    /*    background-color: lightgrey;*/
+    background-color: black;
     min-width: 50%;
     max-width: 100%;
     height: 800px;
@@ -20,7 +20,7 @@ body {
     background-image: url('assets/AWoD_P gina_154_Imagen_0001.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-      background-size: cover;
+    background-size: cover;
     max-width: inherit;
     height: 100%;
     z-index: -10;
@@ -85,7 +85,7 @@ body {
     z-index: 20;
     position: sticky;
     top: 0;
-	width: 100%;
+    width: 100%;
 
 }
 
@@ -118,7 +118,7 @@ body {
     font-weight: 400;
     padding: 10px;
     text-align: center;
-/*    transform: translate(-20%, 15%);*/
+    /*    transform: translate(-20%, 15%);*/
     margin-left: 2px;
     margin-right: 10px;
     border-radius: 2em;
@@ -171,24 +171,26 @@ body {
 }
 
 .footer img {
-	padding: 5px;
+    padding: 5px;
 }
 
 /* basic text elements */
 
 /* body text */
-p,a,li {
+p,
+a,
+li {
     color: black;
     font-family: "open sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-	font-size: 1em;
+    font-size: 1em;
 
 }
 
 a {
     text-decoration: none;
-	
+
 }
 
 p.bold {
@@ -219,6 +221,8 @@ p.right {
 
 .textcolumn {
     padding: 15px;
+/*    height: 100%;*/
+    background-color: lightgrey;
 
 }
 
@@ -231,7 +235,6 @@ p.right {
     width: 100%;
 
 }
-
 
 .links-row {
     display: flex;
@@ -246,11 +249,10 @@ p.right {
     margin: 10px;
     padding: 10px;
     background-color: rgba(50, 50, 50, 0.75);
-/*    z-index: 10;*/
+    /*    z-index: 10;*/
     border-radius: 1em;
 
 }
-
 
 .link a {
     font-family: "orpheus-pro-condensed", sans-serif;
@@ -283,7 +285,6 @@ p.right {
     font-weight: 700;
     line-height: 0.5;
 }
-
 
 .header h3 {
     font-family: "orpheus-pro-condensed", sans-serif;
@@ -347,16 +348,18 @@ button:hover {
     font-weight: 700;
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
     font-family: "open sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     margin-bottom: 0;
-	
+
 }
 
 h4 {
-	font-size: 1em;
+    font-size: 1em;
 }
 
 h3 {
@@ -366,21 +369,19 @@ h3 {
 
 h2 {
     font-size: 1.2em;
-	
+
 }
 
 li {
-/*    list-style-type: none;*/
-	
-}
+    /*    list-style-type: none;*/
 
+}
 
 .centre-stack {
     align-items: center;
     display: flex;
     justify-content: center;
 }
-
 
 .red {
     background-color: orangered;
@@ -517,89 +518,91 @@ a.linksbutton:active {
 
 /* >>>> MEDIA QUERIES <<<< */
 
-@media (max-width: 375px){
+@media (max-width: 510px) {
+
+    /* background  */
+    body {
+        max-width: 100%;
+        background-color: black;
+    }
+
+    .wrapper {
+        background-color: lightgrey;
+        min-width: 50%;
+        max-width: 100%;
+        height: 667px;
+
+    }
+
+    .backdrop {
+        background-image: url("assets/AWoD_P_gina_057_Imagen_0001.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        /*    max-width: inherit;*/
+        /*    height: 100%;*/
+        z-index: -10;
+
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: #000000;
+        max-height: 3em;
+        z-index: 20;
+        position: sticky;
+        top: 0;
+        width: 100%;
+
+    }
+
+    #links-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        z-index: 5;
+        min-height: 100%;
+        width: 100%;
+
+    }
+
+    .link {
+        position: block;
+        max-width: 60%;
+        margin: 5px;
+        padding: 10px;
+
+    }
+
+    .link a {
+        font-size: 1.2em;
+
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
 
 
-/* background  */
-body {
-    max-width: 360px;
-}
+    h3 {
+        font-size: 1em;
+    }
 
-.wrapper {
-    /*    background-color: lightgrey;*/
-    min-width: 50%;
-    max-width: 350px;
-    height: 667px;
-}
+    h4 {
+        font-size: 0.9em;
+    }
 
-.backdrop {
-    background-image: url("assets/WoDC_P_gina_048_Imagen_0003.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-/*    max-width: inherit;*/
-/*    height: 100%;*/
-    z-index: -10;
+    p,
+    a,
+    li {
+        font-family: "open-sans", sans-serif;
+        font-size: 0.8em;
 
-}
+    }
 
-	.topnav {
-    overflow: hidden;
-    background-color: #000000;
-    max-height: 3em;
-    z-index: 20;
-    position: sticky;
-    top: 0;
-	width: 350px;
+    a {
+        /*      text-decoration: none;*/
+        font-size: 0.95em;
+    }
 
-}
-	#links-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    z-index: 5;
-    min-height: 100%;
-    width: 100%;
-
-}
-.link {
-    position: block;
-	max-width: 60%;
-    margin: 5px;
-    padding: 10px;
-
-}
-	
-	.link a {
-    font-size: 1.2em;
-
-}
-
-	h2 {
-		font-size: 1.1em;
-	}
-	
-
-	h3 {
-		font-size: 1em;
-	}
-	
-	h4 {
-		font-size: 0.9em;
-	}
-	
-
-	p, a, li {
-	font-family: "open-sans", sans-serif;
-	font-size: 0.8em;
-	
-}
-
-	a {
-/*		text-decoration: none;*/
-		font-size: 0.95em;
-	}
-
-	
-	
 }
