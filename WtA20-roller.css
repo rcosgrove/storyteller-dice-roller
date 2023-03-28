@@ -18,6 +18,10 @@
 
  }
 
+ div {
+     cursor: pointer;
+ }
+
  .row {
      display: flex;
      flex-direction: row;
@@ -161,13 +165,6 @@
 
  .footer img {
      padding: 5px;
-
- }
-
- label,
- button,
- select {
-     cursor: pointer;
 
  }
 
@@ -632,6 +629,7 @@
      line-height: 70%;
      vertical-align: middle;
      font-size: 1em;
+
  }
 
  .reroll label {
@@ -650,6 +648,7 @@
      line-height: 70%;
      vertical-align: middle;
      font-size: 0.8em;
+
  }
 
  .reroller2 label {
@@ -975,12 +974,12 @@
  /* >>>> MEDIA QUERIES <<<< */
 
  /* On screens that are 600px or less, set the background color to olive */
- @media screen and (max-width: 600px) {
-     body {
-         background-color: lightgrey;
-     }
 
-     .topnav a {
+ /* Portrait and Landscape */
+ 
+ @media (min-width: 150px)  {
+
+    .topnav a {
          float: none;
          width: 100%;
      }
@@ -993,51 +992,9 @@
          position: sticky;
      }
 
- }
-
-
- /* >>>> iPhone 6, 6S, 7 and 8 <<<< */
-
- /* Portrait and Landscape */
- @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
-
-     #maintitle {
-         display: none;
+     * {
+         cursor: pointer;
      }
-
-     .topnav {
-         position: sticky;
-     }
-
- }
-
- /* Portrait */
- @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-
-     #maintitle {
-         display: none;
-     }
-
-     .topnav {
-         position: sticky;
-     }
-
- }
-
- /* Landscape */
- @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-
-     #maintitle {
-         display: none;
-     }
-
-     .topnav {
-         position: sticky;
-     }
-
- }
-
- @media (max-width: 510px) {
 
 
      #row2 {
@@ -1072,13 +1029,13 @@
 
      /* background  */
      body {
-         max-width: 510px;
+         min-width: 150px;
      }
 
      .wrapper {
          /*    background-color: lightgrey;*/
-         min-width: 50%;
-         max-width: 100%;
+         min-width: 100px;
+/*         max-width: 510px;*/
          /*    height: 667px;*/
      }
 
