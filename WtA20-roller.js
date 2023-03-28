@@ -920,6 +920,7 @@ function ResetResultsDisplay() {
     document.getElementById("Rolls").innerHTML = DiceRollsArray;
     document.getElementById("Rolls2").innerHTML = "";
     document.getElementById("Rolls3").innerHTML = "";
+    document.getElementById("Rolls4").innerHTML = "";
 }
 
 function uiStandard() {
