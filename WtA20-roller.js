@@ -822,7 +822,6 @@ function ShowResultsRage() {
         document.getElementById("Results").innerHTML = "IN THRALL<br>OF THE WYRM";
         document.getElementById("ResultsWindow").classList.add("frenzyred");
 
-
     }
 
     if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
