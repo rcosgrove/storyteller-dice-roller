@@ -44,6 +44,7 @@ var vPool = Number(4);
 // >>>> ON PAGE LOAD <<<< 
 
 window.onload = function() {
+ 
     // SET VARIABLES TO DISPLAY STARTING RESULTS - RUN WHEN PAGE LOADS
 
     document.getElementById("Results").innerHTML = vFinal;
@@ -55,6 +56,18 @@ window.onload = function() {
     document.getElementById("damagetypeselect").style.display = "none";
     document.getElementById("ResultsWindow").style.visibility = "hidden";
 
+}
+
+// >>> CHANGE TO FULLSCREEN <<<< 
+ 
+// Function for full screen activation
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else if (document.exitFullscreen) {
+    document.exitFullscreen();
+  }
 }
 
 
@@ -193,7 +206,7 @@ function SetDicePool() {
 function HealthDicePenalty() {
     // apply dice penalty taken from wound menu
 
-    if (DicePenaltyHealth => Number(1)) {
+    if (DicePenaltyHealth >= Number(1)) {
         // return minimum dice pool of 1
         vPool = Math.max((vPool - DicePenaltyHealth), 1);
 
@@ -808,7 +821,6 @@ function ShowResultsRage() {
         document.getElementById("Rolls2").style.display = "none";
         document.getElementById("Results").innerHTML = "IN THRALL<br>OF THE WYRM";
         document.getElementById("ResultsWindow").classList.add("frenzyred");
-
 
     }
 
