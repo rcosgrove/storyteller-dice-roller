@@ -23,22 +23,27 @@
 
 <body>
     <div class="wrapper">
+
         <div class="topnav">
-            <div style="float:left;align-content:center;">
-                <h4>Storyteller Dice Roller</h4>
+            <div id="DarkPact-header">
+                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="30" height="30"></a>
             </div>
 
             <div>
-                <button type="button" class="topbutton" name="" value="" id="FullScreenButon" title="Fullscreen toggle" onclick="openFullscreen()">Max</button>
+                <h4 id="title-topnav">Storyteller Dice Roller</h4>
+            </div>
 
+            <div style="justify-self:right;">
                 <button type="button" class="topbutton" name="" value="" id="" title="HelpButton" onclick="window.location.href='help.html';">Help</button>
 
                 <button type="button" class="topbutton" name="" value="" id="AboutButton" title="About" onclick="window.location.href='about.html';">About</button>
 
                 <button type="button" class="topbutton" id="BackButton" title="Go back" onclick="history.back()">Back</button>
-                
+
                 <button type="button" class="topbutton" name="" value="" id="HomeButton" title="Home" onclick="window.location.href='index.html';">Home</button>
             </div>
+
+
         </div>
 
         <div class="row flex header" id="maintitle">
@@ -83,10 +88,10 @@
                     <form id="RollSettings">
                         <div class="SideMenuRow">
                             <div class="side-menu-item right-padding" id="dicepooltitle">
-                                <label for="UserDice" class="right-align "><span class="side-menu-item-label">Dice pool</span></label><input class="number-entry required" id="UserDice" type="number" maxlength="3" min="1" max="30" value="4" placeholder="4" required autofocus>
+                                <label for="UserDice" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dice pool</span></label><input class="number-entry required" id="UserDice" type="number" maxlength="3" min="1" max="30" value="4" placeholder="4" required autofocus>
                             </div>
                             <div class="side-menu-item right-padding" id="difftitle">
-                                <label for="UserDiff" class="right-align"><span class="side-menu-item-label">Difficulty</span></label><input class="number-entry required" id="UserDiff" type="number" maxlength="3" min="2" max="10" value="6" placeholder="6" required>
+                                <label for="UserDiff" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Difficulty</span></label><input class="number-entry required" id="UserDiff" type="number" maxlength="3" min="2" max="10" value="6" placeholder="6" required>
                             </div>
                         </div>
 
@@ -123,7 +128,7 @@
                                 </div>
 
                                 <div class="side-menu-item right-padding">
-                                    <label for="DicePenalty" class="right-align"><span class="side-menu-item-label">Bonus/<br>penalty dice</span></label><input class="number-entry" id="DicePenaltyUser" type="number" maxlength="3" min="-30" max="30" value="0" placeholder="0" title="Bonus/penalty dice">
+                                    <label for="DicePenalty" class="right-align"><span class="side-menu-item-label">Dice<br>modifier</span></label><input class="number-entry" id="DicePenaltyUser" type="number" maxlength="3" min="-20" max="20" value="0" placeholder="0" title="Bonus/penalty dice">
                                 </div>
 
                             </div>
@@ -281,7 +286,7 @@
         </div>
         <!-- end row 1 -->
 
-        <div class="flex footer">
+        <div class="flex footer" id="footer">
             <div>
                 <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
             </div>
@@ -290,7 +295,7 @@
                 <p><span style="font-size: 75%">Werewolf the Apocalypse 20th Anniversary<br>Edition roller v0.0.10</span></p>
             </div>
 
-            <div>
+            <div id="DarkPact-footer">
                 <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
             </div>
 
