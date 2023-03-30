@@ -44,11 +44,8 @@ var vPool = Number(4);
 // >>>> ON PAGE LOAD <<<< 
 
 window.onload = function() {
-    // SET VARIABLES TO DISPLAY STARTING RESULTS - RUN WHEN PAGE LOADS
  
-    // Set display to fullscreen on mobiles
-     
-    MobileFullScreen();
+    // SET VARIABLES TO DISPLAY STARTING RESULTS - RUN WHEN PAGE LOADS
 
     document.getElementById("Results").innerHTML = vFinal;
     document.getElementById("Rolls1").innerHTML = DiceRollsArray;
@@ -61,28 +58,17 @@ window.onload = function() {
 
 }
 
-
 // >>> CHANGE TO FULLSCREEN <<<< 
  
-function MobileFullScreen() {
-    
-if (/Android|iPhone/i.test(navigator.userAgent)) {
-  // This checks if the current device is in fact mobile
-  
-let elem = document.documentElement;
+// Function for full screen activation
 
-elem
-  .requestFullscreen({ navigationUI: "hide" })
-  .then(() => {})
-  .catch((err) => {
-    alert(
-      `An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`
-    );
-  });
-
-  } 
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else if (document.exitFullscreen) {
+    document.exitFullscreen();
+  }
 }
- 
 
 
 // >>>> MENU LINKS <<<<
