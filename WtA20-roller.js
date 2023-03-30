@@ -45,6 +45,10 @@ var vPool = Number(4);
 
 window.onload = function() {
     // SET VARIABLES TO DISPLAY STARTING RESULTS - RUN WHEN PAGE LOADS
+ 
+    // Set display to fullscreen on mobiles
+     
+    MobileFullScreen();
 
     document.getElementById("Results").innerHTML = vFinal;
     document.getElementById("Rolls1").innerHTML = DiceRollsArray;
@@ -56,6 +60,29 @@ window.onload = function() {
     document.getElementById("ResultsWindow").style.visibility = "hidden";
 
 }
+
+
+// >>> CHANGE TO FULLSCREEN <<<< 
+ 
+function MobileFullScreen() {
+    
+if (/Android|iPhone/i.test(navigator.userAgent)) {
+  // This checks if the current device is in fact mobile
+  
+let elem = document.documentElement;
+
+elem
+  .requestFullscreen({ navigationUI: "show" })
+  .then(() => {})
+  .catch((err) => {
+    alert(
+      `An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`
+    );
+  });
+
+  } 
+}
+ 
 
 
 // >>>> MENU LINKS <<<<
@@ -193,7 +220,7 @@ function SetDicePool() {
 function HealthDicePenalty() {
     // apply dice penalty taken from wound menu
 
-    if (DicePenaltyHealth => Number(1)) {
+    if (DicePenaltyHealth >= Number(1)) {
         // return minimum dice pool of 1
         vPool = Math.max((vPool - DicePenaltyHealth), 1);
 
