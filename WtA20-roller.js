@@ -72,7 +72,7 @@ if (/Android|iPhone/i.test(navigator.userAgent)) {
 let elem = document.documentElement;
 
 elem
-  .requestFullscreen({ navigationUI: "show" })
+  .requestFullscreen({ navigationUI: "hide" })
   .then(() => {})
   .catch((err) => {
     alert(
