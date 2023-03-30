@@ -26,6 +26,7 @@ var Specialised = "false";
 var vDiff = Number(6);
 var vFinal = "Waiting";
 var vPool = Number(4);
+var elem = document.documentElement;
 
 
 /////////////////////// 
@@ -61,6 +62,27 @@ window.onload = function() {
 // >>> CHANGE TO FULLSCREEN <<<< 
  
 // Function for full screen activation
+
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+
 
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
