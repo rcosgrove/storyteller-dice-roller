@@ -1,18 +1,19 @@
-// STORYTELLER DICE ROLLER v0.0.9
+/* Storyteller dice roller v0.0.10 */
 
 //  ----GLOBAL VARIABLES---- 
-//  
-//  TO DO - check variables are valid and in use
-//  TO DO - add default settings 
+
+var AttackType = "melee";
 var AuspiceSetting = "9999";
 var CrinosForm = "false";
 var DamageSelected = "bashing";
 var DamageType = "bashing";
+var DicePenaltiesTotal = Number(0);
+var DicePenaltyHealth = Number(0);
+var DicePenaltyUser = Number(0);
 var DiceRollsArray = ["So roll some dice…"];
 var DiffMod = Number(0);
 var GarouRank = Number(0);
 var Gauntlet = "9999";
-var HealthPenalty = Number(0);
 var MoonSetting = "9999";
 var RageDicePool;
 var RageDiff = Number(0);
@@ -25,6 +26,7 @@ var Specialised = "false";
 var vDiff = Number(6);
 var vFinal = "Waiting";
 var vPool = Number(4);
+
 
 /////////////////////// 
 //                      
@@ -45,13 +47,14 @@ window.onload = function() {
     // SET VARIABLES TO DISPLAY STARTING RESULTS - RUN WHEN PAGE LOADS
 
     document.getElementById("Results").innerHTML = vFinal;
-    document.getElementById("Rolls").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
     document.getElementById("UserDiff").style.visibility = "visible";
     document.getElementById("difftitle").style.visibility = "visible";
     document.getElementById("rageroll").style.display = "none";
     document.getElementById("stepsideways").style.display = "none";
     document.getElementById("damagetypeselect").style.display = "none";
-    document.getElementById("ResultsWindow").style.visibility = "hidden";    
+    document.getElementById("ResultsWindow").style.visibility = "hidden";
+
 }
 
 
@@ -66,25 +69,36 @@ function handleSelect(elm) {
 
 function RollTypeSkill() {
     RollType = "typeskill";
-    document.getElementById("ResultsWindow").style.visibility = "hidden";    
+    document.getElementById("ResultsWindow").style.visibility = "hidden";
+    document.getElementById("HealthMenu").style.visibility = "visible";
+
+}
+
+function RollTypeReflex() {
+    RollType = "typereflex";
+    document.getElementById("ResultsWindow").style.visibility = "hidden";
+    document.getElementById("HealthMenu").style.visibility = "hidden";
 
 }
 
 function RollTypeRage() {
     RollType = "typerage";
-    document.getElementById("ResultsWindow").style.visibility = "hidden";    
+    document.getElementById("ResultsWindow").style.visibility = "hidden";
+    document.getElementById("HealthMenu").style.visibility = "hidden";
 
 }
 
 function RollTypeDamage() {
     RollType = "typedamage";
-    document.getElementById("ResultsWindow").style.visibility = "hidden";    
+    document.getElementById("ResultsWindow").style.visibility = "hidden";
+    document.getElementById("HealthMenu").style.visibility = "visible";
 
 }
 
 function RollTypeSlip() {
     RollType = "typeslip";
-    document.getElementById("ResultsWindow").style.visibility = "hidden";    
+    document.getElementById("ResultsWindow").style.visibility = "hidden";
+    document.getElementById("HealthMenu").style.visibility = "hidden";
 
 }
 
@@ -98,16 +112,25 @@ function SetDamageType() {
     })
 } // End SetGarouRank
 
-function SetHealthPenalty() {
-    // Set HealthPenalty global variable on menu change
+function SetAttackType() {
+    // Set GaruoRank on menu change
+    AttackTypeSelected = document.getElementById("AttackTypeMenu");
+    AttackTypeSelected.addEventListener("change", function handleChange(event) {
+        AttackType = event.target.value;
+    })
 
-    let HealthPenaltySelected = document.getElementById("HealthLevelMenu");
-    HealthPenaltySelected.addEventListener("change", function handleChange(event) {
-        HealthPenalty = Number(event.target.value);
+} // End SetGarouRank
+
+function SetHealthDicePenalty() {
+    // Set DicePenaltyHealth global variable on menu change
+
+    let DicePenaltyHealthSelected = document.getElementById("HealthLevelMenu");
+    DicePenaltyHealthSelected.addEventListener("change", function handleChange(event) {
+        DicePenaltyHealth = Number(event.target.value);
     })
 
 
-} // end SetHealthPenalty
+} // end SetDicePenaltyHealth
 
 function SetGarouRank() {
     // Set GaruoRank on menu change
@@ -155,15 +178,31 @@ function setSpecialisedSwitch() {
 
 } // end setSpecialisedSwitch
 
-function DicePoolHealthPenalty() {
+
+function SetDicePool() {
     // apply dice penalty taken from wound menu
 
-    if (HealthPenalty => Number(1)) {
-        // return minimum dice pool of 1
-        vPool = Math.max((vPool - HealthPenalty), 1);
-    }
-} // end DicePoolHeathPenalty
+    DicePenaltyUser = Number(document.getElementById("DicePenaltyUser").value);
 
+    let DicePool = Number(document.getElementById("UserDice").value);
+
+    vPool = Math.max((DicePool + DicePenaltyUser), 1);
+
+} // end SetDicePool func
+
+function HealthDicePenalty() {
+    // apply dice penalty taken from wound menu
+
+    if (DicePenaltyHealth => Number(1)) {
+        // return minimum dice pool of 1
+        vPool = Math.max((vPool - DicePenaltyHealth), 1);
+
+        console.log("DicePenaltyHealth var is: " + DicePenaltyHealth);
+        console.log("Adjusted vPool var is: " + vPool);
+
+    }
+
+} // end DicePoolHeathPenalty
 
 // >>>> DICE ROLLING FUNCTIONS <<<<
 
@@ -185,14 +224,13 @@ function Roll() {
     // RollTypeSelect();
 
     // Show Results window
-    document.getElementById("ResultsWindow").style.visibility = "visible";    
-
+    document.getElementById("ResultsWindow").style.visibility = "visible";
 
     // Reset ResultsDisplay field
     ResetResultsDisplay();
 
     // Execute function, depending on RollType variable
-    if (RollType == "typeskill") {
+    if (RollType == "typeskill" || RollType == "typereflex") {
         RollSkill();
     } else if (RollType == "typerage") {
         RollRage();
@@ -201,14 +239,14 @@ function Roll() {
     } else if (RollType == "typedamage") {
         RollDamage();
     } else if (RollType == undefined) {
-        console.log("Rolltype is not selected");
+        console.log("Roll type is not selected");
     }
 }
 
 function RollRepeat() {
-    // RE-ROLL DICE WITHOUT BONUS/PENALTY SUCCESSES
-    
-// Reset ResultsDisplay field
+    // RE-ROLL DICE WITHOUT BONUS/PENALTY SUCCESSES AND DICE
+
+    // Reset ResultsDisplay field
     ResetResultsDisplay();
 
     // Reset variables, except vPool and vDiff
@@ -223,8 +261,9 @@ function RollRepeat() {
     AllBotches = Number(0);
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
+    DicePenaltyUser = Number(0);
 
-    if (RollType == "typeskill") {
+    if (RollType == "typeskill" || RollType == "typereflex") {
         RollSkill();
     } else if (RollType == "typerage") {
         RollRage();
@@ -238,9 +277,8 @@ function RollRepeat() {
 function RollRepeatAdjusted() {
     // RE-ROLL DICE WITHOUT BONUS/PENALTY SUCCESSES
 
-// Reset ResultsDisplay field
+    // Reset ResultsDisplay field
     ResetResultsDisplay();
-
 
     // Reset variables, except vPool, vDiff, bonus successes and bonus botches
     DiceRollsArray = [];
@@ -253,7 +291,7 @@ function RollRepeatAdjusted() {
     AllWins = Number(0);
     AllBotches = Number(0);
 
-    if (RollType == "typeskill") {
+    if (RollType == "typeskill" || RollType == "typereflex") {
         RollSkill();
     } else if (RollType == "typerage") {
         RollRage();
@@ -308,7 +346,7 @@ function RollSkill() {
     // Validate DicePool and Difficulty entered, stop func if not
     let MessageResults = document.getElementById("Results");
     MessageResults.innerHTML = "";
-    let MessageBottom = document.getElementById("Rolls");
+    let MessageBottom = document.getElementById("Rolls1");
     MessageBottom.innerHTML = " ";
     let x = Number(document.getElementById("UserDice").value);
     let y = Number(document.getElementById("UserDiff").value);
@@ -340,12 +378,18 @@ function RollSkill() {
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
 
+    // Set vPool variable
 
-    // Set dice roll variables to user's entries
-    vPool = Number(document.getElementById("UserDice").value);
+    SetDicePool();
 
-    // Apply health level penalty to number of dice in pool
-    DicePoolHealthPenalty();
+    // Apply health level penalty to number of dice in pool, if action roll being made
+
+    if (RollType == "typeskill") {
+        HealthDicePenalty();
+        DicePenaltiesTotal = (DicePenaltyUser + DicePenaltyHealth);
+    } else if (RollType == "typereflex") {
+        DicePenaltiesTotal = DicePenaltyUser;
+    }
 
     // set roll target number, based on number in difficulty input window
     vDiff = Number(document.getElementById("UserDiff").value);
@@ -412,22 +456,12 @@ function CheckSkillRoll() {
 function ShowResultsSkillRoll() {
     // Send success/faiure result to HTML window
 
-    if (vBotchesExtra == 0 && vWinsExtra == 0) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-    } else if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
-    } else if (vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
-    } else if (vBotchesExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
-    }
-
-    if (HealthPenalty >= 1) {
-        document.getElementById("Rolls3").innerHTML = "(–" + HealthPenalty + " dice health penalty applied)";
-    }
+    document.getElementById("Rolls1").style.display = "block";
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls2").style.display = "none";
+    document.getElementById("Rolls3").style.display = "none";
+    document.getElementById("Rolls4").style.display = "none";
+    document.getElementById("Rolls5").style.display = "none";
 
     if (vCalc >= 2) {
         document.getElementById("Results").innerHTML = vFinal + " with<br>" + vCalc + " successes";
@@ -438,6 +472,27 @@ function ShowResultsSkillRoll() {
     } else if (vFinal == "FAILED") {
         document.getElementById("Results").innerHTML = vFinal;
     }
+
+    if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
+    } else if (vWinsExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
+    } else if (vBotchesExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
+    }
+
+    if (DicePenaltiesTotal >= 1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + DicePenaltiesTotal + " bonus dice)";
+    } else if (DicePenaltiesTotal <= -1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + DicePenaltiesTotal + " penalty dice)";
+    }
+
+
 } // end ShowResults function
 
 
@@ -449,7 +504,7 @@ function RollDamage() {
     // Validate user input
     let MessageResults = document.getElementById("Results");
     MessageResults.innerHTML = "";
-    let MessageBottom = document.getElementById("Rolls");
+    let MessageBottom = document.getElementById("Rolls1");
     MessageBottom.innerHTML = "";
     let x = Number(document.getElementById("UserDice").value);
     let y = Number(document.getElementById("UserDiff").value);
@@ -480,13 +535,22 @@ function RollDamage() {
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
 
-    // Set dice roll variables to user"s entries
+    // Set vPool variable
 
-    vPool = Number(document.getElementById("UserDice").value);
+    SetDicePool();
+
+    // Apply health level penalty to number of dice in pool, if action roll being made
+
+    if (AttackType == "melee") {
+        HealthDicePenalty();
+        DicePenaltiesTotal = (DicePenaltyUser + DicePenaltyHealth);
+    } else if (AttackType == "gun") {
+        DicePenaltiesTotal = DicePenaltyUser;
+    }
+
+    console.log("AttackType var is: " + AttackType);
 
     // Apply health level penalty to number of dice in pool
-
-    DicePoolHealthPenalty();
 
     vDiff = document.getElementById("UserDiff").value;
 
@@ -521,24 +585,12 @@ function CheckDamageRoll() {
 function ShowResultsDamage() {
     // Send success/faiure result to HTML window
 
-    document.getElementById("Rolls").innerHTML = DiceRollsArray;
-
-    if (vBotchesExtra == 0 && vWinsExtra == 0) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-    } else if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
-    } else if (vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
-    } else if (vBotchesExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
-    }
-
-    if (HealthPenalty >= 1) {
-        document.getElementById("Rolls3").innerHTML = "(–" + HealthPenalty + " dice health penalty applied)";
-    }
+    document.getElementById("Rolls1").style.display = "block";
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls2").style.display = "none";
+    document.getElementById("Rolls3").style.display = "none";
+    document.getElementById("Rolls4").style.display = "none";
+    document.getElementById("Rolls5").style.display = "none";
 
     if (vCalc >= 2) {
         document.getElementById("Results").innerHTML = vCalc + " levels of " + DamageSelected + " damage inflicted";
@@ -549,6 +601,26 @@ function ShowResultsDamage() {
     } else if (vWins == Number(0) && vBotches >= 1) {
         document.getElementById("Results").innerHTML = vFinal;
     }
+
+    if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
+    } else if (vWinsExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
+    } else if (vBotchesExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
+    }
+
+    if (DicePenaltiesTotal >= 1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + DicePenaltiesTotal + " bonus dice)";
+    } else if (DicePenaltiesTotal <= -1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + DicePenaltiesTotal + " penalty dice)";
+    }
+
 } // end ShowDamageResults function
 
 
@@ -561,7 +633,7 @@ function RollRage() {
 
     let MessageResults = document.getElementById("Results");
     MessageResults.innerHTML = "";
-    let MessageBottom = document.getElementById("Rolls");
+    let MessageBottom = document.getElementById("Rolls1");
     MessageBottom.innerHTML = " ";
     let x = Number(MoonSetting);
     let y = Number(AuspiceSetting);
@@ -592,11 +664,11 @@ function RollRage() {
     GarouRank = Number(0); // set GarouRank value to 0 as default
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
+    DicePenaltyHealth = Number(0);
 
-    vPool = Number(document.getElementById("UserDice").value);
+    SetDicePool();
 
-    // Apply health level penalty to number of dice in pool
-    DicePoolHealthPenalty();
+    DicePenaltiesTotal = DicePenaltyUser;
 
     vWinsExtra = Number(document.getElementById("UserWinsExtra").value);
     vBotchesExtra = Number(document.getElementById("UserBotchesExtra").value);
@@ -695,7 +767,12 @@ function ShowResultsRage() {
     // CALCULATE AND DISPLAY SUCCESS OR FAILURE
     // Display rage roll results in body's Results field
 
-    document.getElementById("Rolls").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls1").style.display = "block";
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls2").style.display = "none";
+    document.getElementById("Rolls3").style.display = "none";
+    document.getElementById("Rolls4").style.display = "none";
+    document.getElementById("Rolls5").style.display = "none";
 
     // set rage roll success rank modifier
 
@@ -711,39 +788,47 @@ function ShowResultsRage() {
 
     // Compare vWins against 4 successes needed for frenzy plus rank-based successes modifier
 
-
-    if (vBotchesExtra == 0 && vWinsExtra == 0) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-    } else if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
-    } else if (vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
-    } else if (vBotchesExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
-    }
-
-    if (HealthPenalty >= 1) {
-        document.getElementById("Rolls3").innerHTML = "(–" + HealthPenalty + " dice health penalty applied)";
-    }
-
     if (vWins == Number(0) && vBotches >= 1) {
-        document.getElementById("Results").innerHTML = "BOTCHED:<br>Loose 1 rage";
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Results").innerHTML = "BOTCHED";
+        document.getElementById("Rolls2").innerHTML = "Loose 1 rage point";
+        document.getElementById("ResultsWindow").classList.remove("frenzyred");
 
     } else if (Number(vWins) <= Number(RageRollSuccessTarget)) {
+        document.getElementById("Rolls2").style.display = "none";
         document.getElementById("Results").innerHTML = "Calm";
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
+        document.getElementById("ResultsWindow").classList.remove("frenzyred");
 
     } else if (vWins == (1 + Number(RageRollSuccessTarget))) {
+        document.getElementById("Rolls2").style.display = "none";
         document.getElementById("Results").innerHTML = "FRENZY";
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
+        document.getElementById("ResultsWindow").classList.add("frenzyred");
 
     } else if (vWins >= (2 + Number(RageRollSuccessTarget))) {
+        document.getElementById("Rolls2").style.display = "none";
         document.getElementById("Results").innerHTML = "IN THRALL<br>OF THE WYRM";
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
+        document.getElementById("ResultsWindow").classList.add("frenzyred");
+
+
+    }
+
+    if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
+    } else if (vWinsExtra >= 1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
+    } else if (vBotchesExtra >= 1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
+    }
+
+    if (DicePenaltiesTotal >= 1) {
+        document.getElementById("Rolls4").style.display = "block";
+        document.getElementById("Rolls4").innerHTML = "(Including " + DicePenaltiesTotal + " bonus dice)";
+    } else if (DicePenaltiesTotal <= -1) {
+        document.getElementById("Rolls4").style.display = "block";
+        document.getElementById("Rolls4").innerHTML = "(Including " + DicePenaltiesTotal + " penalty dice)";
     }
 } // end of rage result
 
@@ -774,11 +859,12 @@ function RollStepSideways() {
     vWins = Number(0); // number of rolls equal or more than target
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
+    DicePenaltyHealth = Number(0);
 
     // TEST GAUNTLET HAS BEEN SELECTED AND STOP ROLL IF NOT
     let MessageResults = document.getElementById("Results");
     MessageResults.innerHTML = "";
-    let MessageBottom = document.getElementById("Rolls");
+    let MessageBottom = document.getElementById("Rolls1");
     MessageBottom.innerHTML = " ";
     let x = Gauntlet;
     let y = document.getElementById("UserDice").value;
@@ -793,9 +879,9 @@ function RollStepSideways() {
         return false;
     }
 
-    vPool = Number(document.getElementById("UserDice").value);
+    SetDicePool();
 
-    DicePoolHealthPenalty();
+    DicePenaltiesTotal = DicePenaltyUser;
 
     // run gnosis roll functions in order
 
@@ -855,59 +941,64 @@ function CheckStepSidewaysRoll() {
     }
 
 
-
-
-
 } // end Gnosis roll function
 
 function ShowResultsStepSideways() {
 
     // Display results of slip sideways roll
-     
+
     // Rolls variable set to null
 
-    if (vBotchesExtra == 0 && vWinsExtra == 0) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-    } else if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
-    } else if (vWinsExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
-    } else if (vBotchesExtra >= 1) {
-        document.getElementById("Rolls").innerHTML = DiceRollsArray;
-        document.getElementById("Rolls2").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
-    }
-
-    if (HealthPenalty >= 1) {
-        document.getElementById("Rolls3").innerHTML = "(–" + HealthPenalty + " dice health penalty applied)";
-    }
+    document.getElementById("Rolls1").style.display = "block";
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls2").style.display = "block";
+    document.getElementById("Rolls3").style.display = "none";
+    document.getElementById("Rolls4").style.display = "none";
+    document.getElementById("Rolls5").style.display = "none";
 
     if (Number(vCalc) <= Number(0)) {
         document.getElementById("Results").innerHTML = "Fail";
-        document.getElementById("Rolls").innerHTML = [DiceRollsArray];
-        document.getElementById("Rolls4").innerHTML = "1 hour wait to try again";
+        document.getElementById("Rolls2").innerHTML = "1 hour wait to try again";
 
     } else if (Number(vCalc) == Number(1)) {
         document.getElementById("Results").innerHTML = "Success";
-        document.getElementById("Rolls").innerHTML = [DiceRollsArray];
-        document.getElementById("Rolls4").innerHTML = "Takes 5 minutes";
+        document.getElementById("Rolls2").innerHTML = "Takes 5 minutes";
 
     } else if (Number(vCalc) == Number(2)) {
         document.getElementById("Results").innerHTML = "Success";
-        document.getElementById("Rolls").innerHTML = [DiceRollsArray];
-        document.getElementById("Rolls4").innerHTML = "Takes 30 seconds";
+        document.getElementById("Rolls2").innerHTML = "Takes 30 seconds";
 
     } else if (Number(vCalc) >= Number(3)) {
         document.getElementById("Results").innerHTML = "Success";
-        document.getElementById("Rolls").innerHTML = [DiceRollsArray];
-        document.getElementById("Rolls4").innerHTML = "Instantaneous";
+        document.getElementById("Rolls2").innerHTML = "Instantaneous";
 
     } else if (Number(vCalc) <= Number(0) && Number(vBotches) >= Number(1)) {
+        document.getElementById("Rolls3").style.display = "block";
         document.getElementById("Results").innerHTML = "Botch";
-        document.getElementById("Rolls").innerHTML = [DiceRollsArray];
-        document.getElementById("Rolls4").innerHTML = "Stuck between worlds";
+        document.getElementById("Rolls2").innerHTML = "Stuck between worlds";
+        document.getElementById("Rolls3").innerHTML = "loose 1 gnosis point";
     }
+
+    if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
+        document.getElementById("Rolls4").style.display = "block";
+        document.getElementById("Rolls4").innerHTML = "(Including " + vWinsExtra + " bonus successes<br>" + "and " + vBotchesExtra + " automatic botches)";
+    } else if (vWinsExtra >= 1) {
+        document.getElementById("Rolls4").style.display = "block";
+        document.getElementById("Rolls4").innerHTML = "(Including " + vWinsExtra + " bonus successes)";
+    } else if (vBotchesExtra >= 1) {
+        document.getElementById("Rolls4").style.display = "block";
+        document.getElementById("Rolls4").innerHTML = "(Including " + vBotchesExtra + " automatic botches)";
+    }
+
+    if (DicePenaltiesTotal >= 1) {
+        document.getElementById("Rolls5").style.display = "block";
+        document.getElementById("Rolls5").innerHTML = "(Including " + DicePenaltiesTotal + " bonus dice)";
+    } else if (DicePenaltiesTotal <= -1) {
+        document.getElementById("Rolls5").style.display = "block";
+        document.getElementById("Rolls5").innerHTML = "(Including " + DicePenaltiesTotal + " penalty dice)";
+    }
+
+
 } // end slip sideways result function
 
 
@@ -917,10 +1008,12 @@ function ResetResultsDisplay() {
     DiceRollsArray = ["waiting"];
     vFinal = "Results";
     document.getElementById("Results").innerHTML = vFinal;
-    document.getElementById("Rolls").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
     document.getElementById("Rolls2").innerHTML = "";
     document.getElementById("Rolls3").innerHTML = "";
     document.getElementById("Rolls4").innerHTML = "";
+    document.getElementById("ResultsWindow").classList.remove("FrenzyOverlay");
+
 }
 
 function uiStandard() {
@@ -1052,7 +1145,7 @@ function ResetCheckboxes() {
     AllWins = Number(0);
     CrinosForm = "false";
     GarouRankRageDiffMod = Number(0);
-    HealthPenalty = Number(0);
+    DicePenaltyHealth = Number(0);
     RageDiff = Number(0);
     RageDiffBase = Number(0);
     RollingDamage = "false";
