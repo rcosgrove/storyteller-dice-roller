@@ -51,6 +51,31 @@
 
     }
 
+.menu {
+     font-size: 0.8em;
+     font-style: normal;
+     font-weight: 700;
+     text-align: center;
+     width: 100px;
+
+}
+
+ input[type=checkbox]+label {
+     font-size: 0.8em;
+     padding: 5px 5px 8px;
+     text-align: center;
+     transform: translate(-30px, 3px);
+     width: 110px;
+     height: 1em;
+     margin-bottom: 5px;
+     margin-top: 5px;
+     box-shadow: 5px 5px 10px #BBB;
+
+ }
+
+
+
+
 
     /* ---- NAVIGATION BAR ---- */
 
@@ -66,6 +91,7 @@
         top: 0;
         width: 100%;
         align-content: center;
+        justify-content: space-between;
 
     }
 
@@ -74,20 +100,16 @@
         width: 100%;
     }
 
-    .topnav button {
+    button.topbutton {
+        float: right;
         font-size: 0.7em;
         font-weight: 700;
         padding: 5px;
         margin-left: 2px;
         margin-right: 2px;
         text-transform: uppercase;
-        transform: translateY(1px);
+/*        transform: translateY(1px);*/
 
-    }
-
-    .topnav h4 {
-        font-size: 0.9em;
-        /*        transform: translateY(-11px);*/
     }
 
     .column-right {
@@ -104,6 +126,25 @@
         display: none;
 
     }
+
+#DarkPact-header {
+    display: inline-flex;
+    align-self: center;
+}
+
+#title-topnav {
+    display: inline-flex;
+    font-size: 1em;
+   color: white;
+     font-family: "orpheus-pro-condensed", sans-serif;
+     font-style: normal;
+     font-weight: 700;
+     align-self: center;
+/*     padding-left: 0.75em;*/
+/*     transform: translate(0%, -50%);*/
+
+}
+
 
 
 
@@ -197,6 +238,7 @@
         max-height: 1.2em;
         align-items: baseline;
         padding: 5px;
+        text-align: center;
 
     }
 
@@ -220,7 +262,7 @@
 
     .side-menu-item-label {
         font-family: "open sans", sans-serif;
-        font-size: 0.9em;
+        font-size: 0.8em;
         text-align: right;
         font-weight: 400;
 
@@ -273,7 +315,7 @@
 
     #RollButtonsContainer {
         display: flex;
-        margin-top: 10px;
+        margin-top: 5px;
         flex-direction: row;
 
     }
@@ -293,7 +335,7 @@
         width: 180px;
         font-size: 1.75em;
         vertical-align: middle;
-        height: 4em;
+        height: 2.75em;
         border-radius: 2em;
 
     }
@@ -313,10 +355,10 @@
         font-weight: 700;
         font-style: normal;
         width: 100px;
-        height: 3em;
+        height: 2.5em;
         line-height: 70%;
         vertical-align: middle;
-        font-size: 1em;
+        font-size: 0.9em;
         margin: 3px;
 
     }
@@ -334,10 +376,10 @@
         font-weight: 700;
         font-style: normal;
         width: 100px;
-        height: 3em;
+        height: 2.5em;
         line-height: 70%;
         vertical-align: middle;
-        font-size: 1em;
+        font-size: 0.9em;
         margin: 3px;
 
     }
@@ -354,8 +396,9 @@
 
     /* ---- FOOTER ---- */
     .footer {
-        position: fixed;
+        display: none;
+ /*       position: fixed;
         left: 0;
         bottom: 0;
-        width: 100%;
+        width: 100%;*/
     }
