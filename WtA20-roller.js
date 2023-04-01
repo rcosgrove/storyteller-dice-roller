@@ -9,7 +9,7 @@ var DamageSelected = "bashing";
 var DamageType = "bashing";
 var DicePenaltiesTotal = Number(0);
 var DicePenaltyHealth = Number(0);
-var DicePenaltyUser = Number(0);
+var DiceModifierUser = Number(0);
 var DiceRollsArray = ["So roll some dice…"];
 var DiffMod = Number(0);
 var GarouRank = Number(0);
@@ -217,11 +217,11 @@ function setSpecialisedSwitch() {
 function SetDicePool() {
     // apply dice penalty taken from wound menu
 
-    DicePenaltyUser = Number(document.getElementById("DicePenaltyUser").value);
+    DiceModifierUser = Number(document.getElementById("DiceModifierUser").value);
 
     let DicePool = Number(document.getElementById("UserDice").value);
 
-    vPool = Math.max((DicePool + DicePenaltyUser), 1);
+    vPool = Math.max((DicePool + DiceModifierUser), 1);
 
 } // end SetDicePool func
 
@@ -296,7 +296,7 @@ function RollRepeat() {
     AllBotches = Number(0);
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
-    DicePenaltyUser = Number(0);
+    DiceModifierUser = Number(0);
 
     if (RollType == "typeskill" || RollType == "typereflex") {
         RollSkill();
@@ -421,9 +421,9 @@ function RollSkill() {
 
     if (RollType == "typeskill") {
         HealthDicePenalty();
-        DicePenaltiesTotal = (DicePenaltyUser + DicePenaltyHealth);
+        DicePenaltiesTotal = (DiceModifierUser + DicePenaltyHealth);
     } else if (RollType == "typereflex") {
-        DicePenaltiesTotal = DicePenaltyUser;
+        DicePenaltiesTotal = DiceModifierUser;
     }
 
     // set roll target number, based on number in difficulty input window
@@ -578,9 +578,9 @@ function RollDamage() {
 
     if (AttackType == "melee") {
         HealthDicePenalty();
-        DicePenaltiesTotal = (DicePenaltyUser + DicePenaltyHealth);
+        DicePenaltiesTotal = (DiceModifierUser + DicePenaltyHealth);
     } else if (AttackType == "gun") {
-        DicePenaltiesTotal = DicePenaltyUser;
+        DicePenaltiesTotal = DiceModifierUser;
     }
 
     console.log("AttackType var is: " + AttackType);
@@ -703,7 +703,7 @@ function RollRage() {
 
     SetDicePool();
 
-    DicePenaltiesTotal = DicePenaltyUser;
+    DicePenaltiesTotal = DiceModifierUser;
 
     vWinsExtra = Number(document.getElementById("UserWinsExtra").value);
     vBotchesExtra = Number(document.getElementById("UserBotchesExtra").value);
@@ -915,7 +915,7 @@ function RollStepSideways() {
 
     SetDicePool();
 
-    DicePenaltiesTotal = DicePenaltyUser;
+    DicePenaltiesTotal = DiceModifierUser;
 
     // run gnosis roll functions in order
 

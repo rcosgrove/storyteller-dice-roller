@@ -1,14 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
+<!-- Storyteller dice roller v0.0.10-web-components -->
+
 <head>
+
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- Storyteller dice roller v0.0.10 -->
+    <title>WtA20 - Storyteller dice roller</title>
 
-    <title>Storyteller dice roller - WtA20</title>
+    <!-- web components JavaScript  -->
+    <script src="components/header-roller.js"></script>
+    <script src="components/footer-roller.js"></script>
 
     <!-- external javascript for the roller -->
     <script src="WtA20-roller.js" defer></script>
@@ -19,32 +24,13 @@
 
     <!-- Adobe fonts link -->
     <link rel="stylesheet" href="https://use.typekit.net/lyk8wbp.css">
+
 </head>
 
 <body>
     <div class="wrapper">
 
-        <div class="topnav">
-            <div id="DarkPact-header">
-                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="30" height="30"></a>
-            </div>
-
-            <div>
-                <h4 id="title-topnav">Storyteller Dice Roller</h4>
-            </div>
-
-            <div style="justify-self:right;">
-                <button type="button" class="topbutton" name="" value="" id="" title="HelpButton" onclick="window.location.href='help.html';">Help</button>
-
-                <button type="button" class="topbutton" name="" value="" id="AboutButton" title="About" onclick="window.location.href='about.html';">About</button>
-
-                <button type="button" class="topbutton" id="BackButton" title="Go back" onclick="history.back()">Back</button>
-
-                <button type="button" class="topbutton" name="" value="" id="HomeButton" title="Home" onclick="window.location.href='index.html';">Home</button>
-            </div>
-
-
-        </div>
+        <header-roller></header-roller>
 
         <div class="row flex header" id="maintitle">
             <div class="column centre">
@@ -128,7 +114,7 @@
                                 </div>
 
                                 <div class="side-menu-item right-padding">
-                                    <label for="DicePenalty" class="right-align"><span class="side-menu-item-label">Dice<br>modifier</span></label><input class="number-entry" id="DicePenaltyUser" type="number" maxlength="3" min="-20" max="20" value="0" placeholder="0" title="Bonus/penalty dice">
+                                    <label for="DicePenalty" class="right-align"><span class="side-menu-item-label">Dice<br>modifier</span></label><input class="number-entry" id="DiceModifierUser" type="number" maxlength="3" min="-20" max="20" value="0" placeholder="0" title="Bonus/penalty dice">
                                 </div>
 
                             </div>
@@ -286,20 +272,7 @@
         </div>
         <!-- end row 1 -->
 
-        <div class="flex footer" id="footer">
-            <div>
-                <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
-            </div>
-
-            <div style="text-align:center;" id="FooterRollerName">
-                <p><span style="font-size: 75%">Werewolf the Apocalypse 20th Anniversary<br>Edition roller v0.0.10</span></p>
-            </div>
-
-            <div id="DarkPact-footer">
-                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
-            </div>
-
-        </div>
+        <footer-roller></footer-roller>
     </div>
     <!-- wrapper -->
 </body>

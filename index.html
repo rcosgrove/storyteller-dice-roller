@@ -1,12 +1,18 @@
 <!doctype html>
 <html>
+<!-- Storyteller dice roller v0.0.10-web-components -->
 
 <head>
+
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	
- <!-- Storyteller dice roller v0.0.10 -->
-    
-	<title>Storyteller dice roller - home</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Storyteller dice roller</title>
+
+    <!-- web components JavaScript  -->
+    <script src="components/header-roller.js"></script>
+    <script src="components/footer-roller.js"></script>
 
     <!-- external javascript for the roller -->
     <script src="WtA20-roller.js" defer></script>
@@ -16,32 +22,33 @@
 
     <!-- Adobe fonts link -->
     <link rel="stylesheet" href="https://use.typekit.net/lyk8wbp.css">
+
 </head>
 
 <body>
     <div class="wrapper">
         <div class="backdrop">
-        <section class="flex" id="topbars">
+            <section class="flex" id="topbars">
 
-            <div class="flex row column">
+                <div class="flex row column">
 
-                <div class="topnav">
-                    <div style="float:left;">
-                        <h4></h4>
+                    <div class="topnav">
+                        <div style="float:left;">
+                            <h4></h4>
+                        </div>
+
+                        <div style="float:right;">
+                            <!--                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='help.html';">Help</button>-->
+                            <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>
+                            <!--                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>-->
+                        </div>
                     </div>
 
-                    <div style="float:right;">
-<!--                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='help.html';">Help</button>-->
-                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>
-<!--                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>-->
+                    <div class="row header" id="maintitle">
+                        <h1 id="title">Storyteller Dice Roller</h1>
                     </div>
                 </div>
-
-                <div class="row header" id="maintitle">
-                    <h1 id="title">Storyteller Dice Roller</h1>
-                </div>
-            </div>
-        </section>
+            </section>
 
             <section class="flex fullwidth" id="links-section">
 
@@ -52,12 +59,12 @@
                         <p><span style="font-size:0.8em;">(opens new window)</span></p>
                     </div>
 
-<!--                     <div class="link">
+                    <!--                     <div class="link">
                         <p><a href="#">Test link</a></p>
                         <p>(opens new window)</p>
                     </div> -->
 
-<!--                     <div class="link">
+                    <!--                     <div class="link">
                         <p><a href="#">Test link</a></p>
                         <p>(opens new window)</p>
                     </div>
@@ -66,21 +73,9 @@
 
         </div>
 
-        <div class="flex footer" style="justify-content: space-between;">
-            <div style="margin-left:5px;margin-top:5px;">
-                <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
-            </div>
-
-            <div>
-                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img class="insert-pic" src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
-            </div>
-
-        </div>
-    </div>
-
+        <footer-roller></footer-roller>
 
     </div> <!-- wrapper -->
-
 
 </body>
 
