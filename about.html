@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
 
+<!-- Storyteller dice roller v0.0.10-web-components -->
+
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
-	<title>About - Storyteller Dice Roller</title>
+    <title>About - Storyteller dice roller</title>
+
+    <!-- web components JavaScript  -->
+    <script src="components/header-roller.js"></script>
+    <script src="components/footer-roller.js"></script>
+
+    <!-- external javascript for the roller -->
+    <script src="WtA20-roller.js" defer></script>
 
     <!-- external css for the roller -->
     <link rel="stylesheet" href="index.css">
@@ -20,19 +31,9 @@
 
             <div class="flex row column">
 
-                <div class="topnav">
-                    <div style="float:left;">
-                        <h4>Storyteller Dice Roller</h4>
-                    </div>
+                <header-roller></header-roller>
 
-                    <div>
-<!--                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='about.html';">About</button>-->
-						<button class="topbutton" title="Go back" onclick="history.back()">Back</button>
-                        <button class="topbutton" name="" value="" id="" title="About" onclick="window.location.href='index.html';">Home</button>
-                    </div>
-				</div>
-
-                <div class="row header" id="maintitle">
+                 <div class="row header" id="maintitle">
                     <h1 id="title">Backstory</h1>
                 </div>
             </div>
@@ -55,16 +56,8 @@
             <p><i>March 2023</i></p>
         </div>
 
-        <div class="flex footer" style="justify-content: space-between;">
-            <div style="margin-left:5px;margin-top:5px;">
-                <p><a href="legal.html" style="text-decoration: none;">Copyright © 2023 Richard Cosgrove</a></p>
-            </div>
+        <footer-roller></footer-roller>
 
-            <div>
-                <a rel="nofollow external" referrerpolicy="no-referrer" target="_blank" href="https://www.worldofdarkness.com/dark-pack" title="World of Darkness Dark Pact – Paradox"><img class="insert-pic" src="assets/darkpack_logo1-small.png" alt="World of Darkness Dark Pact logo" width="40" height="40"></a>
-            </div>
-
-        </div>
     </div>
 
 

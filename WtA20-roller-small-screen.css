@@ -1,0 +1,404 @@
+/* >>>> MEDIA QUERIES <<<< */
+
+/* Storyteller dice roller v0.0.10 */
+
+/* Portrait and Landscape */
+
+@media (max-width: 510px) {
+
+    /* >>>> STRUCTURE <<<< */
+
+    * {
+        cursor: pointer;
+    }
+
+    body {}
+
+    .wrapper {
+        max-width: 95vw;
+    }
+
+    #row2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .column-left {
+        /*    display: flex;*/
+        flex-direction: column;
+        max-width: 100%;
+        justify-content: space-between;
+        flex-grow: 2;
+        /*     align-content: center;*/
+
+    }
+
+    .SideMenuRow {
+        display: flex;
+        flex-direction: row;
+        /*    justify-content: space-evenly;*/
+        /*    align-items: baseline;*/
+
+    }
+
+    .side-menu-item {
+        font-weight: 700;
+        display: flex;
+        /*         align-items: center;*/
+        justify-content: space-around;
+        /*         align-self: center;*/
+        /*    justify-self: right;*/
+
+    }
+
+.menu {
+     font-size: 0.8em;
+     font-style: normal;
+     font-weight: 700;
+     text-align: center;
+     width: 100px;
+
+}
+
+ input[type=checkbox]+label {
+     font-size: 0.8em;
+     padding: 5px 5px 8px;
+     text-align: center;
+     transform: translate(-30px, 3px);
+     width: 110px;
+     height: 1em;
+     margin-bottom: 5px;
+     margin-top: 5px;
+     box-shadow: 5px 5px 10px #BBB;
+
+ }
+
+
+
+
+
+    /* ---- NAVIGATION BAR ---- */
+
+    .topnav {
+        position: sticky;
+        left: 0;
+        top: 0;
+        width: 100%;
+        overflow: hidden;
+        background-color: #000000;
+        max-height: 2.5em;
+        z-index: 20;
+        top: 0;
+        width: 100%;
+        align-content: center;
+        justify-content: space-between;
+
+    }
+
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+
+    button.topbutton {
+        float: right;
+        font-size: 0.7em;
+        font-weight: 700;
+        padding: 5px;
+        margin-left: 2px;
+        margin-right: 2px;
+        text-transform: uppercase;
+/*        transform: translateY(1px);*/
+
+    }
+
+    .column-right {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background-image: url('');
+
+    }
+
+    #AboutButton,
+    #FooterRollerName,
+    #BackButton {
+        display: none;
+
+    }
+
+#DarkPact-header {
+    display: inline-flex;
+    align-self: center;
+}
+
+#title-topnav {
+    display: inline-flex;
+    font-size: 1em;
+   color: white;
+     font-family: "orpheus-pro-condensed", sans-serif;
+     font-style: normal;
+     font-weight: 700;
+     align-self: center;
+/*     padding-left: 0.75em;*/
+/*     transform: translate(0%, -50%);*/
+
+}
+
+
+
+
+    /* >>>> UI CONFIGURATION <<<< */
+
+
+
+    /* >>>>> TEXT STYLES <<<<< */
+
+    p,
+    a,
+    li,
+    h1,
+    h3,
+    h4 {
+        font-family: "open-sans", sans-serif;
+        font-size: 0.8em;
+
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 0.95em;
+
+    }
+
+
+    h2 {
+        font-size: 1.1em;
+
+    }
+
+
+    h3 {
+        font-size: 1em;
+
+    }
+
+    h4 {
+        font-size: 0.9em;
+
+    }
+
+
+
+    /* >>>> PAGE FURNITURE <<<< */
+
+
+
+
+    /* >>>>> SECTIONS <<<<< */
+
+    /* ---- MAIN TITLE ---- */
+
+    #maintitle {
+        display: none;
+
+    }
+
+
+    /* ---- ROLL TYPE BUTTONS ---- */
+
+    #SkillButtonsDiv {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        justify-content: space-evenly;
+
+    }
+
+    .skillbuttons label {
+        font-size: 0.65em;
+        padding: 3px;
+        text-transform: uppercase;
+
+    }
+
+
+    /* ---- DATA ENTRY ---- */
+
+    #user-input-menu {
+        width: 100%;
+
+    }
+
+    /* number entry field */
+    .number-entry {
+        font-weight: 600;
+        font-size: 1.1em;
+        border-radius: 1em;
+        margin-left: 5px;
+        max-height: 1.2em;
+        align-items: baseline;
+        padding: 5px;
+        text-align: center;
+
+    }
+
+    .number-entry-label {
+        font-family: "open sans", sans-serif;
+        font-size: 0.7em;
+        font-weight: 400;
+        text-align: right;
+
+    }
+
+    .side-menu-item {
+        display: flex;
+        margin-bottom: 5px;
+        /* horizontal alignment */
+        justify-content: flex-end;
+        /* vertical alignment */
+        align-items: center;
+
+    }
+
+    .side-menu-item-label {
+        font-family: "open sans", sans-serif;
+        font-size: 0.8em;
+        text-align: right;
+        font-weight: 400;
+
+    }
+
+    .SideMenuRow {
+        justify-content: space-around;
+    }
+
+    #SpecialisedSwitchBox {
+        transform: translate(20px);
+
+    }
+
+
+
+    /* ---- RESULTS WINDOW ---- */
+
+    .ResultDisplay {
+        display: inline-flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: white;
+        margin-top: 10px;
+        /*     margin-bottom: 20px;*/
+        padding: 10px;
+        min-width: 50vw;
+        max-width: 80vw;
+        max-height: 30vw;
+        line-height: 1;
+        box-shadow: 0px 0px 0px 0;
+
+    }
+
+
+    #damagetypeselect,
+    #stepsideways,
+    #rageroll,
+    .RageOptions {
+        transform: translateX(0px);
+
+    }
+
+#CrinosSwitchMove {
+    transform: translateX(15px);
+
+}
+
+    /* ---- ROLL BUTTONS ---- */
+
+    #RollButtonsContainer {
+        display: flex;
+        margin-top: 5px;
+        flex-direction: row;
+
+    }
+
+    #ReRollButtons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+
+    /* roll button */
+
+    #roll {
+        font-weight: 700;
+        font-style: normal;
+        width: 180px;
+        font-size: 1.75em;
+        vertical-align: middle;
+        height: 2.75em;
+        border-radius: 2em;
+
+    }
+
+    #roll label {
+        padding-left: 37%;
+        padding-right: 43%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+
+    }
+
+    /* re-roll buttons */
+
+    .reroll {
+        background-color: white;
+        font-weight: 700;
+        font-style: normal;
+        width: 100px;
+        height: 2.5em;
+        line-height: 70%;
+        vertical-align: middle;
+        font-size: 0.9em;
+        margin: 3px;
+
+    }
+
+    .reroll label {
+        padding-left: 19%;
+        padding-right: 23%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+
+    }
+
+    #reroll-adj {
+        background-color: white;
+        font-weight: 700;
+        font-style: normal;
+        width: 100px;
+        height: 2.5em;
+        line-height: 70%;
+        vertical-align: middle;
+        font-size: 0.9em;
+        margin: 3px;
+
+    }
+
+    .reroll-adj label {
+        padding-left: 19%;
+        padding-right: 23%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+
+    }
+
+
+
+    /* ---- FOOTER ---- */
+    .footer {
+        display: none;
+ /*       position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;*/
+    }
