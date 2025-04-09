@@ -1,0 +1,49 @@
+TO DO LIST
+
+Tabbed interface:
+	stats
+		Str
+		Dex
+		Sta
+		Wits
+		Brawl
+		Melee
+		Firearms
+		Dodge
+		Athletics
+		Form		adjust displayed stats to match form
+
+	Ability rolls
+		Types of rolls as a menu - include damage
+
+	Combat
+
+Store base stats in array
+	Str
+	Dex
+	Sta
+	Wits
+	Brawl
+	Melee
+	Firearms
+	Dodge
+	Athletics
+
+
+Local storage
+	store all stats array in local storage
+	save stats button
+	Store adjusted stats in homid, glabro, crinos, hippo, lupus stat arrays on save
+	retrieve stats button (homid stats displayed)
+
+Combat
+	Armor stat
+		Variable must be re-entered
+	Form menu
+		Rolls pull stats from relevant array
+	Buttons for common attacks, initiative, soak and dodge
+		Pull stats and use weapon dice and diffs
+	Opponent successes must be entered before attack roll 
+	Attacks follow up with damage calc, if successful
+	
+	

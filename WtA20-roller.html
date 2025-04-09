@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Storyteller dice roller v0.0.10-web-components -->
+<!-- Storyteller dice roller v0.0.11-single-menu-function -->
+<!-- 3 tabs: stats, rolls, combat -->
 
 <head>
 
@@ -87,7 +88,8 @@
                             </div>
 
                             <div class="side-menu-item" style="justify-content: center;" id="HealthMenu">
-                                <select id="HealthLevelMenu" onclick="SetHealthDicePenalty()" class="menu shadow">
+                                <select id="HealthLevel" onchange="MenuItemSelect('HealthLevel')" class="menu shadow">
+                                    <!-- varHealthLevel -->
                                     <option value="9999" selected>Health level</option>
                                     <!-- Uninjured: no effect-->
                                     <option value="0">Uninjured</option>
@@ -159,7 +161,7 @@
                                 <input type="checkbox" class="switch shadow" id="CrinosSwitch" name="CrinosForm" value="CrinosSwitch" onclick="setCrinosSwitch()"><label for="CrinosSwitch">Crinos</label>
                             </div>
                             <div class="centre RageOptions">
-                                <select id="MoonPhaseMenu" onclick="SetMoonPhase()" class="menu shadow">
+                                <select id="MoonPhase" onchange="MenuItemSelect('MoonPhase')" class="menu shadow">
                                     <option value="9999" selected>Moon phase</option>
                                     <option value="1">Full</option>
                                     <option value="2">Crescent</option>
@@ -171,7 +173,7 @@
                         </div>
                         <div>
                             <div class="centre RageOptions">
-                                <select id="AuspiceMenu" onclick="SetAuspice()" class="menu shadow">
+                                <select id="Auspice" onchange="MenuItemSelect('Auspice')" class="menu shadow">
                                     <option value="9999" selected>Auspice</option>
                                     <option value="1">Ahroun</option>
                                     <option value="2">Theurge</option>
@@ -181,7 +183,7 @@
                                 </select>
                             </div>
                             <div class="centre RageOptions">
-                                <select id="GarouRankMenu" onclick="SetGarouRank()" class="menu shadow">
+                                <select id="Rank" onchange="MenuItemSelect('Rank')" class="menu shadow">
                                     <option value="9999" selected>Garou rank</option>
                                     <option value="0">Cub (0)</option>
                                     <option value="1">Cliath (1)</option>
@@ -205,21 +207,21 @@
                 <div class="flex column remove" id="damagetypeselect">
                     <div class="centre">
                         <form id="damageselect">
-                            <select id="DamageTypeMenu" onclick="SetDamageType()" class="menu shadow" title="Select damage type (default: bashing)">
-                                <option value="bashing" selected>Damage type</option>
-                                <option value="bashing">Bashing</option>
-                                <option value="lethal">Lethal</option>
-                                <option value="aggravated">Aggravated</option>
+                            <select id="DamageType" onchange="MenuItemSelect('DamageType')" class="menu shadow" title="Select damage type (default: bashing)">
+                                <option value="1" selected>Damage type</option>
+                                <option value="1">Bashing</option>
+                                <option value="2">Lethal</option>
+                                <option value="3">Aggravated</option>
                             </select>
                         </form>
                     </div>
                     <div class="centre">
-                        <select id="AttackTypeMenu" onclick="SetAttackType()" class="menu shadow" title="Select attack type (default: hand-to-hand)">
-                            <option value="melee" selected>Attack type</option>
-                            <option value="melee">Hand-to-hand</option>
-                            <option value="melee">Thrown</option>
-                            <option value="gun">Ranged</option>
-                            <option value="gun">Explosive</option>
+                        <select id="AttackType" onchange="MenuItemSelect('AttackType')" class="menu shadow" title="Select attack type (default: hand-to-hand)">
+                            <option value="1" selected>Attack type</option>
+                            <option value="1">Hand-to-hand</option>
+                            <option value="1">Thrown</option>
+                            <option value="2">Ranged</option>
+                            <option value="2">Explosive</option>
                         </select>
                         </form>
                     </div>
@@ -229,7 +231,7 @@
                 <div class="flex column remove" id="stepsideways">
                     <div class="centre-stack">
                         <form id="gnosis">
-                            <select id="GauntletMenu" onclick="SetGauntlet()" class="menu shadow">
+                            <select id="Gauntlet" onchange="MenuItemSelect('Gauntlet')" class="menu shadow">
                                 <option value="9999" selected>Gauntlet</option>
                                 <option value="9">Science lab (9)</option>
                                 <option value="8">Inner city (8)</option>

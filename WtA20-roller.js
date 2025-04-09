@@ -1,20 +1,23 @@
-/* Storyteller dice roller v0.0.10 */
+/* Storyteller dice roller v0.0.11-single-menu-function */
+
+// BUG NOTES
+
+
+
+
+/////////////////////// 
+// FUNCTIONS -          
+// WORKS IN PROGRESS
+///////////////////////
 
 //  ----GLOBAL VARIABLES---- 
 
-var AttackType = "melee";
-var AuspiceSetting = "9999";
 var CrinosForm = "false";
-var DamageSelected = "bashing";
-var DamageType = "bashing";
-var DicePenaltiesTotal = Number(0);
-var DicePenaltyHealth = Number(0);
 var DiceModifierUser = Number(0);
+var DicePenaltiesTotal = Number(0);
 var DiceRollsArray = ["So roll some dice…"];
 var DiffMod = Number(0);
-var GarouRank = Number(0);
-var Gauntlet = "9999";
-var MoonSetting = "9999";
+var elem = document.documentElement;
 var RageDicePool;
 var RageDiff = Number(0);
 var RageDiffBase = Number(0);
@@ -23,18 +26,21 @@ var RageDiffRankMod = Number(0);
 var RageRollSuccessTarget;
 var RollType = "typeskill";
 var Specialised = "false";
+var vAttackType = "melee";
+var vAuspice = "9999";
+var vDamageType = "bashing";
+var vDamageType = "bashing";
+var vGauntlet = "9999";
+var vHealthLevel = Number(0);
+var vMoonPhase = "9999";
+var vRank = Number(0);
 var vDiff = Number(6);
 var vFinal = "Waiting";
 var vPool = Number(4);
-var elem = document.documentElement;
+var SelectedValue;
+var SelectedMenu;
 
 
-/////////////////////// 
-//                      
-// FUNCTIONS -          
-// WORKS IN PROGRESS
-//                          
-///////////////////////
 
 //////////////////////////////
 // WORKING FUNCTIONS
@@ -45,7 +51,7 @@ var elem = document.documentElement;
 // >>>> ON PAGE LOAD <<<< 
 
 window.onload = function() {
- 
+
     // SET VARIABLES TO DISPLAY STARTING RESULTS - RUN WHEN PAGE LOADS
 
     document.getElementById("Results").innerHTML = vFinal;
@@ -59,39 +65,25 @@ window.onload = function() {
 
 }
 
-// >>> CHANGE TO FULLSCREEN <<<< 
- 
-// Function for full screen activation
 
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
+// SINGLE MENU SELECTION FUNCTION
+
+function MenuItemSelect(param) {
+    // reset variables to clear old values
+    window[NewVar] = [undefined];
+
+    // SelectedMenu = ID of menu
+    let SelectedMenu = document.getElementById(param).id;
+    // el = ID of menu to run function
+    let el = document.getElementById(param);
+    // value = value of selected menu item
+    let SelectedValue = el.querySelector("option:checked").value;
+    // name for variable to store called value
+    // new variable format is vMenuName
+    var NewVar = `v${SelectedMenu}`;
+    window[NewVar] = Number(SelectedValue);
+
 }
-
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { /* Safari */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE11 */
-    document.msExitFullscreen();
-  }
-}
-
-
-function toggleFullScreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else if (document.exitFullscreen) {
-    document.exitFullscreen();
-  }
-}
-
 
 // >>>> MENU LINKS <<<<
 
@@ -99,14 +91,14 @@ function handleSelect(elm) {
     window.location = elm.value + ".html";
 }
 
-
 // >>>> ROLL SETTINGS ENTRY FUNCTIONS <<<< 
+
+// set UI depending on roll selected
 
 function RollTypeSkill() {
     RollType = "typeskill";
     document.getElementById("ResultsWindow").style.visibility = "hidden";
     document.getElementById("HealthMenu").style.visibility = "visible";
-
 }
 
 function RollTypeReflex() {
@@ -139,58 +131,6 @@ function RollTypeSlip() {
 
 // ---- ROLL SETTING MENUS ----
 
-function SetDamageType() {
-    // Set GaruoRank on menu change
-    DamageTypeSelected = document.getElementById("DamageTypeMenu");
-    DamageTypeSelected.addEventListener("change", function handleChange(event) {
-        DamageSelected = event.target.value;
-    })
-} // End SetGarouRank
-
-function SetAttackType() {
-    // Set GaruoRank on menu change
-    AttackTypeSelected = document.getElementById("AttackTypeMenu");
-    AttackTypeSelected.addEventListener("change", function handleChange(event) {
-        AttackType = event.target.value;
-    })
-
-} // End SetGarouRank
-
-function SetHealthDicePenalty() {
-    // Set DicePenaltyHealth global variable on menu change
-
-    let DicePenaltyHealthSelected = document.getElementById("HealthLevelMenu");
-    DicePenaltyHealthSelected.addEventListener("change", function handleChange(event) {
-        DicePenaltyHealth = Number(event.target.value);
-    })
-
-
-} // end SetDicePenaltyHealth
-
-function SetGarouRank() {
-    // Set GaruoRank on menu change
-    GarouRankSelected = document.getElementById("GarouRankMenu");
-    GarouRankSelected.addEventListener("change", function handleChange(event) {
-        GarouRank = Number(event.target.value);
-    })
-} // End SetGarouRank
-
-function SetMoonPhase() {
-    // Set MoonSetting global variable on menu change
-    let MoonSettingSelected = document.getElementById("MoonPhaseMenu");
-    MoonSettingSelected.addEventListener("change", function handleChange(event) {
-        MoonSetting = Number(event.target.value);
-    })
-} // end SetMoonPhase
-
-function SetAuspice() {
-    // Set Auspice global variable on menu change
-    AuspiceSettingSelected = document.getElementById("AuspiceMenu");
-    AuspiceSettingSelected.addEventListener("change", function handleChange(event) {
-        AuspiceSetting = Number(event.target.value);
-    })
-} // end SetAuspice
-
 function setCrinosSwitch() {
     // set CrinosForm var when checkbox used
     CrinosSwitch = document.querySelector("input[id=CrinosSwitch]");
@@ -214,6 +154,8 @@ function setSpecialisedSwitch() {
 } // end setSpecialisedSwitch
 
 
+// Set dice pool functions
+
 function SetDicePool() {
     // apply dice penalty taken from wound menu
 
@@ -228,12 +170,12 @@ function SetDicePool() {
 function HealthDicePenalty() {
     // apply dice penalty taken from wound menu
 
-    if (DicePenaltyHealth >= Number(1)) {
+    if (vHealthLevel >= Number(1)) {
         // return minimum dice pool of 1
-        vPool = Math.max((vPool - DicePenaltyHealth), 1);
+        vPool = Math.max((vPool - vHealthLevel), 1);
 
-        console.log("DicePenaltyHealth var is: " + DicePenaltyHealth);
-        console.log("Adjusted vPool var is: " + vPool);
+        // console.log("vHealthLevel var is: " + vHealthLevel);
+        // console.log("Adjusted vPool var is: " + vPool);
 
     }
 
@@ -421,7 +363,7 @@ function RollSkill() {
 
     if (RollType == "typeskill") {
         HealthDicePenalty();
-        DicePenaltiesTotal = (DiceModifierUser + DicePenaltyHealth);
+        DicePenaltiesTotal = (DiceModifierUser + vHealthLevel);
     } else if (RollType == "typereflex") {
         DicePenaltiesTotal = DiceModifierUser;
     }
@@ -576,14 +518,27 @@ function RollDamage() {
 
     // Apply health level penalty to number of dice in pool, if action roll being made
 
-    if (AttackType == "melee") {
+    // Select melee or gun attack type, and deactivate health penalty for latter
+    
+    switch (vAttackType) {
+        case 1:
+            vAttackType = "melee";
+            break;
+        case 2:
+            vAttackType = "gun";
+            break;
+        default:
+            vAttackType = "melee";
+    }
+
+    if (vAttackType == "melee") {
         HealthDicePenalty();
-        DicePenaltiesTotal = (DiceModifierUser + DicePenaltyHealth);
-    } else if (AttackType == "gun") {
+        DicePenaltiesTotal = (DiceModifierUser + vHealthLevel);
+    } else if (vAttackType == "gun") {
         DicePenaltiesTotal = DiceModifierUser;
     }
 
-    console.log("AttackType var is: " + AttackType);
+    console.log("vAttackType var is: " + vAttackType);
 
     // Apply health level penalty to number of dice in pool
 
@@ -627,10 +582,24 @@ function ShowResultsDamage() {
     document.getElementById("Rolls4").style.display = "none";
     document.getElementById("Rolls5").style.display = "none";
 
+    switch (vDamageType) {
+        case 1:
+            vDamageType = "bashing";
+            break;
+        case 2:
+            vDamageType = "lethal";
+            break;
+        case 3:
+            vDamageType = "aggravated";
+            break;
+        default:
+            vDamageType = "bashing";
+    }
+
     if (vCalc >= 2) {
-        document.getElementById("Results").innerHTML = vCalc + " levels of " + DamageSelected + " damage inflicted";
+        document.getElementById("Results").innerHTML = vCalc + " levels of " + vDamageType + " damage inflicted";
     } else if (vCalc == 1) {
-        document.getElementById("Results").innerHTML = "1 level of " + DamageSelected + " damage inflicted";
+        document.getElementById("Results").innerHTML = "1 level of " + vDamageType + " damage inflicted";
     } else if (vFinal == "FAILED") {
         document.getElementById("Results").innerHTML = "No damage inflicted";
     } else if (vWins == Number(0) && vBotches >= 1) {
@@ -670,8 +639,8 @@ function RollRage() {
     MessageResults.innerHTML = "";
     let MessageBottom = document.getElementById("Rolls1");
     MessageBottom.innerHTML = " ";
-    let x = Number(MoonSetting);
-    let y = Number(AuspiceSetting);
+    let x = Number(vMoonPhase);
+    let y = Number(vAuspice);
     let z = Number(document.getElementById("UserDice").value);
 
     try {
@@ -696,10 +665,10 @@ function RollRage() {
     vFails = Number(0); // number of rolls less than target
     vFinal = "null"; // "SUCCESS", "FAIL" or "BOTCH" string
     vWins = Number(0); // number of rolls equal or more than target
-    GarouRank = Number(0); // set GarouRank value to 0 as default
+    vRank = Number(0); // set GarouRank value to 0 as default
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
-    DicePenaltyHealth = Number(0);
+    vHealthLevel = Number(0);
 
     SetDicePool();
 
@@ -721,13 +690,13 @@ function SetRageDiff() {
     // Calculate difficulty for rage roll, based on auspice and moon menu selections
 
     // Set rage roll difficulty to moon value plus 3
-    RageDiffBase = Number(MoonSetting) + 3;
+    RageDiffBase = Number(vMoonPhase) + 3;
 
     // apply -1 bonus to rage roll difficulty, if CrinosForm switch is true, or auspice and moon phase match
-    if (AuspiceSetting != MoonSetting) {
+    if (vAuspice != vMoonPhase) {
         RageDiffCrinosMod = Number(0);
 
-    } else if (AuspiceSetting == MoonSetting) {
+    } else if (vAuspice == vMoonPhase) {
         RageDiffCrinosMod = Number(1);
 
     } else if (CrinosForm == "true") {
@@ -735,13 +704,13 @@ function SetRageDiff() {
     }
 
     // set rage roll rank difficulty modifier
-    if (GarouRank >= Number(0) && GarouRank <= Number(2) || "") {
+    if (vRank >= Number(0) && vRank <= Number(2) || "") {
         RageDiffRankMod = Number(0);
 
-    } else if (GarouRank == Number(3)) {
+    } else if (vRank == Number(3)) {
         RageDiffRankMod = Number(1);
 
-    } else if (GarouRank >= Number(4) && GarouRank <= Number(6)) {
+    } else if (vRank >= Number(4) && vRank <= Number(6)) {
         RageDiffRankMod = Number(2);
     }
 
@@ -811,13 +780,13 @@ function ShowResultsRage() {
 
     // set rage roll success rank modifier
 
-    if (GarouRank >= Number(0) && GarouRank <= Number(4)) {
+    if (vRank >= Number(0) && vRank <= Number(4)) {
         RageRollSuccessTarget = Number(4);
 
-    } else if (GarouRank == Number(5)) {
+    } else if (vRank == Number(5)) {
         RageRollSuccessTarget = Number(5);
 
-    } else if (GarouRank == Number(6)) {
+    } else if (vRank == Number(6)) {
         RageRollSuccessTarget = Number(6);
     }
 
@@ -893,14 +862,14 @@ function RollStepSideways() {
     vWins = Number(0); // number of rolls equal or more than target
     vWinsExtra = Number(0);
     vBotchesExtra = Number(0);
-    DicePenaltyHealth = Number(0);
+    vHealthLevel = Number(0);
 
     // TEST GAUNTLET HAS BEEN SELECTED AND STOP ROLL IF NOT
     let MessageResults = document.getElementById("Results");
     MessageResults.innerHTML = "";
     let MessageBottom = document.getElementById("Rolls1");
     MessageBottom.innerHTML = " ";
-    let x = Gauntlet;
+    let x = vGauntlet;
     let y = document.getElementById("UserDice").value;
 
     try {
@@ -936,7 +905,7 @@ function CheckStepSidewaysRoll() {
     DiffMod = Number(DiffMod);
 
     // Apply difficulty modifier to Gauntlet rating
-    let GauntletAdjusted = Math.min(Math.max((Number(Gauntlet) + Number(DiffMod)), 3), 9);
+    let GauntletAdjusted = Math.min(Math.max((Number(vGauntlet) + Number(DiffMod)), 3), 9);
 
     // Repeat DiceRoll function, until counter equals vPool
 
@@ -974,15 +943,12 @@ function CheckStepSidewaysRoll() {
         }
     }
 
-
 } // end Gnosis roll function
 
 function ShowResultsStepSideways() {
-
     // Display results of slip sideways roll
 
     // Rolls variable set to null
-
     document.getElementById("Rolls1").style.display = "block";
     document.getElementById("Rolls1").innerHTML = DiceRollsArray;
     document.getElementById("Rolls2").style.display = "block";
@@ -1112,7 +1078,7 @@ function uiStepSideways() {
 }
 
 function ShowAllSections() {
-    console.log("all sections visible");
+    // console.log("all sections visible");
     document.getElementById("UserDiff").style.visibility = "visible";
     document.getElementById("difftitle").style.visibility = "visible";
     document.getElementById("stepsideways").style.display = "block";
@@ -1126,140 +1092,3 @@ function ResetForms() {
     document.getElementById("RollSettings").reset();
     document.getElementById("stepsideways").reset();
 }
-
-
-////////////////
-//
-// DEBUGGING
-//
-////////////////
-
-
-// ---- RESET CONTROLS ----
-/*
-function ResetRadioButtons() {
-    // Clear all radio buttons
-
-    let ele = document.querySelectorAll(".RadioEntry");
-    for (let i = 0; i < ele.length; i++)
-        ele[i].checked = false;
-
-} // end clear radio buttons func
-
-*/
-
-/*
-
-function ResetCheckboxes() {
-    // reset checkboxes to false
-
-    // document.getElementById("CrinosSwitch").checked = "true";
-    // document.getElementById("DamageSwitch").checked = "true";
-    // document.getElementById("SpecialisedSwitch").checked = "true";
-
-    let inputs = document.querySelectorAll(".switch");
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].checked = true;
-    }
-
-    function ResetCrinosSwitch() {
-    // reset Crinos checkbox to false
-    document.getElementById("CrinosSwitch").checked = "false";
-}
-*/
-
-/*
-    function ResetVariables() {
-    // RESET VARIABLES TO BASE AMOUNTS  
-    // TO DO - check all variables to be reset present and at correct values
-
-    DiceRollsArray = ["waiting"]; // array storing generated integars
-
-    AllBotches = Number(0);
-    AllWins = Number(0);
-    CrinosForm = "false";
-    GarouRankRageDiffMod = Number(0);
-    DicePenaltyHealth = Number(0);
-    RageDiff = Number(0);
-    RageDiffBase = Number(0);
-    RollingDamage = "false";
-    Specialised = "false";
-    vBotches = Number(0); // number of times "1" rolled
-    vCalc = Number(0); // result of vWins minus vBotches
-    vDiceResult = Number(0); // clears result of previous die roll
-    vFails = Number(0); // number of rolls less than target
-    vFinal = "null"; // "SUCCESS", "FAIL" or "BOTCH" string
-    vWins = Number(0); // number of rolls equal or more than target
-    Gauntlet = Number(0);
-}
-*/
-
-
-// >>>>> TESTING: CONSOLE.LOG FEEDBACK FUNCTIONS <<<<
-
-/*function RollSkill1() {
-    console.log("*-*-* TEST RollSkill RAN *-*-*");
-    console.log("-----------------------------");
-}
-*/
-
-/*
-function RollDamage1() {
-    console.log("*-*-* TEST RollDamage RAN *-*-*");
-    console.log("-----------------------------");
-}
-*/
-/*
-function RollRage1() {
-    console.log("*-*-* TEST RollRage RAN *-*-*");
-    console.log("-----------------------------");
-}
-*/
-/*
-function RollStepSideways1() {
-    console.log("*-*-* TEST RollStepSideways RAN *-*-*");
-    console.log("-----------------------------");
-}
-*/
-/*
-function TestFunc1() {
-    console.log("*-*-* TEST FUNCTION 1 RAN *-*-*");
-    console.log("-----------------------------");
-    console.log("");
-}
-*/
-/*
-function TestFunc2() {
-    console.log("*-*-* TEST FUNCTION 2 RAN *-*-*");
-    console.log("-----------------------------");
-    console.log("");
-}
-*/
-/*
-function TestFunc3() {
-    console.log("*-*-* TEST FUNCTION 3 RAN *-*-*");
-    console.log("-----------------------------");
-    console.log("");
-}*/
-/*
-function TestFunc4() {
-    console.log("*-*-* TEST FUNCTION 4 RAN *-*-*");
-    console.log("-----------------------------");
-    console.log("");
-}*/
-
-
-/*
-function clicked() {
-    console.log("**** A button was clicked ****");
-}*/
-
-// ---- Variable showing final calculation in words ----
-// let FullResult = "(" + vWins + " successes plus " + vWinsExtra + " automatic successes) MINUS (" + vBotches + " botches plus " + vBotchesExtra + " penalty botches) = " + vCalc + " successes."
-
-// ----Show variables in console----
-// console.log("NAME variable is " + VarName);
-// console.log("NAME variable is " + VarName.value);
-
-// ----Show variables in HTML window----
-//  document.getElementById("ELEMENTID").innerHTML = VARIABLE;

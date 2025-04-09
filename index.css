@@ -17,7 +17,7 @@ body {
 }
 
 .backdrop {
-    background-image: url('assets/AWoD_P gina_154_Imagen_0001.png');
+    background-image: url('assets/AWoD_P_gina_154_Imagen_0001.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -229,7 +229,7 @@ p.right {
 #links-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     z-index: 5;
     min-height: 100%;
     width: 100%;
@@ -241,6 +241,7 @@ p.right {
     flex-direction: row;
     margin: 20px;
     justify-content: space-evenly;
+    align-tracks: ;
 
 }
 
