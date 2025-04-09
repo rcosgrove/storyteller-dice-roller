@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+<style>
+.boxed label {
+  display: inline-block;
+  width: 200px;
+  padding: 10px;
+  border: solid 2px #ccc;
+  transition: all 0.3s;
+}
+
+.boxed input[type="radio"] {
+  display: none;
+}
+
+.boxed input[type="radio"]:checked + label {
+  border: solid 2px green;
+}
+
+</style>
+
+</head>
+
+	<body>
+
+<p>Select Skill:</p>
+
+<form class="boxed">
+  <input type="radio" id="android" name="skills" value="Android Development">
+  <label for="android">Android Development</label>
+
+  <input type="radio" id="ios" name="skills" value="iOS Development">
+  <label for="ios">iOS Development </label>
+
+  <br><br>
+  <input type="submit" value="SUBMIT">
+</form>
+
+</body>
+
+</html>

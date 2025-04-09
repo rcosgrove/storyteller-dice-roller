@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h3>WtA20 dice roller</h3>
+  <p>Dice roll results:</p>
+
+<p id="output1"></p>
+<p id="output2"></p>
+<p id="output3"></p>
+<p id="output4"></p>
+<p id="output5"></p>
+<p id="output6"></p>
+
+<script>
+//Werewolf 20th Anniversary Edition Dice roller
+//document.write(FinalResult);
+
+var Fails = 0;
+var Difficulty = 6;
+var DiceNo = 1;
+var OppSuccesses = 0;
+var Successes = 0;
+var Botches = 0;
+var DiceResult;
+var FinalResult;
+var Botches = 0;
+var CriticalRolls = 0;
+var DiceRollsArray = [];
+var Difficulty = prompt("Difficulty (default 6):");
+var DiceNo = prompt("No. dice to roll (default 1):");
+var Critical = prompt("Reroll on 9 or 10? (enter 9 or 10)");
+var OppSuccesses = prompt("Opponent's successes (default 0):");
+//Roll dice
+//Check no. dice to be rolled, and roll if needed
+while ((DiceNo > 0)) {
+  //Roll a d10
+  DiceResult = Math.floor(Math.random() * 10) + 1;
+  //Add result to dice rolls array
+  DiceRollsArray.push(DiceResult);
+  if (Critical == 9 && DiceResult >= 9) {
+    CriticalRolls = CriticalRolls + 1;
+    Successes = Successes + 2;
+  } else if ((Critical == 10 && DiceResult == 10)) {
+    CriticalRolls = CriticalRolls + 1;
+    Successes = Successes + 2;
+  } else if ((DiceResult == 1)) {
+    Botches = Botches + 1;
+  } else if ((DiceResult >= 2 && DiceResult < Difficulty)) {
+    Fails = Fails + 1;
+  } else {
+    Successes = Successes + 1;
+  }
+  //One less dice to be rolled
+  DiceNo = DiceNo - 1;
+}
+//Display successes
+if (Successes == 0 && Botches >= 0) {
+  //Display a normal failure was rolled
+  console.log("Failed");
+  FinalResultIs = "Failed";
+//  document.write(FinalResult);
+} else if ((Successes == 0 && Botches == 1)) {
+  //Display a botch was rolled
+  console.log("BOTCH!");
+  FinalResultIs = "BOTCH!";
+//  document.write(FinalResult);
+} else {
+  //Sum 1s rolled and opponent's successes
+  var FinalBotches = Botches + OppSuccesses;
+  //Remove 1s and opponent's successes from successes rolled
+  var FinalResult = Successes - FinalBotches;
+  //Display the final result of the roll
+  if (FinalResult <= 0) {
+    FinalResultIs = "Failed";
+    console.log("Failed");
+//    document.write("Failed");
+
+  } else if ((FinalResult == 1)) {
+    FinalResultIs = "1 success";
+    console.log("1 success");
+//    document.write("1 success");
+
+  } else {
+    FinalResultIs = FinalResult + " successes";
+    console.log("Total successes");
+    console.log(FinalResult);
+//    document.write("Success with " + FinalResult + " successes");
+
+  }
+//  removeItem(DiceRollsArray, 0);
+  if (Critical == 9) {
+    console.log("What the dice rolled (9s are crits)");
+//    document.write("What the dice rolled (9s are crits)");
+
+  } else {
+    console.log("What the dice rolled (10s are crits)");
+//    document.write("What the dice rolled (10s are crits)");
+
+  }
+  console.log(DiceRollsArray);
+  console.log("Criticals");
+  console.log(CriticalRolls);
+  console.log("Botches");
+  console.log(Botches);
+//  document.write("The dice rolled: " + DiceRollsArray);
+//  document.write("Criticals: " + CriticalRolls);
+//  document.write("Fails: " + Fails);
+//  document.write("Botches: " + Botches);
+document.getElementById("output1").innerHTML = "Final result is " + FinalResultIs;
+document.getElementById("output2").innerHTML = "The dice rolled " + DiceRollsArray;
+document.getElementById("output3").innerHTML = "Criticals: " + CriticalRolls;
+document.getElementById("output4").innerHTML = "Successes: " + Successes;
+document.getElementById("output6").innerHTML = "Botches: " + Botches;
+
+}
+</script>
+</body>
+</html>

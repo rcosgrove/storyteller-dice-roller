@@ -1,0 +1,42 @@
+/* https://www.freecodecamp.org/news/reusable-html-components-how-to-reuse-a-header-and-footer-on-a-website/ */
+
+:host {
+  all: initial;
+  display: block;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #333;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/*ul {
+  display: inline-flex;
+  margin: auto;
+}
+
+li a {
+  color: skyblue;
+}*/
+
+li {
+  list-style: circle inside;
+
+  color: indianred;
+}

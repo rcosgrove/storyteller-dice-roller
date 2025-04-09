@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<!-- charname not being stored in array - possibly due to string and array expecting numbers -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stats test page v0.0.1</title>
+
+        <script src="WtA20-roller.js" defer></script>
+
+</head>
+
+<body>
+    <div class="flex column float-left ce" id="user-input-menu">
+
+        <section id="CharacterStats">
+
+            <div class="SideMenuRow">
+
+                <div>
+                    <div>
+                        <h3>Name</h3>
+                    </div>
+                    <label for="charname">Name: </label><input type="text" name="charname" id="charname" placeholder="Character name" max="10">
+                    <div>
+                        <h3>Attributes</h3>
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="strength" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Strength</span></label>
+                        <input class="number-entry" id="strength" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+
+                        <!-- <input class="number-entry" id="strength" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1"> -->
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="dexterity" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dexterity</span></label>
+                        <input class="number-entry" id="dexterity" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="stamina" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Stamina</span></label>
+                        <input class="number-entry" id="stamina" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="wits" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Wits</span></label>
+                        <input class="number-entry" id="wits" type="number" maxlength="1" min="1" max="5" value="4" placeholder="4">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="armor" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Armor</span></label>
+                        <input class="number-entry" id="armor" type="number" maxlength="2" min="1" max="10" value="5" placeholder="5">
+                    </div>
+                </div>
+
+                <div class="SideMenuRow">
+                    <div class="side-menu-item right-padding">
+                        <h3>Abilities</h3>
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="brawl" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Brawl</span></label>
+                        <input class="number-entry" id="brawl" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="melee" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Melee</span></label>
+                        <input class="number-entry" id="melee" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="firearms" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Firearms</span></label>
+                        <input class="number-entry" id="firearms" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="dodge" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dodge</span></label>
+                        <input class="number-entry" id="dodge" type="number" maxlength="1" min="1" max="5" value="4" placeholder="4">
+                    </div>
+                    <div class="side-menu-item right-padding" id="">
+                        <label for="athletics" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Athletics</span></label>
+                        <input class="number-entry" id="athletics" type="number" maxlength="1" min="1" max="5" value="5" placeholder="5">
+                    </div>
+                </div>
+
+                <div class="side-menu-item" id="SaveStatsContainer">
+                    <div id="SaveStatsButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="savestats" value="" id="savestats" title="Save stats" onclick="StatsSave()"><label class="roll" for="savestats">Save stats</label></button>
+                    </div>
+                    <div id="RecallStatsButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="recallstats" value="" id="recallstats" title="Recall stats" onclick="StatsRecall()"><label class="roll" for="recallstats">Recall stats</label></button>
+                    </div>
+                    <div id="SoakRollButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="rollsoak" value="" id="rollsoak" title="Soak roll" onclick="RollSoak()"><label class="roll" for="rollsoak">Soak roll</label></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</body>
+
+<script>
+// SAVE AND RECALL STATS FUNCTIONS
+// additional global variables
+
+var statStr;
+var statDex;
+var statSta;
+var statWits;
+var armor;
+var statBra;
+var statMel;
+var statFire;
+var statDog;
+var statAth;
+var stats = [];
+
+// single call data from menu function
+// set destination variable name to concat to: v + 'menu name' (ie, "vmoonphase")
+
+function RollSoak() {
+	// WORKING
+    // Damage soak function
+
+    // Reset variables, except vPool, vDiff, vWinsExtra and vBotchesExtra
+    DiceRollsArray = [];
+    vDiff = Number(6);
+    vWins = Number(0); // number of rolls equal or more than target
+    vFails = Number(0); // number of rolls less than target
+    vBotches = Number(0); // number of times "1" rolled
+    vDiceResult = Number(0);
+    vCalc = Number(0); // result of vWins minus vBotches
+    vFinal = "Result"; // "SUCCESS", "FAIL" or "BOTCH" string
+    AllWins = Number(0);
+    AllBotches = Number(0);
+    vWinsExtra = Number(0);
+    vBotchesExtra = Number(0);
+
+    // Set vPool variable
+    DicePool = stats[2] + stats[9];
+    DiceModifierUser = Number(document.getElementById("DiceModifierUser").value);
+    vPool = Math.max(DicePool + DiceModifierUser, 1);
+
+    // set roll target number, based on number in difficulty input window
+
+    // vWinsExtra = Number(document.getElementById("UserWinsExtra").value);
+    // vBotchesExtra = Number(document.getElementById("UserBotchesExtra").value);
+
+    // Call dice rolling functions
+    CheckDamageRoll();
+    CountRollResults();
+    ShowResultsSoakRoll();
+}
+
+function ShowResultsSoakRoll() {
+	// WORKING
+    // Send success/faiure result to HTML window
+
+    document.getElementById("Rolls1").style.display = "block";
+    document.getElementById("Rolls1").innerHTML = DiceRollsArray;
+    document.getElementById("Rolls2").style.display = "none";
+    document.getElementById("Rolls3").style.display = "none";
+    document.getElementById("Rolls4").style.display = "none";
+    document.getElementById("Rolls5").style.display = "none";
+
+    if (vCalc >= 2) {
+        document.getElementById("Results").innerHTML =
+            vCalc + " levels of damage soaked";
+    } else if (vCalc == 1) {
+        document.getElementById("Results").innerHTML = "1 level of damage soaked";
+    } else if (vFinal == "FAILED") {
+        document.getElementById("Results").innerHTML = "No damage soaked";
+    }
+
+    if (vBotchesExtra >= 1 && vWinsExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML =
+            "(Including " +
+            vWinsExtra +
+            " bonus successes<br>" +
+            "and " +
+            vBotchesExtra +
+            " automatic botches)";
+    } else if (vWinsExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML =
+            "(Including " + vWinsExtra + " bonus successes)";
+    } else if (vBotchesExtra >= 1) {
+        document.getElementById("Rolls2").style.display = "block";
+        document.getElementById("Rolls2").innerHTML =
+            "(Including " + vBotchesExtra + " automatic botches)";
+    }
+
+    if (DicePenaltiesTotal >= 1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML =
+            "(Including " + DicePenaltiesTotal + " bonus dice)";
+    } else if (DicePenaltiesTotal <= -1) {
+        document.getElementById("Rolls3").style.display = "block";
+        document.getElementById("Rolls3").innerHTML =
+            "(Including " + DicePenaltiesTotal + " penalty dice)";
+    }
+} // end ShowResultsSoakRoll function
+/*
+function StatsSave() {
+	// WORKING
+
+    stats = [];
+    // stats[0] = document.getElementById("charname").text;
+    stats[1] = Number(document.getElementById("strength").value;
+    stats[2] = Number(document.getElementById("dexterity").value);
+    stats[3] = Number(document.getElementById("stamina").value);
+    stats[4] = Number(document.getElementById("wits").value);
+    stats[5] = Number(document.getElementById("brawl").value);
+    stats[6] = Number(document.getElementById("melee").value);
+    stats[7] = Number(document.getElementById("firearms").value);
+    stats[8] = Number(document.getElementById("dodge").value);
+    stats[9] = Number(document.getElementById("athletics").value);
+    stats[10] = Number(document.getElementById("armor").value);
+*/
+    // console.log("Strength is: " + statStr);
+    // console.log("Dexterity is: " + statDex);
+    // console.log("Stamina is: " + statSta);
+    // console.log("Wits is: " + statWits);
+    // console.log("Brawl is: " + statBra);
+    // console.log("Melee is: " + statMel);
+    // console.log("Firearms is: " + statFire);
+    // console.log("Dodge is: " + statDog);
+    // console.log("Athletics is: " + statAth);
+    // console.log("Armor is: " + statArm);
+    // console.log("Stats array is: " + stats);
+
+// STORE/RECALL STATS IN LOCAL STORAGE
+// 
+// https://www.w3schools.com/jsref/prop_win_localstorage.asp
+// https://blog.logrocket.com/localstorage-javascript-complete-guide/#setitem
+// 
+// 
+/*let character = prompt("Stats filename", "NameOfPC");
+localStorage.setItem(character, JSON.stringify(stats));
+console.log("Stored array is: " + JSON.parse(window.localStorage.getItem('NameOfPC')));
+
+}
+*/
+
+function StatsSave() {
+	// WORKING
+
+    stats = [];
+    stats[0] = document.getElementById("charname").text;
+    stats[1] = Number(document.getElementById("strength").value);
+    stats[2] = Number(document.getElementById("dexterity").value);
+    stats[3] = Number(document.getElementById("stamina").value);
+    stats[4] = Number(document.getElementById("wits").value);
+    stats[5] = Number(document.getElementById("brawl").value);
+    stats[6] = Number(document.getElementById("melee").value);
+    stats[7] = Number(document.getElementById("firearms").value);
+    stats[8] = Number(document.getElementById("dodge").value);
+    stats[9] = Number(document.getElementById("athletics").value);
+    stats[10] = Number(document.getElementById("armor").value);
+
+    // console.log("Name is: " + statStr);
+    // console.log("Strength is: " + statStr);
+    // console.log("Dexterity is: " + statDex);
+    // console.log("Stamina is: " + statSta);
+    // console.log("Wits is: " + statWits);
+    // console.log("Brawl is: " + statBra);
+    // console.log("Melee is: " + statMel);
+    // console.log("Firearms is: " + statFire);
+    // console.log("Dodge is: " + statDog);
+    // console.log("Athletics is: " + statAth);
+    // console.log("Armor is: " + statArm);
+    console.log("Stats array is: " + stats);
+
+// STORE/RECALL STATS IN LOCAL STORAGE
+// 
+// https://www.w3schools.com/jsref/prop_win_localstorage.asp
+// https://blog.logrocket.com/localstorage-javascript-complete-guide/#setitem
+// 
+let character = prompt("Stats filename", "NameOfPC");
+localStorage.setItem(character, JSON.stringify(stats));
+console.log("Stored array is: " + JSON.parse(window.localStorage.getItem('NameOfPC')));
+}
+
+
+
+function StatsRecall() {
+	// WORKING
+
+let character = prompt("Recall whose stats?", "NameOfPC");
+let stats = JSON.parse(window.localStorage.getItem(character));
+console.log("Recalled array is: " + stats);
+
+
+
+}
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+<script>
+// use // for single comments
+// use /* then */ for multiline comments
+
+/*
+Variables:
+vdice = number of dice to be rolled
+vresult = result of a dice roll
+vrolled = number of dice that have been rolled
+vdiff = difficulty (target) number
+vsuccess = number of successful rolls
+*/
+
+var vdice, vrolled, vresult, vdiff, vsuccess, dsuccess, result;
+
+</script>
+
+<script type="text/javascript">
+var number = 123;
+</script>
+
+</head>
+
+<html>
+<body>
+
+<h2>Storyteller dice roller</h2>
+
+
+<form id="roller">
+	Number of dice: <input type="number" value="1" id="dice"><br>
+	Difficulty: <input type="number" value="1" id="diff"><br>
+	<input type="submit" value="Roll">
+</form>
+
+
+<h2>
+    Result is
+      	<script type="text/javascript">
+        document.write(number)
+        </script>
+<br>
+    Dice to be rolled: 
+      <script type="text/javascript">
+        document.write(vdice)
+ 		</script>
+       <br>
+        <script type="text/javascript">
+      document.write(dice)
+		</script>
+		<br>
+
+    Difficulty: 
+      <script type="text/javascript">
+        document.write(vdiff)
+		</script>
+		<br>
+
+		Successes
+      <script type="text/javascript">
+        document.write(vsuccess)
+		</script>
+</h2>
+
+
+<script>
+
+// code store user input of "Number of dice" as vdice variable
+var vdice = document.getElementById("dice").value;
+
+// code store user input of "Difficulty" as vdiff variable
+var vdiff = document.getElementById("diff").value;
+
+// check if rolls are completed
+
+var vrolls = vrolled <= vdice;
+switch (rolls) 
+{
+	case 1:
+	// return a random integer from 1 to 10 - dice roll
+	var vresult=Math.floor(Math.random() * 10) + 1;  
+
+	// check result of roll against difficulty
+	// is roll a botch
+	if (vresult = 1)
+	{
+		// vrolled decreased by 1, and die rolled count increased by +1
+		vsuccess - 1, vrolled + 1;
+	}
+
+	// is roll a success
+		else if (vresult >= vdiff && 9)
+	{
+		// vsucces increase by 1, and vrolled increased by 1 to count die being rolled
+		vsuccess + 1, vrolled + 1;
+	}
+	// is roll a 10 re-roll
+	// vrolled not increased by 1 allow die to be re-rolled
+		else (vresult = 10)
+	{ 
+		vsuccess + 1;
+	}
+	break;
+
+	case 2:
+	// Display results
+	if (vsuccess <= -1)
+		{
+			var dsuccess = "Botch";
+		}
+
+	// Display result fail
+	else if (vsuccess = 0)
+		{
+			var dsuccess = "Fail";
+		} 
+
+	// Display result total successes
+	else (vsuccess => 1)
+		{
+			var dsuccess = "Success"; 
+		}
+	break;
+
+// }
+// if (vrolled <= dice) var "rolls" = "continue";
+// else if (vrolled <= dice) var "rolls" = "continue";
+
+
+
+
+
+</body>
+</html>

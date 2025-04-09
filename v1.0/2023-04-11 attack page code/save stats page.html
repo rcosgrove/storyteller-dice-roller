@@ -1,0 +1,264 @@
+<!-- SAVE/RECALL CHARACTER CODE v0.2.0 -->
+
+<!-- TO DO: Delete all local storage -->
+<!-- TO DO: Add charname to list of saved characters -->
+<!-- TO DO: Show list of saved characters’ charnames -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body>
+    <div class="flex column float-left ce" id="user-input-menu">
+
+        <section id="CharacterStats">
+
+            <div class="SideMenuRow">
+
+                <div>
+                    <div class="side-menu-item right-padding">
+                        <h3>Attributes</h3>
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="charname" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Name</span></label><input class="number-entry" id="charname" type="text" maxlength="10" size="12" value="Joe" placeholder="Joe">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="strength" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Strength</span></label><input class="number-entry" id="strength" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="dexterity" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dexterity</span></label><input class="number-entry" id="dexterity" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="stamina" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Stamina</span></label><input class="number-entry" id="stamina" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="wits" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Wits</span></label><input class="number-entry" id="wits" type="number" maxlength="1" min="1" max="5" value="4" placeholder="5">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="armor" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Armor</span></label><input class="number-entry" id="armor" type="number" maxlength="2" min="1" max="10" value="5" placeholder="5">
+                    </div>
+                </div>
+
+                <div class="SideMenuRow">
+                    <div class="side-menu-item right-padding">
+                        <h3>Abilities</h3>
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="brawl" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Brawl</span></label><input class="number-entry" id="brawl" type="number" maxlength="1" min="1" max="5" value="4" placeholder="4">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="melee" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Melee</span></label><input class="number-entry" id="melee" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="firearms" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Firearms</span></label><input class="number-entry" id="firearms" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="dodge" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dodge</span></label><input class="number-entry" id="dodge" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="athletics" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Athletics</span></label><input class="number-entry" id="athletics" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                </div>
+
+                <div class="side-menu-item" id="SaveStatsContainer">
+                    <div id="SaveStatsButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="savestats" value="" id="savestats" title="Save stats" onclick="StatsSave()"><label class="roll" for="savestats">Save character</label></button>
+                    </div>
+                    <div id="RecallStatsButton">
+                        <!-- save stats button -->
+                        <button type="submit" class="roll clickHandler shadow" name="loadstats" value="" id="loadstats" title="Load stats" onclick="loadStats()"><label class="roll" for="loadstats">Load character</label></button>
+                    </div>
+                    <div id="DeleteCharButton">
+                        <button type="submit" class="roll clickHandler shadow" name="deletechar" value="" id="deletechar" title="Delete a character" onclick="deletechar()"><label class="roll" for="deletechar">Delete stats</label></button>
+                    </div>
+<!--                     <div id="ListCharButton">
+                        <button type="submit" class="roll clickHandler shadow" name="liststats" value="" id="liststats" title="List stats" onclick="listStats()"><label class="roll" for="liststats">List stats</label></button>
+                    </div> -->
+<!--                     <div id="ShowCharsButton">
+                        <button type="submit" class="roll clickHandler shadow" name="showchars" value="" id="showchars" title="Show chars" onclick="showchars()"><label class="roll" for="showchars">Show chars</label></button>
+                    </div> -->
+                    <div id="DeleteAllButton">
+                        <button type="submit" class="roll clickHandler shadow" name="deleteall" value="" id="deleteall" title="Delete all characters" onclick="deleteAllChars()"><label class="roll" for="deleteall">Delete all</label></button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+<script>
+// SAVE AND RECALL STATS FUNCTIONS
+// additional global variables
+
+
+const WtA20Chars = [];
+
+var armor;
+var charname;
+var Athletics;
+var Brawl;
+var Dexterity;
+var Dodge;
+var Firearms;
+var Melee;
+var Stamina;
+var Strength;
+var Wits;
+
+function NewCharacter(name, strength, dexterity, stamina, wits, athletics, brawl, dodge, firearms, melee, armor) {
+
+    // New character constructor
+
+    this.Armor = armor;
+    this.Name = name;
+    this.Athletics = athletics;
+    this.Brawl = brawl;
+    this.Dexterity = dexterity;
+    this.Dodge = dodge;
+    this.Firearms = firearms;
+    this.Melee = melee;
+    this.Stamina = stamina;
+    this.Strength = strength;
+    this.Wits = wits;
+
+}
+
+// SAVE STATS TO JSON OBJECT
+
+function StatsSave() {
+    // save stats to JSON object
+
+    Armor = document.getElementById("armor").value;
+    charname = document.getElementById("charname").value;
+    Athletics = document.getElementById("athletics").value;
+    Brawl = document.getElementById("brawl").value;
+    Dexterity = document.getElementById("dexterity").value;
+    Dodge = document.getElementById("dodge").value;
+    Firearms = document.getElementById("firearms").value;
+    Melee = document.getElementById("melee").value;
+    Stamina = document.getElementById("stamina").value;
+    Strength = document.getElementById("strength").value;
+    Wits = document.getElementById("wits").value;
+
+    let character = new NewCharacter(
+        charname,
+        Strength,
+        Dexterity,
+        Stamina,
+        Wits,
+        Athletics,
+        Brawl,
+        Melee,
+        Firearms,
+        Dodge,
+        Armor,
+    );
+
+    localStorage[`WtA20Chars${charname}`] = JSON.stringify(character);
+
+    //  addNametoList();
+    //  function not working - leave disabled
+}
+
+function loadStats() {
+    // Load stored character stats
+    // asks data from user
+
+    let promptanswer = prompt("Load which character?");
+    let loading = `WtA20Chars${promptanswer}`;
+
+    try {
+        if (loading == "") throw "name";
+    } catch (err) {
+        document.getElementById("charname").value = "Give a " + err;
+        return;
+    }
+
+    let character = JSON.parse(window.localStorage.getItem(loading));
+
+    charname = character.Name;
+    Strength = character.Strength;
+    Dexterity = character.Dexterity;
+    Stamina = character.Stamina;
+    Wits = character.Wits;
+    Athletics = character.Athletics;
+    Brawl = character.Brawl;
+    Dodge = character.Dodge;
+    Firearms = character.Firesarms;
+    Melee = character.Melee;
+    Armor = character.Armor;
+
+    document.getElementById("charname").value = charname;
+    document.getElementById("strength").value = Strength;
+    document.getElementById("dexterity").value = Dexterity;
+    document.getElementById("stamina").value = Stamina;
+    document.getElementById("wits").value = Wits;
+    document.getElementById("athletics").value = Athletics;
+    document.getElementById("brawl").value = Brawl;
+    document.getElementById("dodge").value = Dodge;
+    document.getElementById("firearms").value = Firearms;
+    document.getElementById("melee").value = Melee;
+    document.getElementById("armor").value = Armor;
+
+}
+
+function deleteChar() {
+    // Delete stored character stats
+    // asks data from user
+
+    let promptanswer = prompt("Delete which character?");
+    let loading = `WtA20Chars${promptanswer}`;
+    localStorage.removeItem(loading);
+
+}
+
+function deleteAllChars() {
+    let promptanswer = prompt("Type YES to delete all saved characters.");
+
+if (promptanswer == "YES") { 
+    localStorage.clear();
+} else if (promptanswer != "YES") {
+    return;
+} }
+
+
+///////////////////
+/// NOT WORKING ///
+///////////////////
+
+function listStats() {
+    // NOT WORKING
+    // Show list of saved characters’ names
+
+    console.log(Object.entries(WtA20Chars));
+
+    document.getElementById("message").innerHTML = JSON.stringify(
+        Object.entries(WtA20Chars)
+    );
+}
+
+function addNametoList() {
+    // Add charname to array of saved names
+    // NOT WORKING
+
+    Object.assign(WtA20Chars, charname);
+    localStorage[WtA20Chars] = JSON.stringify(WtA20Chars);
+    console.log("Character array is: " + JSON.stringify(character, false, 1));
+    console.log(
+        "Saved characters array is: " + JSON.stringify(WtA20Chars, false, 1)
+    );
+}
+</script>
+
+</html>

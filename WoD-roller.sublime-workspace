@@ -1,0 +1,716 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"changedActo",
+				"changedActionPenalty"
+			],
+			[
+				"user",
+				"DiceModifierUser"
+			],
+			[
+				"atta",
+				"attackDiff"
+			],
+			[
+				"v",
+				"vDiff"
+			],
+			[
+				"attack",
+				"attackDiceModifer"
+			],
+			[
+				"attackDice",
+				"attackDiceModifer"
+			],
+			[
+				"tar",
+				"targetRange"
+			],
+			[
+				"pr",
+				"promptanswer"
+			],
+			[
+				"st",
+				"strength"
+			],
+			[
+				"red",
+				"indianred"
+			],
+			[
+				"blue",
+				"skyblue"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"justify",
+				"justify-items"
+			],
+			[
+				"align",
+				"align-self"
+			],
+			[
+				"justi",
+				"justify-self"
+			],
+			[
+				"align-",
+				"align-self"
+			],
+			[
+				"inline-",
+				"inline-block"
+			],
+			[
+				"trans",
+				"transform"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"just",
+				"justify-self"
+			],
+			[
+				"flex",
+				"flex-grow"
+			],
+			[
+				"cen",
+				"centre-stack"
+			],
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"jus",
+				"justify-all"
+			],
+			[
+				"blu",
+				"burlywood"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"justift",
+				"justify-content"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"magin",
+				"margin-bottom"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"Dif",
+				"Difficulty"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"Spe",
+				"SpecialisedSwitch"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"tran",
+				"translateY()"
+			],
+			[
+				"u",
+				"uppercase"
+			],
+			[
+				"self",
+				"justify-self"
+			],
+			[
+				"padd",
+				"padding-right"
+			],
+			[
+				"tra",
+				"translateY()"
+			],
+			[
+				"flo",
+				"float-right"
+			],
+			[
+				"size",
+				"inline-size"
+			],
+			[
+				"float",
+				"float"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"vBo",
+				"vBotchesExtra"
+			],
+			[
+				"vW",
+				"vWinsExtra"
+			],
+			[
+				"line-",
+				"line-height"
+			],
+			[
+				"yellow",
+				"lightyellow"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"bord",
+				"border-width"
+			],
+			[
+				"border",
+				"border-style"
+			],
+			[
+				"pink",
+				"lightpink"
+			],
+			[
+				"green",
+				"seagreen"
+			],
+			[
+				"yell",
+				"yellowgreen"
+			],
+			[
+				"dark",
+				"darkred"
+			],
+			[
+				"padding-b",
+				"padding-bottom"
+			],
+			[
+				"User",
+				"UserDice"
+			],
+			[
+				"vB",
+				"vBotches"
+			],
+			[
+				"Dama",
+				"DamageCheckBox"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"break-",
+				"break-inside"
+			],
+			[
+				"column-rule-",
+				"column-rule-width"
+			],
+			[
+				"grey",
+				"darkslategrey"
+			],
+			[
+				"gree",
+				"darkgreen"
+			],
+			[
+				"colo",
+				"color"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"All",
+				"AllWins"
+			],
+			[
+				"vBot",
+				"vBotchesExtra"
+			],
+			[
+				"vD",
+				"vDiff"
+			],
+			[
+				"cons",
+				"const"
+			],
+			[
+				"Calc",
+				"CalcTotal"
+			],
+			[
+				"background-",
+				"background-color"
+			],
+			[
+				"bacg",
+				"background-color"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"font-s",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Snippet: menu",
+				"Snippet: menuvalue"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Function"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet:",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"PACKAge in",
+				"Package Control: Install Package"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"package",
+				"View Package File"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/1 Dice rollers/3-WtA20"
+	],
+	"file_history":
+	[
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/v011/2023-04-11 attack page code/2023-04-06 attack page.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/v011/2023-04-11 attack page code/2023-04-06-attack-page.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/v011/2023-04-11 attack page code/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/v010/2023-04-01 web components WORKING/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/v011/2023-04-03 save stats page/• Main code - reference only/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/v010/2023-04-01 web components WORKING/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/GitHub DO NOT EDIT/storyteller-dice-roller/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-11 attack page code/2023-04-06 attack page.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-11 attack page code/2023-04-06-attack-page.js",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/User/menuvalue.sublime-snippet",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/GitHub DO NOT EDIT/storyteller-dice-roller/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON tabbed interface/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON tabbed interface/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-03 save stats page/2023-04-05 stats page.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-03 save stats page/2023-04-05 soak roll code.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON tabbed interface/2023-04-05 tabbed interface code.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-03 save stats page/2023-04-03 stats page.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-03 save stats page/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-04 Single menu function/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-04 Single menu function/2023-04-04 New variables.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-04 Single menu function/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON tabbed interface/about.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON tabbed interface/components/header-index.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON tabbed interface/components/footer-index.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/help.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/index.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/components/footer.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/components/header.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/index.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/index.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/web-comps-tutorial.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/tutorial/web-comps-tutorial.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/WtA20-roller-small-screen.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/WtA20-roller.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/about.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON web components/roller-web-components.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/02 Testing/2023-04-01 tabbed interface/2023-04-01 tabbed interface.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON phone ui/WtA20-roller.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON phone ui/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON phone ui/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/00 WORKING ON phone ui/WtA20-roller-small-screen.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/z Dice roller/v010/STARTING CODE/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/z Dice roller/v010/STARTING CODE/WtA20-roller.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/zz Backups/z Dice roller/v010/STARTING CODE/index.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller/WtA20-roller.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller/WtA20-roller.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-ios/WtA20-roller.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-v8.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/legal.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-v8.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-css-v1.css",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/help.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-v7.html",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-v7.js",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-v6 EDITING.html",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc.defaults.json",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/User/.jsbeautifyrc",
+		"/Users/richardcosgrove/Dropbox/My Documents/08 Coding/storyteller-dice-roller/01 Working/storyteller-dice-roller-v5 EDITING.html",
+		"/Users/richardcosgrove/Dropbox/RPGs/White Wolf/Homebrew/Storyteller dice roller/Dreamweaver/v002/storyteller-dice-roller-v5 EDITING.html",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/Automatic Backups/Default (OSX).sublime-keymap",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/PackageSync/PackageSync.sublime-settings",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/User/PackageSync.sublime-settings",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/User/Automatic Backups.sublime-settings",
+		"/Users/richardcosgrove/Library/Application Support/Sublime Text 3/Packages/Automatic Backups/Automatic Backups.sublime-settings",
+		"/Users/richardcosgrove/Dropbox/RPGs/White Wolf/Homebrew/Storyteller dice roller/Dreamweaver/v002/OLD/OLD storyteller-dice-roller-v3.html",
+		"/Users/richardcosgrove/Dropbox/RPGs/White Wolf/Homebrew/Storyteller dice roller/Dreamweaver/v002/storyteller-dice-roller-v4.html",
+		"/Users/richardcosgrove/Dropbox/RPGs/White Wolf/Homebrew/Storyteller dice roller/Dreamweaver/v002/storyteller-dice-roller-v3.html"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"vFinal",
+			"common",
+			"attack()",
+			"reset",
+			"attack()",
+			"damage()",
+			"attack()",
+			"combatCheckbox",
+			"attack()",
+			"attack(",
+			"hispo",
+			"vForm",
+			"innerHTML",
+			"inner",
+			"switch",
+			"attack()",
+			"attack",
+			"attack()",
+			"scopeBonus",
+			"movingTargetPenalty",
+			"flankingBonus",
+			"attackMove",
+			"aimingAttackBonus",
+			"var ",
+			"reset",
+			"calledShot",
+			"moving",
+			"calledshot",
+			"onchange",
+			"calledShot",
+			"var flankingBonus",
+			"var stunnedOpponentBonus",
+			"var changedActionPenalty",
+			"var calledShotPenalty",
+			"var scopeBonus",
+			"scopeBonus",
+			"attack()",
+			"scopeBonus",
+			"attack()",
+			"break;",
+			"scopeFittedSwitch",
+			"attack()",
+			"scope",
+			"scopeFittedSwitch",
+			"aim",
+			"aimed",
+			"Number(valueSelected)",
+			"single",
+			"shootingModeAttackDiceBonus",
+			"attackDiceModifer",
+			"shootingModeAttackDiceBonus",
+			"attackDiceBonus",
+			"attackDiceModifer",
+			"attack()",
+			"SetHealthDicePenalty",
+			"SetHealthDicePenalty()",
+			"SetHealthDicePenalty",
+			" var",
+			" + ",
+			"shootingModeAttackDiceBonus",
+			"damageBonusUser",
+			"attackResult",
+			"attack()",
+			"ResetResultsDisplay()",
+			"damageBonusUser",
+			"attackResult",
+			"attack()",
+			"userdif",
+			"attack()",
+			"DicePenaltiesTotal",
+			"attack()",
+			"DiffMod",
+			"UserDiffMod",
+			"difficulty mod",
+			"vWinsExtra",
+			"DicePenaltiesTotal",
+			"DicePenaltyHealth",
+			"attack()",
+			"HealthDicePenalty",
+			"attack()",
+			"health",
+			"attack()",
+			"attack",
+			"DicePenaltiesTotal",
+			"dicePoolAttack",
+			"vPool",
+			"count",
+			"attack()",
+			"attackDiceBonus",
+			"attackDiffModifier",
+			"scope",
+			"aim",
+			"aimed",
+			"setCalledShot",
+			"called",
+			"stunnedOpponentBonus",
+			"changed",
+			"chang",
+			"stun"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"flankingBonus",
+			"stunnedOpponentBonus",
+			"changedActionPenalty",
+			"calledShotPenalty",
+			"; var ",
+			" var ",
+			"damageModUser",
+			"attackSuccesses"
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 30.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "WoD-roller.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 315.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

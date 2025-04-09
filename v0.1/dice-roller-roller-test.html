@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+<script type="text/javascript">
+
+	/*
+	Variables:
+	dice = number of dice to be rolled, defined by user
+	vresult = result of a dice roll
+	vrolled = number of dice that have been rolled
+	vdiff = difficulty (target) number
+	vsuccess = number of successful rolls
+	*/
+
+	// initialize array to store results of "dice rolls"
+	var vdice, vrolled, vresult, vdiff, vsuccess, dsuccess, result;
+	var aresults = [];
+
+</script>
+</head>
+
+<body>
+
+	<h2>Storyteller dice roller</h2>
+
+	<!--User selects number of 10-sided dice to be rolled, and target number -->
+	Number of dice: <input type="number" value="5" id="dice"><br>
+	Difficulty: <input type="number" value="6" id="diff"><br>
+
+	<!--Button executes the "roll" function-->
+	<button onclick="roll()">Roll</button>
+
+<script>
+
+	function roll() {
+
+	// store user input of "Number of dice" as vdice variable
+	var vdice = document.getElementById("dice").value;
+
+	// store user input of "Difficulty" as vdiff variable
+	var vdiff = document.getElementById("diff").value;
+
+		// simulates rolling a number of 10-sided dice
+			// for loop:
+			// set vrolled to 0;
+			// run loop if vrolled is less than dice;
+			// increase vrolled by 1 each time loop is run
+			// continue for as many times as there are "dice"
+		for (vrolled = 0; vrolled <= vdice; vrolled++) {
+
+		// Create a random number between 1 and 10
+		var vresult=Math.floor(Math.random() * 10) + 1;
+
+		// append the new dice roll result to the array
+		aresults.push(vresult);
+
+		}
+	}
+
+	// Display variable results in console
+	console.log("Results array");
+	console.log(aresults);
+	console.log("Dice to be rolled");
+	console.log(vdice);
+	console.log("Roll result");
+	console.log(vresult);
+	console.log("Difficulty");
+	console.log(vdiff);
+	console.log("Dice rolled");
+	console.log(vrolled);
+</script>
+</body>

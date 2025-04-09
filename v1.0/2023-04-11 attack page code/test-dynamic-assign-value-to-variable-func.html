@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body>
+                                <div>
+                                    <label for="charname"><strong>Name: </strong></label><input type="text" name="charname" id="charname" value="Joe" placeholder="Joe" max="10" onchange="setValue(this)">
+                                </div>
+
+    <label for="label">Select a menu item:</label>
+    <select id="MenuOne" class="TestMenu" onchange="setValue(this)">
+        <option selected value="9999">Numbers</option>
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+    </select>
+    <select id="MenuTwo" class="TestMenu" onchange="setValue(this)">
+        <option selected value="9999">Phonetics</option>
+        <option value="alpha">Alpha</option>
+        <option value="bravo">Bravo</option>
+        <option value="charlie">Charlie</option>
+    </select>
+    <select id="MenuThree" class="TestMenu" onchange="setValue(this)">
+        <option selected value="9999">RGB</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select>
+    <select id="MenuFour" class="TestMenu" onchange="setValue(this)">
+        <option selected value="9999">Pets</option>
+        <option value="cat">Cat</option>
+        <option value="dog">Dog</option>
+        <option value="hamster">Hamster</option>
+    </select>
+    <div id="label"></div>
+    <select id="MenuFive" class="TestMenu" onchange="setValueNumber(this)">
+        <option selected value="9999">Integars</option>
+        <option value=1>1</option>
+        <option value=222>222</option>
+        <option value=3333>3333</option>
+    </select>
+    <div id="label"></div>
+
+    <div class="side-menu-item" style="justify-content: center;" id="specialisedBox">
+        <input type="checkbox" class="switch" id="specialised" title="specialised skill" name="specialised" value="specialised" onchange="setValueCheckbox(this)"><label for="specialised">Specialised</label>
+    </div>
+
+
+
+</body>
+
+<script>
+/* function setMenuValue(menuId) {
+  // Get the selected option from the menu.
+  var selectedOption = document.getElementById(menuId).options[
+    document.getElementById(menuId).selectedIndex
+  ];
+
+  // Set the value of the "menuItem" variable to the value of the selected option.
+  var menuItem = selectedOption.value;
+  
+  console.log(`Selected menu value is ${menuItem}`);
+} */
+
+var createdVariables = {};
+var createdVariablesCounter = 0;
+
+function setValue(elementId) {
+    // assign value of selected HTML element to variable named after element's ID
+    // HTML syntax:
+    // menus: onchange = setValue(this) or
+    // buttons: onclick = setValue(this) 
+
+    window[elementId] = elementId.value;
+
+   console.log("+++ get Value function +++")
+    console.log(`variable ${elementId.id} is ${window[elementId]}, and is a ${typeof window[elementId]}`);
+
+
+    // increase createdVariablesCounter by 1
+    createdVariablesCounter += 1
+
+    // add name of variable to createdVariables object
+    createdVariables[`Created variable ${createdVariablesCounter}`] = elementId.id;
+
+    console.log(createdVariables);
+
+    // getCharacterName();
+}
+
+function setValueNumber(elementId) {
+    // assign value of selected HTML element to variable named after element's ID
+    // HTML syntax:
+    // menus: onchange = setValue(this) or
+    // buttons: onclick = setValue(this) 
+
+    window[elementId] = Number(elementId.value);
+
+   console.log("+++ get Value function +++")
+    console.log(`variable ${elementId.id} is ${window[elementId]}, and is a ${typeof window[elementId]}`);
+
+
+    // increase createdVariablesCounter by 1
+    createdVariablesCounter += 1
+
+    // add name of variable to createdVariables object
+    createdVariables[`Created variable ${createdVariablesCounter}`] = elementId.id;
+
+    // console.log(createdVariables);
+}
+
+function setValueCheckbox(elementId) {
+    // assign value of selected HTML element to variable named after element's ID
+    // HTML syntax:
+    // menus: onchange = setValue(this) or
+    // buttons: onclick = setValue(this) 
+
+    window[elementId] = elementId.checked;
+
+   console.log("+++ get Value function +++")
+    console.log(`variable ${elementId.id} is ${window[elementId]}, and is a ${typeof window[elementId]}`);
+
+    // increase createdVariablesCounter by 1
+    createdVariablesCounter += 1
+
+    // add name of variable to createdVariables object
+    createdVariables[`Created variable ${createdVariablesCounter}`] = elementId.id;
+    createdVariables[`Name is `] = charname;
+    // console.log(createdVariables);
+}
+
+function getCharacterName() {
+    characterName = document.getElementById("charname").value;
+
+    console.log(`Name is ${characterName}`);
+}
+
+
+</script>
+
+</html>

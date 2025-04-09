@@ -1,0 +1,213 @@
+Ranged weapon functions workflow
+
+VARIABLES
+var attackBaseDicePool;
+var attackBonusDiceAiming;
+var attackBonusDiceRateOfFire;
+var attackBonusDiceScope;
+var attackBonusDiceUser;
+var attackBonusSuccessUser;
+var attackBotches;
+var attackDiceRollArray = [];
+var attackDifficultyBase;
+var attackDifficultyModifierUser;
+var attackDifficultyPenaltyAttackerCover;
+var attackDifficultyPenaltyDefenderCover;
+var attackDifficultyPenaltyFlanking;
+var attackDifficultyPenaltyRateOfFire;
+var attackModifierDiceUser;
+var attackPenaltySuccessUser;
+var attackRollResult;
+var attackSuccesses;
+var attackType;
+var damageBonusRateOfFire;
+var damageBonusAttackRollSuccesses;
+var damageBonusSuccessesUser;
+var damageDiceRollArray = [];
+var damageDicePool;
+var damageDicePoolBase;
+var damageDifficulty;
+var damageDifficultyBase;
+var damageDifficultyModifierUser;
+var damageDiceModifierUser;
+var damageRollResult;
+var damageSuccesses;
+var damageSuccessesModifierUser;
+var damageType;
+var dicePenaltyHealth;
+var specialised;
+var weaponType;
+
+
+variables baseline values:
+    attackBaseDicePool = Number(0);
+    attackBonusDiceAiming = Number(0);
+    attackBonusDiceRateOfFire = Number(0);
+    attackBonusDiceScope = "false";
+    attackBonusDiceUser = Number(0);
+    attackBonusSuccessUser = Number(0);
+    attackBotches = Number(0);
+    attackDiceRollArray = [];
+    attackDifficultyBase = Number(6);
+    attackDifficultyModifierUser = Number(0);
+    attackDifficultyPenaltyAttackerCover = Number(0);
+    attackDifficultyPenaltyDefenderCover = Number(0);
+    attackDifficultyPenaltyFlanking = Number(0);
+    attackDifficultyPenaltyRateOfFire = Number(0);
+    attackModifierDiceUser = Number(0);
+    attackPenaltySuccessUser = Number(0);
+    attackRollResult = Number(0);
+    attackSuccesses = Number(0);
+    attackType = "melee";
+    damageBonusAttackRollSuccesses = Number(0);
+    damageBonusRateOfFire = Number(0);
+    damageBonusSuccessesUser = Number(0);
+    damageDiceModifierUser = Number(0);
+    damageDicePool = Number(0);
+    damageDicePoolBase = Number(0);
+    damageDiceRollArray = []];
+    damageDifficulty = Number(6);
+    damageDifficultyBase = Number(6);
+    damageDifficultyModifierUser = Number(0);
+    damageSuccessesModifierUser = Number(0);
+    damageRollResult = Number(0);
+    damageSuccesses = Number(0);
+    damageType = "bashing";
+    dicePenaltyHealth = Number(0);
+    specialised = "false";
+    weaponType = "";
+
+
+User selects ranged/thrown weapon from menu:
+    Remove UI elements depending on weapon selection
+    Add UI elements depending on weapon selection
+    Set variables from user selection:
+        attackType variable 
+        weaponType variable
+
+
+Set following based on weapon selection:
+    attackBaseDicePool to (ability + attribute)
+    attackDifficultyBase based on weapon
+    damageDicePoolBase based on weapon
+    damageType from user selection
+    attackType from user selection
+
+User selects Health Level from menu:
+    set dicePenaltyHealth
+
+User sets following checkboxes:
+        specialised
+        opponent stunned
+        changed action
+        called shot
+        target moving
+        scoped weapon
+
+User sets following menu options:
+        fire rate
+        target range
+        shooter's cover
+        defender's cover
+        attack direction
+
+User enters following fields
+        turns aimed
+        user damage modifier (plus/minus)
+        damage successes modifiers (plus/minus)
+
+    
+    attack dice pool value modifiers:
+        attackBonusDiceUser
+        attackBonusDiceScope
+        attackBonusDiceAiming
+        attackBonusDiceRateOfFire
+        attackModifierDiceUser
+
+    set attack bonus successes:
+        attackBonusSuccessUser
+
+    set attack penalty successes:
+        attackPenaltySuccessUser
+
+    set difficulty value modifiers:
+        attackDifficultyPenaltyAttackerCover
+        attackDifficultyPenaltyDefenderCover
+        attackDifficultyModifierUser
+        attackDifficultyPenaltyRateOfFire
+        attackDifficultyPenaltyFlanking
+
+    set damage dice pool value modifiers:
+        damageBonusRateOfFire
+        damageDiceModifierUser
+
+    set damage successes bonus:
+        damageBonusSuccessesUser
+
+    set damage successes penalty:
+        damageSuccessesModifierUser
+
+
+User clicks ATTACK button
+
+Make attack roll
+    set attackDicePool to ((attackBaseDicePool + attackBonusDiceUser + attackBonusDiceScope + attackBonusDiceAiming + attackBonusDiceRateOfFire) - (attackPenaltyDiceUser + dicePenaltyHealth)), with minimum value of 1
+
+    set attackDifficulty to attackDifficultyBase minus (attackDifficultyModifierUser + attackDifficultyPenaltyAttackerCover + attackDifficultyPenaltyDefenderCover + attackDifficultyPenaltyRateOfFire + attackDifficultyPenaltyFlanking), with minimum value of 2 and maximum value of 10
+
+Roll dice
+    let rollResult = Generate random intergar number between 1 and 10
+
+    add rollResult to attackDiceRollArray
+
+    if rollResult == 1, add 1 to attackBotches
+    
+    if specialised == false && (rollResult >= attackDifficulty && rollResult <= 9) add 1 to attackSuccesses
+
+    if specialised == false && rollResult == 10 add 2 to attackSuccesses
+
+    if specialised == true && (rollResult >= attackDifficulty && rollResult <= 8) add 1 to attackSuccesses 
+
+    if specialised == true && (rollResult >= 9) add 2 to attackSuccesses
+
+    add + 1 to counter
+
+    repeat dice roll until counter == attackDicePool
+
+Calculate result of attack roll:
+    set attackRollResult = ((attackSuccesses + attackBonusSuccessUser) - (attackBotches + attackPenaltySuccessUser)
+
+    if attackRollResult <= -1, display result: attackDiceRollArray and botch
+ 
+    if attackRollResult == 0, display result: attackDiceRollArray and fail
+ 
+    if attackRollResult >= 1, call damage roll function
+    
+Make damage roll
+    set damageBonusAttackRollSuccesses to attackRollResult - 1, minimum 0
+
+    if attackType == "melee" set damageDicePool to ((damageDicePoolBase + damageBonusRateOfFire + damageDiceModifierUser) - (damagePenaltyDiceUser + dicePenaltyHealth)), with minimum value of 1
+
+    if attackType == "ranged" set damageDicePool to ((damageDicePoolBase + damageBonusRateOfFire + damageDiceModifierUser) - damagePenaltyDiceUser, with minimum value of 1
+
+    set damageDifficulty to (damageDifficultyBase - damageDifficultyModifierUser), with minimum value of 2 and maximum value of 10
+
+Roll dice
+    let rollResult = Generate random intergar number between 1 and 10
+
+    add rollResult to damageDiceRollArray
+
+    if rollResult >= damageDifficulty && 10, add 1 to damageSuccesses
+
+    add + 1 to counter
+
+    repeat dice roll until counter == damageDicePool
+
+Calculate result of damage roll:
+    set damageRollResult = ((damageSuccesses + damageBonusSuccessesUser + damageBonusAttackRollSuccesses) - damageSuccessesModifierUser)
+
+if:
+    damageRollResult <= 0, display result: No damage inflicted
+    damageRollResult >= 1, display result: Hit! damageRollResult levels of damageType damage inflicted
+
+

@@ -1,0 +1,10 @@
+NEXT JOB
+
+setAttackRollModifiers()
+one function
+switch: ranged and melee
+
+range - total dice and diff mods for ranged attacks and damage
+
+melee - total dice and diff mods for ranged attacks and damage
+

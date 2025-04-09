@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<div class="centre RageOptions">
+  <select id="MoonPhase" class="menu shadow">
+    <option value="9999" selected>Moon phase</option>
+    <option value="1">Full</option>
+    <option value="2">Crescent</option>
+    <option value="3">Half</option>
+    <option value="4">Gibbous</option>
+    <option value="5">New</option>
+  </select>
+</div>
+<p>&nbsp</p>
+<div>
+  <div class="centre RageOptions">
+    <select id="Auspice" class="menu shadow">
+      <option value="9999" selected>Auspice</option>
+      <option value="1">Ahroun</option>
+      <option value="2">Theurge</option>
+      <option value="3">Philodox</option>
+      <option value="4">Galliard</option>
+      <option value="5">Ragabash</option>
+    </select>
+  </div>
+  <p>&nbsp</p>
+  <div class="centre RageOptions">
+    <select id="Rank" class="menu shadow">
+      <option value="9999" selected>Rank</option>
+      <option value="0">Cub (0)</option>
+      <option value="1">Cliath (1)</option>
+      <option value="2">Fostern (2)</option>
+      <option value="3">Adren (3)</option>
+      <option value="4">Athro (4)</option>
+      <option value="5">Elder (5)</option>
+      <option value="6">Legend (6)</option>
+    </select>
+  </div>
+</div>
+</body>
+
+<script type="text/javascript">
+	const setMenuValue = (menuId) => {
+  document
+    .getElementById(menuId)
+    .addEventListener("change", ({ target: { value } }) => {
+      window[menuId] = Number(value);
+      console.log(menuId, window[menuId]);
+    console.log("menu variable is: " + menuId);
+    console.log("variable value is: " + value);
+
+    });
+};
+
+let MoonPhase = "9999";
+let Auspice = "9999";
+let Rank = 0;
+
+setMenuValue("MoonPhase");
+setMenuValue("Auspice");
+setMenuValue("Rank");
+
+	
+</script>
+
+</html>

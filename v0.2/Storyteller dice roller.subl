@@ -1,0 +1,94 @@
+## Variables
+Variable: Difficulty
+Variable: DiceNo ##No. of dice
+Variable(s): DiceResult ##Individual dice roll result
+Variable: Successes
+Variable: Botches
+Variable: FinalResult ##Successes minus botches
+
+## Reset variables
+Set DiceResult to 0
+Set Difficulty to 6
+Set DiceNo to 0
+Set Successes to 0
+Set OppSuccesses to 0
+Set Botches to 0
+Set FinalResult to 0
+
+
+## User input
+Ask user for input: "No. of dice to roll?"
+Add input to DiceNo
+
+Ask user for input: "Difficulty?"
+Add input to Difficulty
+
+Ask user for input: "Opponent's successes (default 0)?"
+Add input to OppSuccesses
+
+##Roll dice
+
+##Check no. dice to be rolled, and roll if needed
+
+If NoDice > 0 ## not all dice rolled
+
+Add RND 10 to DiceResult ## dice roll
+
+	#Check result of dice roll
+
+		If DiceResult = 10 Then Add 2 to Successes
+
+		END IF
+
+			If DiceResult => 1 and < Difficulty Add 1 to Botches, Subtract 1 to DiceNo
+
+				END IF
+
+					If DiceResult => Difficulty and < 10 Add 1 to Successes, Subtract 1 to DiceNo
+
+					END IF
+
+If NoDice = 0 ## all dice rolled
+
+END IF
+
+
+## Calculate final result
+
+If Successes = 0 and Botches => 1
+
+	Display: BOTCH!
+
+	END SCRIPT
+
+		If Successes = 0 and Botches = 0
+
+		Display: Fail
+
+		END SCRIPT
+
+
+If Successes => 1
+
+Add (Successes minus (Botches plus OppSuccesses)) to FinalResult
+
+	If FinalResult = 1
+
+	Display: "1 success"
+
+	END IF
+
+		If FinalResult => 2
+
+		Display: "[FinalResult] successes"
+
+		END IF
+
+			If FinalResult <= 0
+
+			Display: "Fail!"
+
+			END IF
+
+END SCRIPT
+

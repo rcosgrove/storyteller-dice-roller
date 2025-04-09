@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+	<script type="text/javascript">
+		var text = "";
+var dice = 10;
+var vrolled;
+
+	function roll {
+		for (vrolled = 0; vrolled < dice; vrolled++);
+			text += "Number of dice rolled is " + vrolled + "<br>";
+		document.getElementById("demo").innerHTML = text;
+	}
+</script>
+
+</head>
+
+<html>
+<body>
+
+<h2>JavaScript Loops</h2>
+
+<!--
+<script>
+function roll {
+
+for (vrolled = 0; vrolled < dice; vrolled++);
+
+text += "The number of dice rolled is " + vrolled + "<br>";
+
+document.getElementById("demo").innerHTML = text;
+
+vrolled is
+  	<script type="text/javascript">
+    document.write(vrolled)
+}
+</script>
+-->
+
+<p id="demo"></p>
+
+
+<button onclick="roll">Roll</button>
+
+
+</body>
+</html>

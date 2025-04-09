@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Attack page - WtA20 dice roller</title>
+
+    <script src="attack-page.js"></script>
+    <script src="stats-page.js"></script>
+    <script src="WtA20-roller.js"></script>
+    <script src="diagnostic-functions.js"></script>
+    <script src="new-ranged-attack-function.js"></script>
+
+    <!-- <link rel="stylesheet" href="WtA20-roller.css"> -->
+
+    <style>
+
+        tr {
+     display: flex;
+}
+
+h4 {
+font: 0.9em sans-serif;
+font-weight: 700;
+    text-align: center;
+
+}
+
+label {
+font: 0.9em sans-serif;
+}
+
+input {
+font: sans-serif;
+}
+
+h5 {
+font: 0.8em sans-serif;
+font-weight: 700;
+    text-align: center;
+
+}
+
+section > div {
+display: flex;
+flex-direction: column;
+align-content: flex-start;
+justify-content: space-between;
+flex-wrap: wrap;
+border-right-style: solid;
+border-width: 1px;
+margin-right: 5px;
+padding-right: 10px;
+}
+
+select, button {
+display: flex;
+align-items: center;
+lex-direction: row;
+margin-bottom: 3px;
+width: 100%;
+text-align: center;
+text-transform: uppercase;
+
+}
+
+select {
+    background-color: lightgray;
+}
+
+button > label {
+margin: auto;
+text-transform: uppercase;
+}
+
+.number-entry {
+align-self: right;
+}
+
+.side-menu-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
+margin-bottom: 3px;
+}
+
+.healthLevelTrackingButton {
+  width: 12em;
+  text-transform: uppercase;
+}
+
+
+</style>
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td class="side-menu-item" style="background-color: lightseagreen; margin-right: 3px;">
+                <!-- <div class="flex column float-left ce" id="user-input-menu"> -->
+                <!-- CHARACTER STATS -->
+                <!-- updating of displayed values when form changes is working -->
+                <section id="CharacterStats">
+                    <!-- <div class="SideMenuRow"> -->
+                    <section id="identity">
+                        <div class="side-menu-item right-padding">
+                            <h4>Identity</h4>
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="charname"><strong>Name: </strong></label><input type="text" name="charname" id="charname" value="Joe" placeholder="Joe" max="10" onchange="getElementValue(this)">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="speciesMenu">Species</label><select id="speciesMenu" onchange="setSpecies()" class="menu shadow">
+                                <option value="garou" selected>Garou</option>
+                                <option value="human">Human</option>
+                            </select>
+                        </div>
+                    </section>
+                    <section id="attributes">
+                        <div class="side-menu-item right-padding">
+                            <h4>Attributes</h4>
+                        </div>
+
+                        <div class="side-menu-item right-padding">
+                            <label for="strength" class="right-align"><span class="side-menu-item-label stats" style="font-weight: 700;">Strength</span></label><input class="number-entry" id="strength" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="dexterity" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dexterity</span></label><input class="number-entry" id="dexterity" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="stamina" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Stamina</span></label><input class="number-entry" id="stamina" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="wits" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Wits</span></label><input class="number-entry" id="wits" type="number" maxlength="1" min="1" max="5" value="4" placeholder="5">
+                        </div>
+                    </section>
+                    <section id="abilities">
+
+                        <div class="side-menu-item right-padding">
+                            <h4>Abilities</h4>
+                        </div>
+
+                        <div class="side-menu-item right-padding">
+                            <label for="brawl" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Brawl</span></label><input class="number-entry" id="brawl" type="number" maxlength="1" min="1" max="5" value="4" placeholder="4">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="melee" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Melee</span></label><input class="number-entry" id="melee" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="firearms" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Firearms</span></label><input class="number-entry" id="firearms" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="dodge" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dodge</span></label><input class="number-entry" id="dodge" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="athletics" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Athletics</span></label><input class="number-entry" id="athletics" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="athletics" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Subterfuge</span></label><input class="number-entry" id="subterfuge" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                        </div>
+                    </section>
+                    <section id="modifiers">
+
+                        <div class="side-menu-item right-padding">
+                            <h4>Modifiers</h4>
+                        </div>
+
+                        <div class="side-menu-item right-padding" id="difftitle">
+                            <label for="UserDiff" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Difficulty</span></label><input class="number-entry required" id="UserDiff" type="number" maxlength="3" min="2" max="10" value="6" placeholder="6" required>
+                        </div>
+
+                        <div class="side-menu-item right-padding">
+                            <label for="userDifficultyModifier" class="right-align"><span class="side-menu-item-label">Difficulty<br>modifier</span></label><input class="number-entry" id="userDifficultyModifier" type="number" maxlength="3" min="-8" max="8" value="0" placeholder="0" title="Difficulty modifier (-/+8)">
+                        </div>
+
+                        <div class="side-menu-item right-padding">
+                            <label for="DicePenalty" class="right-align"><span class="side-menu-item-label">Dice<br>modifier</span></label><input class="number-entry" id="userDiceModifier" type="number" maxlength="3" min="-20" max="20" value="0" placeholder="0" title="Bonus/penalty dice">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="UserWinsExtra" class="right-align"><span class="side-menu-item-label">Bonus<br>successes</span></label><input class="number-entry" id="UserWinsExtra" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="UserBotchesExtra" class="right-align"><span class="side-menu-item-label">Penalty<br>botches</span></label><input class="number-entry" id="UserBotchesExtra" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0">
+                        </div>
+                    </section>
+                    <section id="saveStatsContainer">
+                        <div class="side-menu-item right-padding">
+                            <h4>Save/load characters</h4>
+                        </div>
+                        <div id="SaveStatsButton">
+                            <!-- save stats button -->
+                            <button type="button" class="roll clickHandler shadow" name="savestats" value="" id="savestats" title="Save stats" onclick="saveCharacter()"><label class="roll" for="savestats">Save character</label></button>
+                        </div>
+                        <div id="RecallStatsButton">
+                            <!-- save stats button -->
+                            <button type="submit" class="roll clickHandler shadow" name="loadstats" value="" id="loadstats" title="Load stats" onclick="loadCharacter()"><label class="roll" for="loadstats">Load character</label></button>
+                        </div>
+                        <div id="DeleteCharButton">
+                            <button type="submit" class="roll clickHandler shadow" name="deletechar" value="" id="deletechar" title="Delete a character" onclick="deleteCharacter()"><label class="roll" for="deletechar">Delete character</label></button>
+                        </div>
+                        <div id="ListCharButton">
+                            <button type="submit" class="roll clickHandler shadow" name="liststats" value="" id="liststats" title="List stats" onclick="listCharacters()"><label class="roll" for="liststats">List stats</label></button>
+                        </div>
+                        <div id="ShowCharsButton">
+                            <button type="submit" class="roll clickHandler shadow" name="showchars" value="" id="showchars" title="Show chars" onclick="listCharacters()"><label class="roll" for="showchars">Show chars</label></button>
+                        </div>
+                        <div id="DeleteAllButton">
+                            <button type="submit" class="roll clickHandler shadow" name="deleteall" value="" id="deleteall" title="Delete all characters" onclick="deleteAllCharacters()"><label class="roll" for="deleteall">Delete all characters</label></button>
+                        </div>
+                    </section>
+                    <!-- </div> -->
+                </section>
+                <!-- </div> -->
+            </td>
+            <td style="display: flex; flex-direction: column; align-content: flex-start;">
+                <!-- COMBAT -->
+                <section class="combat">
+                    <section id="combat-title">
+                        <div class="side-menu-item right-padding">
+                            <h4>Combat</h4>
+                        </div>
+                    </section>
+                    <section id="combatMelee">
+                        <div class="side-menu-item right-padding">
+                            <h4>Brawl attacks</h4>
+                            <!-- bite, claw, tackle, grapple, kick, punch buttons working -->
+                        </div>
+                        <div id="biteRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="bite" value="bite" id="bite" title="Bite attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="bite">Bite</label></button>
+                        </div>
+                        <div id="clawRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="claw" value="claw" id="claw" title="Claw attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="claw">Claw</label></button>
+                        </div>
+                        <div id="tackleRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="tackle" value="tackle" id="tackle" title="Bite attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="tackle">Body tackle</label></button>
+                        </div>
+                        <div id="grappleRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="grapple" value="grapple" id="grapple" title="Grapple attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="grapple">Grapple</label></button>
+                        </div>
+                        <div id="kickRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="kick" value="kick" id="kick" title="Kick attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="kick">Kick</label></button>
+                        </div>
+                        <div id="punchRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="punch" value="punch" id="punch" title="Punch attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="punch">Punch</label></button>
+                        </div>
+                    </section>
+                    <section id="meleeAttacks">
+                        <div class="side-menu-item right-padding">
+                            <h4>Melee weapons</h4>
+                        </div>
+                        <section id="meleeWeapons">
+                            <div class="side-menu-item" id="meleeWeaponsDiv">
+                                <form id="meleeWeaponsMenus">
+                                    <select class="side-menu-item" id="bluntWeaponsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Blunt</option>
+                                        <option value="baseballBat">Baseball bat</option>
+                                        <option value="chain">Chain</option>
+                                        <option value="mace">Mace</option>
+                                        <option value="sap">Sap</option>
+                                        <option value="staff">Staff</option>
+                                    </select>
+                                    <select class="side-menu-item" id="edgedWeaponsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Edged</option>
+                                        <option value="axe">Axe</option>
+                                        <option value="chainsaw">Chainsaw</option>
+                                        <option value="klaive">Klaive</option>
+                                        <option value="klaiveGrand">Grand klaive</option>
+                                        <option value="knife">Knife</option>
+                                        <option value="sword">Sword</option>
+                                        <option value="whip">Whip</option>
+                                        <option value="tomahawk">Tomahawk</option>
+                                    </select>
+                                    <select class="side-menu-item" id="medievalWeaponsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Medieval stuff</option>
+                                        <option value="axeGreat">Great axe</option>
+                                        <option value="mace">Mace</option>
+                                        <option value="polearm">Polearm</option>
+                                        <option value="spear">Spear</option>
+                                        <option value="spikedClub">Spiked Club</option>
+                                        <option value="spikedClubHuge">Huge spiked club</option>
+                                        <option value="spikedGauntlet">Spiked gauntlet</option>
+                                        <option value="swordGreat">Great sword</option>
+                                    </select>
+                                    <select class="side-menu-item" id="improvisedWeaponsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Improvised</option>
+                                        <option value="bottle">Broken bottle</option>
+                                        <option value="chair">Chair</option>
+                                        <option value="table">Table</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </section>
+                    </section>
+                    <section id="dirtyCombat">
+                        <div class="side-menu-item right-padding">
+                            <h4>Dirty fighting</h4>
+                            <!-- damage display not working properly -->
+                        </div>
+                        <div id="blindingRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="blinding" value="blinding" id="blinding" title="Blinding attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="blinding">Blinding</label></button>
+                            <!-- dexterity + subterfuge -->
+                            <!-- diff: 9 -->
+                            <!-- homid, glabro, crinos -->
+                        </div>
+                        <div id="bodyslamRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="bodyslam" value="bodyslam" id="bodyslam" title="Body slam attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="bodyslam">Body slam</label></button>
+                            <!-- dexterity + brawl -->
+                            <!-- diff: 6 -->
+                            <!-- homid, glabro, crinos -->
+                        </div>
+                        <div id="curbstompRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="curbstomp" value="curbstomp" id="curbstomp" title="Curbstomp attack" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="curbstomp">Curbstomp</label></button>
+                            <!-- strength + brawl -->
+                            <!-- diff: 6 -->
+                            <!-- homid, glabro, crinos -->
+                        </div>
+                        <div id="lowblowRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="lowblow" value="lowblow" id="lowblow" title="Low blow" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="lowblow">Low blow</label></button>
+                            <!-- homid, glabro, crinos, hispo, lupus -->
+                            <!-- dexterity + brawl -->
+                            <!-- diff: 7 -->
+                        </div>
+                        <div id="pistolwhipRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="pistolwhip" value="pistolwhip" id="pistolwhip" title="Pistol whip" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="pistolwhip">Pistol whip</label></button>
+                            <!-- homid, glabro -->
+                            <!-- dexterity + melee -->
+                            <!-- diff: 7 -->
+                        </div>
+                    </section>
+                    <section id="specialMovesCombat">
+                        <div class="side-menu-item right-padding">
+                            <h4>Special maneuvers</h4>
+                        </div>
+                        <div id="hamstringRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="hamstring" value="hamstring" id="hamstring" title="Hamstring" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="hamstring">Hamstring</label></button>
+                            <!-- crinos, hispo, lupus -->
+                            <!-- dexterity + brawl -->
+                            <!-- diff: 8 -->
+                        </div>
+                        <div id="hamstringMeleeRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="hamstringMelee" value="hamstringMelee" id="hamstringMelee" title="Hamstring (melee)" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="hamstringMelee">Hamstring (melee)</label></button>
+                            <!-- homid, glabro, crinos -->
+                            <!-- dexterity + brawl -->
+                            <!-- diff: 9 -->
+                        </div>
+                        <div id="jawlockRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="jawlock" value="jawlock" id="jawlock" title="Jaw lock" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="jawlock">Jaw lock</label></button>
+                            <!-- crinos, hispo, lupus -->
+                            <!-- dexterity + brawl -->
+                            <!-- diff: 6 -->
+                        </div>
+                        <div id="wishboneRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="wishbone" value="wishbone" id="wishbone" title="Wishbone" onclick="setAttackVariablesThenCallAttack(this.id)"><label class="roll" for="taunt">Wishbone</label></button>
+                            <!-- glabro, crinos, hispo, lupus -->
+                            <!-- dexterity + brawl -->
+                            <!-- diff: 6 -->
+                        </div>
+                    </section>
+                    <section id="combatDefensiveMoves">
+                        <div class="side-menu-item right-padding">
+                            <h4>Defensive maneuvers</h4>
+                        </div>
+                        <div id="dodgeRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="dodge" value="dodge" id="dodge" title="Dodge attack" onclick="setDefenseVariablesThenCallDefend(this.id)"><label class="roll" for="dodge">Dodge</label></button>
+                        </div>
+                        <div id="blockRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="block" value="block" id="block" title="Block attack" onclick="setDefenseVariablesThenCallDefend(this.id)"><label class="roll" for="block">Block</label></button>
+                        </div>
+                        <div id="parryRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="parry" value="parry" id="parry" title="Parry attack" onclick="setDefenseVariablesThenCallDefend(this.id)"><label class="roll" for="parry">Parry</label></button>
+                        </div>
+                        <div id="evasiveRollButton">
+                            <button type="button" class="roll clickHandler shadow" name="evasiveaction" value="evasiveaction" id="evasiveaction" title="Evasive action" onclick="setDefenseVariablesThenCallDefend(this.id)"><label class="roll" for="evasiveaction">Evasive action</label></button>
+                        </div>
+                    </section>
+                </section>
+            </td>
+            <td>
+                <section class="combat">
+                    <section id="combatCommonRolls">
+                        <div class="side-menu-item right-padding">
+                            <h4>Common modifiers</h4>
+                        </div>
+                        <div class="side-menu-item" id="HealthMenu">
+                            <select id="HealthLevelMenu" class="menu shadow">
+                                <option value="0" selected>Health level</option>
+                                <!-- Uninjured: no effect-->
+                                <option value="0">Uninjured</option>
+                                <!-- Bruised: no effect-->
+                                <option value="0">Bruised</option>
+                                <!-- Hurt: DicePool -1 -->
+                                <option value="-1">Hurt</option>
+                                <!-- Wounded: DicePool -1 -->
+                                <option value="-1">Wounded</option>
+                                <!-- Mauled: DicePool -2 -->
+                                <option value="-2">Mauled</option>
+                                <!-- Crippled: DicePool -2 -->
+                                <option value="-2">Crippled</option>
+                                <!-- Mauled: DicePool -5 -->
+                                <option value="-5">Incapacitated</option>
+                            </select>
+                        </div>
+                        <div class="side-menu-item" id="armorMenuDiv">
+                            <select id="armorMenu" onchange="setArmor()" class="menu shadow">
+                                <option value="none" selected>Armor</option>
+                                <option value="bearskinCoat">Bearskin coat</option>
+                                <option value="clothesTough">Reinforced clothes</option>
+                                <option value="hide1">Tough hide (1)</option>
+                                <option value="hide2">Tough hide (2)</option>
+                                <option value="hide3">Tough hide (3)</option>
+                                <option value="bikerJacket">Biker jacket</option>
+                                <option value="leatherJacket">Leather jacket</option>
+                                <option value="leatherRaincoat">Leather raincoat</option>
+                                <option value="riotSuit">Riot suit</option>
+                                <option value="steelBreastplate">Steel breastplate</option>
+                                <option value="trashcan">Trash can</option>
+                                <option value="vestFlak">Flak vest</option>
+                                <option value="vestKevlar">Kevlar vest</option>
+                            </select>
+                        </div>
+                        <div class="side-menu-item" id="FormMenus">
+                            <select id="formMenuGarou" onchange="setFormGarou()" class="menu shadow">
+                                <option value="homid" selected>Garou form</option>
+                                <option value="homid">Homid</option>
+                                <option value="glabro">Glabro</option>
+                                <option value="crinos">Crinos</option>
+                                <option value="hispo">Hispo</option>
+                                <option value="lupus">Lupus</option>
+                            </select>
+                        </div>
+                        <div class="side-menu-item" id="flankingMenu" onchange="getElementValue(this)">
+                            <select id="attackDirection" class="menu shadow" title="Flank or rear attack">
+                                <option value="0" selected>Attack direction</option>
+                                <option value="front">Frontal</option>
+                                <option value="flank">Flank/side</option>
+                                <option value="behind">Behind</option>
+                            </select>
+                        </div>
+                        <!-- specialised skill -->
+                        <div class="side-menu-item" style="justify-content: left;" id="specialisedBox">
+                            <input type="checkbox" class="switch" id="specialised" title="specialised skill" name="specialised" value="specialised" onclick="getCheckboxValue(this)"><label for="specialised">Specialised</label>
+                        </div>
+                        <!-- Stunned opponent -->
+                        <div class="side-menu-item" style="justify-content: left;" id="stunnedDiv">
+                            <input type="checkbox" class="combatCheckbox switch" id="opponentStunned" title="Stunned/immobile opponent" name="opponentStunned" value="opponentStunned" onclick="getCheckboxValue(this)"><label for="opponentStunned">Opponent stunned/immobile</label>
+                            <!-- -2 difficulty on attack roll -->
+                        </div>
+                        <div class="side-menu-item" style="justify-content: left;" id="newActionDiv">
+                            <input type="checkbox" class="combatCheckbox switch" id="changedAction" title="Changed action" name="changedAction" value="changed" onclick="getCheckboxValue(this)"><label for="changedAction">Changed action</label>
+                            <!-- +1 to attack difficulty -->
+                        </div>
+                        <div>
+                            <h4>Dice/diff modifiers</h4>
+                        </div>
+                        <!-- Attack success modifier -->
+                        <div class="side-menu-item right-padding">
+                            <label for="attackBonusSuccessUser" style="justify-content: left;"><span class="side-menu-item-label">Bonus attack<br>successes</span></label><input class="number-entry" id="attackBonusSuccessUser" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0" onchange="getElementValueNumber(this)">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="attackPenaltyBotchesUser" class="right-align"><span class="side-menu-item-label">Extra attack<br>botches</span></label><input class="number-entry" id="attackPenaltyBotchesUser" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0" onchange="getElementValue(this)">
+                        </div>
+                        <!-- Damage dice pool modifier -->
+                        <div class="side-menu-item right-padding">
+                            <label for="attackDicePoolModifierUser" class="right-align"><span class="side-menu-item-label">Attack dice<br>pool modifier</span></label><input class="number-entry" id="attackDicePoolModifierUser" type="number" maxlength="2" min="-30" max="30" value="0" placeholder="0" title="Damage successes modifier" onchange="getElementValue(this)">
+                        </div>
+                        <!-- Damage success modifier -->
+                        <div class="side-menu-item right-padding">
+                            <label for="damageBonusSuccessUser" class="right-align"><span class="side-menu-item-label">Bonus damage<br>successes</span></label><input class="number-entry" id="damageBonusSuccessUser" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0" onchange="getElementValue(this)">
+                        </div>
+                        <div class="side-menu-item right-padding">
+                            <label for="damagePenaltyBotchesUser" class="right-align"><span class="side-menu-item-label">Extra damage<br>botches</span></label><input class="number-entry" id="damagePenaltyBotchesUser" type="number" maxlength="2" min="0" max="30" value="0" placeholder="0" onchange="getElementValue(this)">
+                        </div>
+                        <!-- Damage dice pool modifier -->
+                        <div class="side-menu-item right-padding">
+                            <label for="damageDicePoolModifierUser" class="right-align"><span class="side-menu-item-label">Damage dice<br>pool modifier</span></label><input class="number-entry" id="damageDicePoolModifierUser" type="number" maxlength="2" min="-30" max="30" value="0" placeholder="0" title="Damage successes modifier" onchange="getElementValue(this)">
+                        </div>
+                    </section>
+                </section>
+            </td>
+            <td>
+                <section class="combat">
+                    <section id="rangedAttacks">
+                        <div class="side-menu-item right-padding">
+                            <h4>Ranged attacks</h4>
+                        </div>
+                        <section id="combatRanged">
+                            <!-- WEAPON MENUS  -->
+                            <div class="side-menu-item" id="rangedWeaponsDiv">
+                                <form id="rangedWeaponsMenus">
+                                    <select class="side-menu-item" id="handgunsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Handguns</option>
+                                        <option value="revolverLight">Revolver, light</option>
+                                        <option value="revolverHeavy">Revolver, heavy</option>
+                                        <option value="pistolLight">Pistol, light</option>
+                                        <option value="pistolHeavy">Pistol, heavy</option>
+                                    </select>
+                                    <select class="side-menu-item" id="shotgunsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Shotguns</option>
+                                        <option value="shotgunSawnOff">Shotgun, sawn-off</option>
+                                        <option value="shotgun">Shotgun, standard</option>
+                                        <option value="shotgunSemi">Shotgun, semiauto</option>
+                                        <option value="shotgunAssault">Shotgun, assault</option>
+                                    </select>
+                                    <select class="side-menu-item" id="riflesMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Rifles and SMGs</option>
+                                        <option value="rifleHunting">Rifle, bolt action</option>
+                                        <option value="rifleHunting">Rifle, semiauto</option>
+                                        <option value="rifleAssault">Rifle, assault</option>
+                                        <option value="rifleHeavy">Rifle, large calibre</option>
+                                        <option value="smgLight">SMG, light</option>
+                                        <option value="smgHeavy">SMG, heavy</option>
+                                    </select>
+                                    <select class="side-menu-item" id="bowsMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Bows</option>
+                                        <option value="bowHunting">Bow, short</option>
+                                        <option value="bowHunting">Bow, hunting</option>
+                                        <option value="bowHunting">Bow, long</option>
+                                        <option value="xbowCommando">Crossbow, commando</option>
+                                        <option value="xbow">Crossbow</option>
+                                        <option value="xbowHeavy">Crossbow, heavy</option>
+                                    </select>
+                                    <select class="side-menu-item" id="nonlethalMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Non-lethal</option>
+                                        <option value="taser">Taser</option>
+                                        <option value="tearGas">Tear gas</option>
+                                        <option value="bearMace">Bear mace</option>
+                                        <option value="riotShotgun">Riot gun</option>
+                                    </select>
+                                    <select class="side-menu-item" id="thrownMenu" onchange="setWeapon(this)" class="menu shadow">
+                                        <option value="9999" selected>Thrown weapons</option>
+                                        <option value="knifeThrown">Knife</option>
+                                        <option value="shuriken">Shuriken</option>
+                                        <option value="spearThrown">Spear</option>
+                                        <option value="stoneSmall">Stone, small</option>
+                                        <option value="stoneBig">Stone, head-sized</option>
+                                        <option value="tomahawkThrown">Tomahawk</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </section>
+                        <section>
+                            <div>
+                                <h5>Ranged attack modifiers</h5>
+                            </div>
+                            <!-- Firearm shooting mode -->
+                            <div class="side-menu-item" id="fireRate">
+                                <select id="fireRate" class="menu shadow" onchange="getElementValue(this)">
+                                    <option value="single" selected>Fire rate</option>
+                                    <option value="single">Single Shot</option>
+                                    <option value="burst">3-round burst</option>
+                                    <option value="auto">Full automatic</option>
+                                </select>
+                            </div>
+                            <!-- Firearm range -->
+                            <div class="side-menu-item" id="rangeToTargetMenu">
+                                <select id="targetRangeFirearms" class="menu shadow" onchange="getElementValue(this)">
+                                    <option value="medium" selected>Target range</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="long">Long</option>
+                                    <option value="pointblank">Point-blank</option>
+                                </select>
+                            </div>
+                            <!-- Thrown weapon -->
+                            <div class="side-menu-item" id="throwingRangeMenu">
+                                <select id="targetRangeThrownWeapons" class="menu shadow" onchange="getElementValue(this)">
+                                    <option value="standard" selected>Throwing…</option>
+                                    <option value="standard">Standard</option>
+                                    <option value="far">Far</option>
+                                    <option value="close">Close</option>
+                                    <option value="bigThing">Something big</option>
+                                </select>
+                            </div>
+                            <!-- Shooter behind cover -->
+                            <div class="side-menu-item" id="coverAttackerMenu" onchange="getElementValue(this)">
+                                <select id="coverAttacker" class="menu shadow" title="Difficulty to hit target">
+                                    <option value="none" selected>Shooter's cover</option>
+                                    <option value="none">None</option>
+                                    <option value="prone">Lying flat</option>
+                                    <option value="moving">Moving</option>
+                                    <option value="behindWall">Behind wall</option>
+                                    <option value="headExposed">Head exposed</option>
+                                </select>
+                            </div>
+                            <!-- Target behind cover -->
+                            <div class="side-menu-item" id="coverDefenderMenu" onchange="getElementValue(this)">
+                                <select id="coverDefender" class="menu shadow" title="Difficulty to hit target">
+                                    <option value="none" selected>Defender's cover</option>
+                                    <option value="none">None</option>
+                                    <option value="prone">Lying flat</option>
+                                    <option value="moving">Moving</option>
+                                    <option value="behindWall">Behind wall</option>
+                                    <option value="headExposed">Head exposed</option>
+                                </select>
+                            </div>
+                            <div class="side-menu-item" style="justify-content: left;" id="calledShotDiv">
+                                <input type="checkbox" class="combatCheckbox switch" id="calledShot" title="Called shot" name="calledShot" value="aimed" onclick="getCheckboxValue(this)"><label for="calledShot">Called shot</label>
+                                <!-- +2 to attack difficulty -->
+                            </div>
+                            <div class="side-menu-item" style="justify-content: left;" id="opponentMovingDiv">
+                                <input type="checkbox" class="combatCheckbox switch" id="opponentMoving" title="Opponent moving" name="opponentMoving" value="targetMoving" onclick="getCheckboxValue(this)"><label for="opponentMoving">Target moving</label>
+                                <!-- +1 to attack difficulty -->
+                            </div>
+                            <!-- Telescopic scope -->
+                            <div class="side-menu-item" style="justify-content: left;" id="scopeDiv">
+                                <input type="checkbox" class="combatCheckbox switch" id="scopeFitted" title="Telescopic scope" name="scope" value="scopefitted" onclick="getCheckboxValue(this)"><label for="scopeFitted">Scoped weapon</label>
+                                <!-- +2 attack dice -->
+                            </div>
+                            <!-- AIMING  -->
+                            <div class="side-menu-item right-padding" id="aimingDiv">
+                                <label for="aimingTurns"><span class="side-menu-item-label">Turns spent aiming</span></label><input class="number-entry" style="float: none;" id="aimingTurns" type="number" maxlength="2" min="0" max="10" value="0" placeholder="0" title="Turns spent aiming" onchange="getElementValue(this)">
+                                <!-- +1 dice per round aimed -->
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </td>
+            <td>
+                <section id="controls">
+                    <h4>Controls</h4>
+                    <div id="SoakRollButton">
+                        <button type="button" class="roll clickHandler shadow" name="rollsoak" value="rollSoak" id="rollsoak" title="Soak roll" onclick="rollSoak()"><label class="roll" for="rollsoak">Soak</label></button>
+                    </div>
+                    <div id="shootButton">
+                        <!-- <button type="submit" class="roll clickHandler shadow" name="shootButton" value="" id="shootButton" title="Shoot firearm" onclick="attack()"><label class="roll" for="shootButton">Shoot firearm</label></button> -->
+                    </div>
+                    <div id="thrownButton">
+                        <!-- <button type="submit" class="roll clickHandler shadow" name="throwButton" value="" id="throwButton" title="Throw weapon" onclick="attack()"><label class="roll" for="throwButton">Throw weapon</label></button> -->
+                    </div>
+                    <div id="rangedAttackButton">
+                        <button type="submit" class="roll clickHandler shadow" name="rangedAttackButton" value="" id="rangedAttackButton" title="Ranged attack" onclick="attackRanged()"><label class="roll" for="rangedAttackButton">Ranged attack</label></button>
+                    </div>
+                    <div id="resetCheckboxesDiv">
+                        <button type="submit" class="roll shadow" name="resetCheckboxes" value="" id="resetCheckboxes" title="Reset combat checkboxes" onclick="uncheckCombatCheckboxes()"><label class="roll" for="resetCheckboxes">Reset<br>checkboxes</label></button>
+                    </div>
+                    <div id="healthLevelTrackers">
+                        <input class="healthLevelTrackingButton" type="button" id="healthButton" onclick="decreaseHealthLevelDisplayed(this)" oncontextmenu="increaseHealthLevelDisplayed(this)" value="Health level"></input>
+                        <input class="healthLevelTrackingButton" type="button" id="healthButtonLowLevel" onclick="decreaseLowLevelHealthLevelDisplayed(this)" oncontextmenu="increaseLowLevelHealthLevelDisplayed(this)" value="Health level"></input>
+                    </div>
+                </section>
+                <section id="rollResults">
+                    <!-- Roll results -->
+                    <h4>Roll results</h4>
+                    <div class="flex column" id="ResultsWindow">
+                        <div class="ResultDisplay centre">
+                            <div class="RollsResults" id="RollsDiv">
+                                <p class="Results"><span id="Results"></span></p>
+                            </div>
+                            <div class="RollsResults" id="Rolls1Div">
+                                <p class="Rolls" id="Rolls"><span id="Rolls1">?</span></p>
+                            </div>
+                            <div class="RollsResults" id="Rolls2Div">
+                                <p class="Rolls2" id="Rolls2"><span id="Rolls2">?</span></p>
+                            </div>
+                            <div class="RollsResults" id="Rolls3Div">
+                                <p class="Rolls2" id="Rolls3"><span id="Rolls3">?</span></p>
+                            </div>
+                            <div class="RollsResults" id="Rolls4Div">
+                                <p class="Rolls2" id="Rolls4"><span id="Rolls4">?</span></p>
+                            </div>
+                            <div class="RollsResults" id="Rolls5Div">
+                                <p class="Rolls2" id="Rolls5"><span id="Rolls5">?</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 
+                <section>
+                    <div id="testDiv">
+                        <h3>This is a test div</h3>
+                    </div>
+                </section> -->
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

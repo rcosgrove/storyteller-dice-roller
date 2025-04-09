@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+	<!-- update with division name -->
+	<div id="radiobuttons">
+		<h3>Radio buttons</h3>
+
+		<!-- update id with name for radio button group -->
+		<form class="radiobuttons" id="RadioButtonList">
+
+			<!-- "no-border" removes border around radio button group -->
+			<fieldset class="no-border">
+
+				<legend>
+					<h4>Radio buttons</h4>
+				</legend>
+				<label class="container-radio">
+					<input type="radio" class="RadioEntry" id="one" name="ButtonGroupName" value="1" onclick="return PickRadioButton()">one
+				</label>
+				<label class="container-radio">
+					<input type="radio" class="RadioEntry" id="two" name="ButtonGroupName" value="2" onclick="return PickRadioButton()">two
+				</label>
+				<label class="container-radio">
+					<input type="radio" class="RadioEntry" id="three" name="ButtonGroupName" value="3" onclick="return PickRadioButton()">three
+				</label>
+				<label class="container-radio">
+					<input type="radio" class="RadioEntry" id="four" name="ButtonGroupName" value="4" onclick="return PickRadioButton()">four
+				</label>
+				<label class="container-radio">
+					<input type="radio" class="RadioEntry" id="five" name="ButtonGroupName" value="5" onclick="return PickRadioButton()">five
+				</label>
+			</fieldset>
+		</form>
+
+	</div>
+
+</body>
+
+<script type="text/javascript">
+
+	// CHANGE VARIABLE TO RADIO BUTTON VALUE ON CLICK 
+	 
+	function PickRadioButton() {
+		ButtonSelected = document.querySelector("input[name='ButtonGroupName']:checked");
+
+		// Send value variable to console
+
+		if (ButtonSelected != null) {
+			console.log("Radio button value is " + ButtonSelected.value);
+		}
+	}
+
+
+
+
+	// CLEAR RADIO BUTTONS
+
+	function clearRadioButtons() {
+
+		let ele = document.querySelectorAll(".RadioEntry");
+		for(let i=0;i<ele.length;i++)
+			ele[i].checked = false; 
+
+		// Send value variable to console
+		console.log("Radio buttons cleared");
+
+	}
+
+
+		<!-- Clear radio buttons -->
+		<button onclick="clearRadioButtons()">clearRadioButtons</button>
+
+</html>

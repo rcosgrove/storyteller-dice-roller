@@ -1,0 +1,209 @@
+<!-- SAVE/RECALL CHARACTER CODE v0.1.0 -->
+<!-- SAVE STATS TO JSON OBJECT WORKING -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body>
+    <div class="flex column float-left ce" id="user-input-menu">
+
+        <section id="CharacterStats">
+
+            <div class="SideMenuRow">
+
+                <div>
+                    <div class="side-menu-item right-padding">
+                        <h3>Attributes</h3>
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="charname" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Name</span></label><input class="number-entry" id="charname" type="text" maxlength="10" size="12" value="Joe" placeholder="Joe">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="strength" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Strength</span></label><input class="number-entry" id="strength" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="dexterity" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dexterity</span></label><input class="number-entry" id="dexterity" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="stamina" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Stamina</span></label><input class="number-entry" id="stamina" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="wits" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Wits</span></label><input class="number-entry" id="wits" type="number" maxlength="1" min="1" max="5" value="4" placeholder="5">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="armor" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Armor</span></label><input class="number-entry" id="armor" type="number" maxlength="2" min="1" max="10" value="5" placeholder="5">
+                    </div>
+                </div>
+
+                <div class="SideMenuRow">
+                    <div class="side-menu-item right-padding">
+                        <h3>Abilities</h3>
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="brawl" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Brawl</span></label><input class="number-entry" id="brawl" type="number" maxlength="1" min="1" max="5" value="4" placeholder="4">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="melee" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Melee</span></label><input class="number-entry" id="melee" type="number" maxlength="1" min="1" max="5" value="3" placeholder="3">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="firearms" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Firearms</span></label><input class="number-entry" id="firearms" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="dodge" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Dodge</span></label><input class="number-entry" id="dodge" type="number" maxlength="1" min="1" max="5" value="1" placeholder="1">
+                    </div>
+                    <div class="side-menu-item right-padding">
+                        <label for="athletics" class="right-align"><span class="side-menu-item-label" style="font-weight: 700;">Athletics</span></label><input class="number-entry" id="athletics" type="number" maxlength="1" min="1" max="5" value="2" placeholder="2">
+                    </div>
+                </div>
+
+                <div class="side-menu-item" id="SaveStatsContainer">
+                    <div id="SaveStatsButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="savestats" value="" id="savestats" title="Save stats" onclick="StatsSave()"><label class="roll" for="savestats">Save stats</label></button>
+                    </div>
+                    <div id="RecallStatsButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="recallstats" value="" id="recallstats" title="Recall stats" onclick="StatsRecall()"><label class="roll" for="savestats">Recall stats</label></button>
+                    </div>
+                    <div id="SoakRollButton">
+                        <!-- save stats button -->
+                        <button type="button" class="roll clickHandler shadow" name="rollsoak" value="" id="rollsoak" title="Soak roll" onclick="RollSoak()"><label class="roll" for="rollsoak">Recall stats</label></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+<script>
+// SAVE AND RECALL STATS FUNCTIONS
+// additional global variables
+
+var armor;
+var charname;
+var statAth;
+var statBra;
+var statDex;
+var statDog;
+var statFire;
+var statMel;
+var statSta;
+var statStr;
+var statWits;
+
+function StatsSave() {
+
+    armor = document.getElementById("armor").value;
+    charname = document.getElementById("charname").value;
+    statAth = document.getElementById("athletics").value;
+    statBra = document.getElementById("brawl").value;
+    statDex = document.getElementById("dexterity").value;
+    statDog = document.getElementById("dodge").value;
+    statFire = document.getElementById("firearms").value;
+    statMel = document.getElementById("melee").value;
+    statSta = document.getElementById("stamina").value;
+    statStr = document.getElementById("strength").value;
+    statWits = document.getElementById("wits").value;
+
+    // test object
+    // set object ID to charname variable 
+
+    let character = {
+        Name: "valueName",
+        set setName(valueName) {
+            this.Name = valueName;
+        },
+
+        Strength: "valueStrength",
+        set setStrength(valueStrength) {
+            this.Strength = valueStrength;
+        },
+
+        Dexterity: "valueDexterity",
+        set setDexterity(valueDexterity) {
+            this.Dexterity = valueDexterity;
+        },
+
+        Stamina: "valueStamina",
+        set setStamina(valueStamina) {
+            this.Stamina = valueStamina;
+        },
+
+        Wits: "valueWits",
+        set setWits(valueWits) {
+            this.Wits = valueWits;
+        },
+
+        Brawl: "valueBrawl",
+        set setBrawl(valueBrawl) {
+            this.Brawl = valueBrawl;
+        },
+
+        Melee: "valueMelee",
+        set setMelee(valueMelee) {
+            this.Melee = valueMelee;
+        },
+
+        Firearms: "valueFirearms",
+        set setFirearms(valueFirearms) {
+            this.Firearms = valueFirearms;
+        },
+
+        Dodge: "valueDodge",
+        set setDodge(valueDodge) {
+            this.Dodge = valueDodge;
+        },
+
+        Athletics: "valueAthletics",
+        set setAthletics(valueAthletics) {
+            this.Athletics = valueAthletics;
+        },
+
+        Armor: "valueArmor",
+        set setArmor(valueArmor) {
+            this.Armor = valueArmor;
+        },
+    };
+
+    character.setName = document.getElementById("charname").value;
+    character.setStrength = document.getElementById("strength").value;
+    character.setDexterity = document.getElementById("dexterity").value;
+    character.setStamina = document.getElementById("stamina").value;
+    character.setWits = document.getElementById("wits").value;
+    character.setBrawl = document.getElementById("brawl").value;
+    character.setMelee = document.getElementById("melee").value;
+    character.setFirearms = document.getElementById("firearms").value;
+    character.setDodge = document.getElementById("dodge").value;
+    character.setAthletics = document.getElementById("athletics").value;
+    character.setArmor = document.getElementById("armor").value;
+
+
+    console.log("--- JSON ---");
+    console.log("Array is: " + JSON.stringify(character, false, 1));
+
+    console.log("--- VARIABLES --- ");
+    console.log("Strength is: " + statStr);
+    console.log("Dexterity is: " + statDex);
+    console.log("Stamina is: " + statSta);
+    console.log("Wits is: " + statWits);
+    console.log("Brawl is: " + statBra);
+    console.log("Melee is: " + statMel);
+    console.log("Firearms is: " + statFire);
+    console.log("Dodge is: " + statDog);
+    console.log("Athletics is: " + statAth);
+    console.log("Armor is: " + armor);
+
+}
+</script>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+<script>
+// use // for single comments
+// use /* then */ for multiline comments
+
+/*
+Variables:
+dice = number of dice to be rolled
+result = result of a dice roll
+rolled = number of dice that have been rolled
+diff = target number
+success = number of successful rolls
+*/
+
+</script>
+
+
+
+</head>
+
+<html>
+<body>
+
+<h2>Storyteller dice roller</h2>
+
+Number of dice: <input type="number" value="5" id="dice"><br>
+Difficulty: <input type="number" value="6" id="diff"><br>
+
+<button onclick="roll()">Roll</button>
+
+<script>
+
+
+function roll() {
+
+// initialize results array
+var aresults = [];
+
+// set vrolled to zero
+var vrolled = 0;
+
+// code store user input of "Number of dice" as vdice variable
+var vdice = document.getElementById("dice").value;
+
+// code store user input of "Difficulty" as vdiff variable
+var vdiff = document.getElementById("diff").value;
+
+// Compare vrolled to dice variable
+if (vrolled <= dice) {
+
+// Create a random number between 1 and 10
+var vresult=Math.floor(Math.random() * 10) + 1; 
+
+// append new dice roll result to the array
+aresults.push(vresult);
+
+// +1 to vrolled
+var vrolled = vrolled + 1;
+
+}
+
+
+
+// Display variable results in console
+console.log("Results array");
+console.log(aresults);
+console.log("Dice to be rolled");
+console.log(vdice);
+console.log("Roll result");
+console.log(vresult);
+console.log("Difficulty");
+console.log(vdiff);
+console.log("Dice rolled");
+console.log(vrolled);
+
+
+// check variables recorded
+// opens in new page
+/*
+document.open();
+document.writeln(vdice);
+document.writeln(vdiff);
+document.writeln(vresult);
+document.writeln(vrolled);
+document.close();
+*/
+}
+
+</script>
+</p>  
+
+
+</body>
+</html>
